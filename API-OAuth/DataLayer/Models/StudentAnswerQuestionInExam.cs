@@ -12,17 +12,19 @@ namespace DataLayer.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class program
+    public partial class StudentAnswerQuestionInExam
     {
-        public program()
+        public StudentAnswerQuestionInExam()
         {
-            this.ProgramIntakes = new HashSet<ProgramIntake>();
+            this.StudentMultiAnswersQuestion = new HashSet<StudentMultiAnswersQuestion>();
         }
     
-        public int programId { get; set; }
-        public string programName { get; set; }
-        public string programnotes { get; set; }
+        public System.Guid Std_Answer_Id { get; set; }
+        public int Std_Id { get; set; }
+        public int Exam_Id { get; set; }
     
-        public virtual ICollection<ProgramIntake> ProgramIntakes { get; set; }
+        public virtual StudentBasicData StudentBasicData { get; set; }
+        public virtual Exams Exams { get; set; }
+        public virtual ICollection<StudentMultiAnswersQuestion> StudentMultiAnswersQuestion { get; set; }
     }
 }

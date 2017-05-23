@@ -12,17 +12,9 @@ namespace DataLayer.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class subTrack
+    public partial class TrainBranch
     {
-        public subTrack()
-        {
-            this.PlatfromIntakes = new HashSet<PlatfromIntake>();
-        }
-    
-        public int subtrackID { get; set; }
-        public string subtrackName { get; set; }
-        public string code { get; set; }
-    
-        public virtual ICollection<PlatfromIntake> PlatfromIntakes { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }
