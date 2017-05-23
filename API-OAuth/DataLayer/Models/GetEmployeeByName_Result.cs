@@ -10,25 +10,9 @@
 namespace DataLayer.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Employee
+    public partial class GetEmployeeByName_Result
     {
-        public Employee()
-        {
-            this.InstructorCourses = new HashSet<InstructorCourse>();
-            this.Exams = new HashSet<Exam>();
-            this.ExternalInstructorAuthorizations = new HashSet<ExternalInstructorAuthorization>();
-            this.InstructorsConnectionIds = new HashSet<InstructorsConnectionId>();
-            this.Questions = new HashSet<Question>();
-            this.SupervisiorsConnectionIds = new HashSet<SupervisiorsConnectionId>();
-            this.TrackManagers = new HashSet<TrackManager>();
-            this.TrackSupervisors = new HashSet<TrackSupervisor>();
-            this.UserDevices = new HashSet<UserDevice>();
-            this.Notifications = new HashSet<Notification>();
-            this.Notifications1 = new HashSet<Notification>();
-        }
-    
         public int EmployeeID { get; set; }
         public string InstructorName { get; set; }
         public int BranchID { get; set; }
@@ -84,17 +68,8 @@ namespace DataLayer.Models
         public Nullable<int> Religionid { get; set; }
         public Nullable<int> empno { get; set; }
         public Nullable<int> cat { get; set; }
-    
-        public virtual ICollection<InstructorCourse> InstructorCourses { get; set; }
-        public virtual ICollection<Exam> Exams { get; set; }
-        public virtual ICollection<ExternalInstructorAuthorization> ExternalInstructorAuthorizations { get; set; }
-        public virtual ICollection<InstructorsConnectionId> InstructorsConnectionIds { get; set; }
-        public virtual ICollection<Question> Questions { get; set; }
-        public virtual ICollection<SupervisiorsConnectionId> SupervisiorsConnectionIds { get; set; }
-        public virtual ICollection<TrackManager> TrackManagers { get; set; }
-        public virtual ICollection<TrackSupervisor> TrackSupervisors { get; set; }
-        public virtual ICollection<UserDevice> UserDevices { get; set; }
-        public virtual ICollection<Notification> Notifications { get; set; }
-        public virtual ICollection<Notification> Notifications1 { get; set; }
+        public int usergroupID { get; set; }
+        public string Group_Name { get; set; }
+        public int Group_ID { get; set; }
     }
 }

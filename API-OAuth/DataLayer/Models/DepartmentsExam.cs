@@ -19,6 +19,6 @@ namespace DataLayer.Models
         public Nullable<System.DateTime> Exam_Date { get; set; }
     
         public virtual PlatfromIntake PlatfromIntake { get; set; }
-        public virtual Exams Exams { get; set; }
+        public virtual Exam Exam { get; set; }
     }
 }

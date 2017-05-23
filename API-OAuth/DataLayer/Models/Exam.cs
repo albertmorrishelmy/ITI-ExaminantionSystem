@@ -12,15 +12,15 @@ namespace DataLayer.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Exams
+    public partial class Exam
     {
-        public Exams()
+        public Exam()
         {
-            this.DepartmentsExam = new HashSet<DepartmentsExam>();
-            this.NewDateExamForPermittedStudent = new HashSet<NewDateExamForPermittedStudent>();
-            this.QuestionsInExam = new HashSet<QuestionsInExam>();
-            this.StudentAnswerQuestionInExam = new HashSet<StudentAnswerQuestionInExam>();
-            this.StudentPermissionInExam = new HashSet<StudentPermissionInExam>();
+            this.DepartmentsExams = new HashSet<DepartmentsExam>();
+            this.NewDateExamForPermittedStudents = new HashSet<NewDateExamForPermittedStudent>();
+            this.QuestionsInExams = new HashSet<QuestionsInExam>();
+            this.StudentAnswerQuestionInExams = new HashSet<StudentAnswerQuestionInExam>();
+            this.StudentPermissionInExams = new HashSet<StudentPermissionInExam>();
         }
     
         public int Exam_Id { get; set; }
@@ -34,10 +34,10 @@ namespace DataLayer.Models
     
         public virtual Employee Employee { get; set; }
         public virtual PlatfromIntake PlatfromIntake { get; set; }
-        public virtual ICollection<DepartmentsExam> DepartmentsExam { get; set; }
-        public virtual ICollection<NewDateExamForPermittedStudent> NewDateExamForPermittedStudent { get; set; }
-        public virtual ICollection<QuestionsInExam> QuestionsInExam { get; set; }
-        public virtual ICollection<StudentAnswerQuestionInExam> StudentAnswerQuestionInExam { get; set; }
-        public virtual ICollection<StudentPermissionInExam> StudentPermissionInExam { get; set; }
+        public virtual ICollection<DepartmentsExam> DepartmentsExams { get; set; }
+        public virtual ICollection<NewDateExamForPermittedStudent> NewDateExamForPermittedStudents { get; set; }
+        public virtual ICollection<QuestionsInExam> QuestionsInExams { get; set; }
+        public virtual ICollection<StudentAnswerQuestionInExam> StudentAnswerQuestionInExams { get; set; }
+        public virtual ICollection<StudentPermissionInExam> StudentPermissionInExams { get; set; }
     }
 }

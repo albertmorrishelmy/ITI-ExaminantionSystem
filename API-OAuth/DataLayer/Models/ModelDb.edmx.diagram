@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="329dbc94fcc148cfa3b0ebacd7fe6acb" Name="Diagram1">
+        <EntityTypeShape EntityType="Ns.Branch" Width="1.5" PointX="1.5" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.Course" Width="1.5" PointX="1.5" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.CourseManual" Width="1.5" PointX="3.75" PointY="54.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.Employee" Width="1.5" PointX="0.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.InstructorCourse" Width="1.5" PointX="3" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.InstructorType" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.Intake" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.PlatfromIntake" Width="1.5" PointX="3.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.ProgramIntake" Width="1.5" PointX="1.5" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.program" Width="1.5" PointX="1.5" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.StudentBasicData" Width="1.5" PointX="5.25" PointY="39.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.subTrack" Width="1.5" PointX="1.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.TrackManager" Width="1.5" PointX="3" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.TrackManual" Width="1.5" PointX="6" PointY="34.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.TrackSupervisor" Width="1.5" PointX="3" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.TrainBranch" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.UserDevice" Width="1.5" PointX="6" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.DepartmentsExam" Width="1.5" PointX="8.25" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.Exam" Width="1.5" PointX="6" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.ExternalInstructorAuthorization" Width="1.5" PointX="3" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.InstructorsConnectionId" Width="1.5" PointX="3" PointY="40.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.NewDateExamForPermittedStudent" Width="1.5" PointX="8.25" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.Notification" Width="1.5" PointX="3" PointY="43.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.QuestionAnswer" Width="1.5" PointX="8.25" PointY="30.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.Question" Width="1.5" PointX="6" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.QuestionsInExam" Width="1.5" PointX="8.25" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.StudentAnswerQuestionInExam" Width="1.5" PointX="8.25" PointY="37" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.StudentMultiAnswersQuestion" Width="1.5" PointX="10.5" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.StudentPermissionInExam" Width="1.5" PointX="11.25" PointY="33.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.StudentsConnectionId" Width="1.5" PointX="7.5" PointY="43.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.SupervisiorsConnectionId" Width="1.5" PointX="3" PointY="51.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ns.TopicsInCourse" Width="1.5" PointX="3.75" PointY="34.875" IsExpanded="true" />
+        <AssociationConnector Association="Ns.FK_PlatfromIntake2_Branch" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_courseManual_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_InstructorCourse_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_TopicsInCourse_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_TrackManual_courseManual" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_employeeCourse_employee" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_Exams_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_ExternalInstructorAuthorization_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_InstructorsConnectionIds_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_Questions_Employee1" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_SupervisiorsConnectionIds_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_TrackManager_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_TrackSupervisor_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_UserDevices_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_DepartmentsExam_PlatfromIntake" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_Exams_PlatfromIntake" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_PlatfromIntake2_ProgramIntake" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_PlatfromIntake2_subTrack" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_StudentBasicData2_PlatfromIntake2" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_TrackManager_PlatfromIntake" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_TrackManual_PlatfromIntake1" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_TrackSupervisor_PlatfromIntake" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_ProgramIntake_programs" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_NewDateExamForPermittedStudent_StudentBasicData" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_StudentAnswerQuestionInExam_StudentBasicData" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_StudentPermissionInExam_StudentBasicData" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_StudentsConnectionIds_StudentBasicData" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_UserDevices_StudentBasicData" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_DepartmentsExam_Exams" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_NewDateExamForPermittedStudent_Exams" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_QuestionsInExam_Exams" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_StudentAnswerQuestionInExam_Exams" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_StudentPermissionInExam_Exams" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_QuestionAnswers_Questions" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_Questions_TopicsInCourse" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_QuestionsInExam_Questions" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_StudentMultiAnswersQuestion_Questions" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.FK_StudentMultiAnswersQuestion_StudentAnswerQuestionInExam" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.InstructorNotifications" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.PointsInQuestion" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.StudentNotifications" ManuallyRouted="false" />
+        <AssociationConnector Association="Ns.SupervisiorNotifications" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

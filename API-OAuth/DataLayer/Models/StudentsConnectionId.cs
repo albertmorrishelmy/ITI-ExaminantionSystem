@@ -12,14 +12,11 @@ namespace DataLayer.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class StudentMultiAnswersQuestion
+    public partial class StudentsConnectionId
     {
-        public System.Guid Std_Answer_Id { get; set; }
-        public int Ques_Id { get; set; }
-        public string Answer_Content { get; set; }
-        public Nullable<int> Grade { get; set; }
+        public int Std_Id { get; set; }
+        public System.Guid Connection_Ids { get; set; }
     
-        public virtual Question Question { get; set; }
-        public virtual StudentAnswerQuestionInExam StudentAnswerQuestionInExam { get; set; }
+        public virtual StudentBasicData StudentBasicData { get; set; }
     }
 }

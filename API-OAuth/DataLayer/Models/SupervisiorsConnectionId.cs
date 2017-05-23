@@ -12,11 +12,11 @@ namespace DataLayer.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class StudentsConnectionIds
+    public partial class SupervisiorsConnectionId
     {
-        public int Std_Id { get; set; }
+        public int Supv_Id { get; set; }
         public System.Guid Connection_Ids { get; set; }
     
-        public virtual StudentBasicData StudentBasicData { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }

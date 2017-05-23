@@ -16,7 +16,7 @@ namespace DataLayer.Models
     {
         public TopicsInCourse()
         {
-            this.Questions = new HashSet<Questions>();
+            this.Questions = new HashSet<Question>();
         }
     
         public int Topic_Id { get; set; }
@@ -24,6 +24,6 @@ namespace DataLayer.Models
         public int Crs_Id { get; set; }
     
         public virtual Course Course { get; set; }
-        public virtual ICollection<Questions> Questions { get; set; }
+        public virtual ICollection<Question> Questions { get; set; }
     }
 }

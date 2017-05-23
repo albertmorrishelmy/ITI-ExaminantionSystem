@@ -10,16 +10,12 @@
 namespace DataLayer.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class StudentMultiAnswersQuestion
+    public partial class GetUserGroup_Result
     {
-        public System.Guid Std_Answer_Id { get; set; }
-        public int Ques_Id { get; set; }
-        public string Answer_Content { get; set; }
-        public Nullable<int> Grade { get; set; }
-    
-        public virtual Question Question { get; set; }
-        public virtual StudentAnswerQuestionInExam StudentAnswerQuestionInExam { get; set; }
+        public string InstructorName { get; set; }
+        public int EmployeeID { get; set; }
+        public int page_groupid { get; set; }
+        public string page_groupname { get; set; }
     }
 }

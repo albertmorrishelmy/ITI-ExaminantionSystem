@@ -10,19 +10,19 @@
 namespace DataLayer.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class subTrack
+    public partial class GetSubtrackData_Result
     {
-        public subTrack()
-        {
-            this.PlatfromIntakes = new HashSet<PlatfromIntake>();
-        }
-    
-        public int subtrackID { get; set; }
         public string subtrackName { get; set; }
         public string code { get; set; }
-    
-        public virtual ICollection<PlatfromIntake> PlatfromIntakes { get; set; }
+        public int PlatformIntakeID { get; set; }
+        public Nullable<int> BranchID { get; set; }
+        public Nullable<int> ProgramIntakeID { get; set; }
+        public int subtrackID { get; set; }
+        public string GroupName { get; set; }
+        public Nullable<int> GroupID { get; set; }
+        public Nullable<int> OwnedBy { get; set; }
+        public Nullable<int> EmployeeID { get; set; }
+        public string GraduateProfile { get; set; }
     }
 }

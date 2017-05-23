@@ -12,15 +12,15 @@ namespace DataLayer.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Questions
+    public partial class Question
     {
-        public Questions()
+        public Question()
         {
-            this.QuestionAnswers = new HashSet<QuestionAnswers>();
-            this.QuestionsInExam = new HashSet<QuestionsInExam>();
-            this.StudentMultiAnswersQuestion = new HashSet<StudentMultiAnswersQuestion>();
-            this.Questions1 = new HashSet<Questions>();
-            this.Questions2 = new HashSet<Questions>();
+            this.QuestionAnswers = new HashSet<QuestionAnswer>();
+            this.QuestionsInExams = new HashSet<QuestionsInExam>();
+            this.StudentMultiAnswersQuestions = new HashSet<StudentMultiAnswersQuestion>();
+            this.Questions1 = new HashSet<Question>();
+            this.Questions = new HashSet<Question>();
         }
     
         public int Ques_Id { get; set; }
@@ -34,11 +34,11 @@ namespace DataLayer.Models
         public Nullable<bool> Points_Indicator { get; set; }
     
         public virtual Employee Employee { get; set; }
-        public virtual ICollection<QuestionAnswers> QuestionAnswers { get; set; }
+        public virtual ICollection<QuestionAnswer> QuestionAnswers { get; set; }
         public virtual TopicsInCourse TopicsInCourse { get; set; }
-        public virtual ICollection<QuestionsInExam> QuestionsInExam { get; set; }
-        public virtual ICollection<StudentMultiAnswersQuestion> StudentMultiAnswersQuestion { get; set; }
-        public virtual ICollection<Questions> Questions1 { get; set; }
-        public virtual ICollection<Questions> Questions2 { get; set; }
+        public virtual ICollection<QuestionsInExam> QuestionsInExams { get; set; }
+        public virtual ICollection<StudentMultiAnswersQuestion> StudentMultiAnswersQuestions { get; set; }
+        public virtual ICollection<Question> Questions1 { get; set; }
+        public virtual ICollection<Question> Questions { get; set; }
     }
 }

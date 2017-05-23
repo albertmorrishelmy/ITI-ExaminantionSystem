@@ -16,11 +16,12 @@ namespace DataLayer.Models
     {
         public PlatfromIntake()
         {
-            this.DepartmentsExam = new HashSet<DepartmentsExam>();
-            this.Exams = new HashSet<Exams>();
-            this.StudentBasicData = new HashSet<StudentBasicData>();
-            this.TrackManager = new HashSet<TrackManager>();
-            this.TrackSupervisor = new HashSet<TrackSupervisor>();
+            this.DepartmentsExams = new HashSet<DepartmentsExam>();
+            this.Exams = new HashSet<Exam>();
+            this.StudentBasicDatas = new HashSet<StudentBasicData>();
+            this.TrackManagers = new HashSet<TrackManager>();
+            this.TrackManuals = new HashSet<TrackManual>();
+            this.TrackSupervisors = new HashSet<TrackSupervisor>();
         }
     
         public int PlatformIntakeID { get; set; }
@@ -31,12 +32,13 @@ namespace DataLayer.Models
         public string GraduateProfile { get; set; }
     
         public virtual Branch Branch { get; set; }
-        public virtual ICollection<DepartmentsExam> DepartmentsExam { get; set; }
-        public virtual ICollection<Exams> Exams { get; set; }
+        public virtual ICollection<DepartmentsExam> DepartmentsExams { get; set; }
+        public virtual ICollection<Exam> Exams { get; set; }
         public virtual ProgramIntake ProgramIntake { get; set; }
         public virtual subTrack subTrack { get; set; }
-        public virtual ICollection<StudentBasicData> StudentBasicData { get; set; }
-        public virtual ICollection<TrackManager> TrackManager { get; set; }
-        public virtual ICollection<TrackSupervisor> TrackSupervisor { get; set; }
+        public virtual ICollection<StudentBasicData> StudentBasicDatas { get; set; }
+        public virtual ICollection<TrackManager> TrackManagers { get; set; }
+        public virtual ICollection<TrackManual> TrackManuals { get; set; }
+        public virtual ICollection<TrackSupervisor> TrackSupervisors { get; set; }
     }
 }

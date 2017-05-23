@@ -14,6 +14,11 @@ namespace DataLayer.Models
     
     public partial class CourseManual
     {
+        public CourseManual()
+        {
+            this.TrackManuals = new HashSet<TrackManual>();
+        }
+    
         public int courseManualID { get; set; }
         public Nullable<int> CourseID { get; set; }
         public Nullable<int> totalGrade { get; set; }
@@ -34,5 +39,6 @@ namespace DataLayer.Models
         public Nullable<int> ProgramIntakeID { get; set; }
     
         public virtual Course Course { get; set; }
+        public virtual ICollection<TrackManual> TrackManuals { get; set; }
     }
 }

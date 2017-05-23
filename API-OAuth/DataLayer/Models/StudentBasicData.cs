@@ -16,12 +16,12 @@ namespace DataLayer.Models
     {
         public StudentBasicData()
         {
-            this.NewDateExamForPermittedStudent = new HashSet<NewDateExamForPermittedStudent>();
-            this.StudentAnswerQuestionInExam = new HashSet<StudentAnswerQuestionInExam>();
-            this.StudentPermissionInExam = new HashSet<StudentPermissionInExam>();
-            this.StudentsConnectionIds = new HashSet<StudentsConnectionIds>();
-            this.UserDevices = new HashSet<UserDevices>();
-            this.Notifications = new HashSet<Notifications>();
+            this.NewDateExamForPermittedStudents = new HashSet<NewDateExamForPermittedStudent>();
+            this.StudentAnswerQuestionInExams = new HashSet<StudentAnswerQuestionInExam>();
+            this.StudentPermissionInExams = new HashSet<StudentPermissionInExam>();
+            this.StudentsConnectionIds = new HashSet<StudentsConnectionId>();
+            this.UserDevices = new HashSet<UserDevice>();
+            this.Notifications = new HashSet<Notification>();
         }
     
         public int StudentID { get; set; }
@@ -64,11 +64,11 @@ namespace DataLayer.Models
         public string Comment { get; set; }
     
         public virtual PlatfromIntake PlatfromIntake { get; set; }
-        public virtual ICollection<NewDateExamForPermittedStudent> NewDateExamForPermittedStudent { get; set; }
-        public virtual ICollection<StudentAnswerQuestionInExam> StudentAnswerQuestionInExam { get; set; }
-        public virtual ICollection<StudentPermissionInExam> StudentPermissionInExam { get; set; }
-        public virtual ICollection<StudentsConnectionIds> StudentsConnectionIds { get; set; }
-        public virtual ICollection<UserDevices> UserDevices { get; set; }
-        public virtual ICollection<Notifications> Notifications { get; set; }
+        public virtual ICollection<NewDateExamForPermittedStudent> NewDateExamForPermittedStudents { get; set; }
+        public virtual ICollection<StudentAnswerQuestionInExam> StudentAnswerQuestionInExams { get; set; }
+        public virtual ICollection<StudentPermissionInExam> StudentPermissionInExams { get; set; }
+        public virtual ICollection<StudentsConnectionId> StudentsConnectionIds { get; set; }
+        public virtual ICollection<UserDevice> UserDevices { get; set; }
+        public virtual ICollection<Notification> Notifications { get; set; }
     }
 }

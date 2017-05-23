@@ -10,13 +10,12 @@
 namespace DataLayer.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class InstructorsConnectionIds
+    public partial class GetTrackManual_Result
     {
-        public int Ins_Id { get; set; }
-        public System.Guid Connection_Ids { get; set; }
-    
-        public virtual Employee Employee { get; set; }
+        public int TrackManualID { get; set; }
+        public Nullable<int> CourseManualID { get; set; }
+        public Nullable<int> PlatformIntakeID { get; set; }
+        public string CourseName { get; set; }
     }
 }

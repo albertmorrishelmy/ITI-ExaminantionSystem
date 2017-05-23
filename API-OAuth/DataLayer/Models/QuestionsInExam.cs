@@ -18,7 +18,7 @@ namespace DataLayer.Models
         public int Exam_Id { get; set; }
         public Nullable<int> Degree { get; set; }
     
-        public virtual Exams Exams { get; set; }
-        public virtual Questions Questions { get; set; }
+        public virtual Exam Exam { get; set; }
+        public virtual Question Question { get; set; }
     }
 }

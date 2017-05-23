@@ -16,7 +16,7 @@ namespace DataLayer.Models
     {
         public StudentAnswerQuestionInExam()
         {
-            this.StudentMultiAnswersQuestion = new HashSet<StudentMultiAnswersQuestion>();
+            this.StudentMultiAnswersQuestions = new HashSet<StudentMultiAnswersQuestion>();
         }
     
         public System.Guid Std_Answer_Id { get; set; }
@@ -24,7 +24,7 @@ namespace DataLayer.Models
         public int Exam_Id { get; set; }
     
         public virtual StudentBasicData StudentBasicData { get; set; }
-        public virtual Exams Exams { get; set; }
-        public virtual ICollection<StudentMultiAnswersQuestion> StudentMultiAnswersQuestion { get; set; }
+        public virtual Exam Exam { get; set; }
+        public virtual ICollection<StudentMultiAnswersQuestion> StudentMultiAnswersQuestions { get; set; }
     }
 }

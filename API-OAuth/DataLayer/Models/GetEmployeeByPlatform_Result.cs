@@ -10,19 +10,11 @@
 namespace DataLayer.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class programs
+    public partial class GetEmployeeByPlatform_Result
     {
-        public programs()
-        {
-            this.ProgramIntake = new HashSet<ProgramIntake>();
-        }
-    
-        public int programId { get; set; }
-        public string programName { get; set; }
-        public string programnotes { get; set; }
-    
-        public virtual ICollection<ProgramIntake> ProgramIntake { get; set; }
+        public Nullable<int> PlatformID { get; set; }
+        public int EmployeeID { get; set; }
+        public string Name { get; set; }
     }
 }

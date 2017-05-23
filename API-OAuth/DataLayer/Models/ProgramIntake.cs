@@ -16,14 +16,14 @@ namespace DataLayer.Models
     {
         public ProgramIntake()
         {
-            this.PlatfromIntake = new HashSet<PlatfromIntake>();
+            this.PlatfromIntakes = new HashSet<PlatfromIntake>();
         }
     
         public int IntakeID { get; set; }
         public int ProgramID { get; set; }
         public int ProgramIntakeID { get; set; }
     
-        public virtual ICollection<PlatfromIntake> PlatfromIntake { get; set; }
-        public virtual programs programs { get; set; }
+        public virtual ICollection<PlatfromIntake> PlatfromIntakes { get; set; }
+        public virtual program program { get; set; }
     }
 }

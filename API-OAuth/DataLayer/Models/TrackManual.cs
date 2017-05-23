@@ -12,14 +12,15 @@ namespace DataLayer.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class StudentMultiAnswersQuestion
+    public partial class TrackManual
     {
-        public System.Guid Std_Answer_Id { get; set; }
-        public int Ques_Id { get; set; }
-        public string Answer_Content { get; set; }
-        public Nullable<int> Grade { get; set; }
+        public int TrackManualID { get; set; }
+        public Nullable<int> CourseManualID { get; set; }
+        public Nullable<int> PlatformIntakeID { get; set; }
+        public Nullable<bool> IsElective { get; set; }
+        public Nullable<int> ElecetiveGroupID { get; set; }
     
-        public virtual Question Question { get; set; }
-        public virtual StudentAnswerQuestionInExam StudentAnswerQuestionInExam { get; set; }
+        public virtual CourseManual CourseManual { get; set; }
+        public virtual PlatfromIntake PlatfromIntake { get; set; }
     }
 }

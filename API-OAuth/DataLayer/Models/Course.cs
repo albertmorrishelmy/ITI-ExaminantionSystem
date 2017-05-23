@@ -16,17 +16,17 @@ namespace DataLayer.Models
     {
         public Course()
         {
-            this.CourseManual = new HashSet<CourseManual>();
-            this.InstructorCourse = new HashSet<InstructorCourse>();
-            this.TopicsInCourse = new HashSet<TopicsInCourse>();
+            this.CourseManuals = new HashSet<CourseManual>();
+            this.InstructorCourses = new HashSet<InstructorCourse>();
+            this.TopicsInCourses = new HashSet<TopicsInCourse>();
         }
     
         public int CourseID { get; set; }
         public string CourseName { get; set; }
         public Nullable<int> CategoryID { get; set; }
     
-        public virtual ICollection<CourseManual> CourseManual { get; set; }
-        public virtual ICollection<InstructorCourse> InstructorCourse { get; set; }
-        public virtual ICollection<TopicsInCourse> TopicsInCourse { get; set; }
+        public virtual ICollection<CourseManual> CourseManuals { get; set; }
+        public virtual ICollection<InstructorCourse> InstructorCourses { get; set; }
+        public virtual ICollection<TopicsInCourse> TopicsInCourses { get; set; }
     }
 }

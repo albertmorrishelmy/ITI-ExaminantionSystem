@@ -12,13 +12,13 @@ namespace DataLayer.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Notifications
+    public partial class Notification
     {
-        public Notifications()
+        public Notification()
         {
-            this.Employee = new HashSet<Employee>();
-            this.StudentBasicData = new HashSet<StudentBasicData>();
-            this.Employee1 = new HashSet<Employee>();
+            this.Employees = new HashSet<Employee>();
+            this.StudentBasicDatas = new HashSet<StudentBasicData>();
+            this.Employees1 = new HashSet<Employee>();
         }
     
         public int Notification_Id { get; set; }
@@ -26,8 +26,8 @@ namespace DataLayer.Models
         public Nullable<bool> Is_Read { get; set; }
         public Nullable<System.DateTime> Creation_Time { get; set; }
     
-        public virtual ICollection<Employee> Employee { get; set; }
-        public virtual ICollection<StudentBasicData> StudentBasicData { get; set; }
-        public virtual ICollection<Employee> Employee1 { get; set; }
+        public virtual ICollection<Employee> Employees { get; set; }
+        public virtual ICollection<StudentBasicData> StudentBasicDatas { get; set; }
+        public virtual ICollection<Employee> Employees1 { get; set; }
     }
 }

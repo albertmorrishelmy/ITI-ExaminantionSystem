@@ -16,7 +16,7 @@ namespace DataLayer.Models
     {
         public Branch()
         {
-            this.PlatfromIntake = new HashSet<PlatfromIntake>();
+            this.PlatfromIntakes = new HashSet<PlatfromIntake>();
         }
     
         public int BranchID { get; set; }
@@ -25,6 +25,6 @@ namespace DataLayer.Models
         public System.Guid msrepl_tran_version { get; set; }
         public Nullable<int> trainbranchid { get; set; }
     
-        public virtual ICollection<PlatfromIntake> PlatfromIntake { get; set; }
+        public virtual ICollection<PlatfromIntake> PlatfromIntakes { get; set; }
     }
 }
