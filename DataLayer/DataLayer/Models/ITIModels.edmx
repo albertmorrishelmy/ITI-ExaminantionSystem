@@ -1,0 +1,2405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DbContextNS.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="BranchID" />
+          </Key>
+          <Property Name="BranchID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BranchName" Type="nvarchar" MaxLength="50" />
+          <Property Name="arabicname" Type="nvarchar" MaxLength="50" />
+          <Property Name="msrepl_tran_version" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="trainbranchid" Type="int" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="CourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="150" />
+          <Property Name="CategoryID" Type="int" />
+        </EntityType>
+        <EntityType Name="CourseManual">
+          <Key>
+            <PropertyRef Name="courseManualID" />
+          </Key>
+          <Property Name="courseManualID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseID" Type="int" />
+          <Property Name="totalGrade" Type="int" />
+          <Property Name="minGrade" Type="int" />
+          <Property Name="labsNumber" Type="int" />
+          <Property Name="lecturesNumber" Type="int" />
+          <Property Name="lech" Type="int" />
+          <Property Name="selfh" Type="int" />
+          <Property Name="labh" Type="int" />
+          <Property Name="credit" Type="int" />
+          <Property Name="coursenote" Type="nvarchar" MaxLength="255" />
+          <Property Name="swReq" Type="nvarchar" MaxLength="255" />
+          <Property Name="hwReq" Type="nvarchar" MaxLength="255" />
+          <Property Name="CourseCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="CourseDescription" Type="nvarchar(max)" />
+          <Property Name="CourseObjective" Type="nvarchar(max)" />
+          <Property Name="CourseContent" Type="nvarchar(max)" />
+          <Property Name="ProgramIntakeID" Type="int" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InstructorName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BranchID" Type="int" Nullable="false" />
+          <Property Name="IPassword" Type="nvarchar" MaxLength="12" />
+          <Property Name="UserName2" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlatformID" Type="int" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="TypeID" Type="int" />
+          <Property Name="ArabicName" Type="nvarchar" MaxLength="100" />
+          <Property Name="CertificateID" Type="int" />
+          <Property Name="FirstNameEn" Type="varchar" MaxLength="50" />
+          <Property Name="SecondNameEn" Type="varchar" MaxLength="50" />
+          <Property Name="barcode" Type="varchar" MaxLength="50" />
+          <Property Name="imagepath" Type="varchar" MaxLength="80" />
+          <Property Name="org_branchid" Type="int" />
+          <Property Name="StatusID" Type="int" />
+          <Property Name="PositionID" Type="int" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="HiringDate" Type="datetime" />
+          <Property Name="ThirdNameEn" Type="varchar" MaxLength="50" />
+          <Property Name="FourthNameEn" Type="varchar" MaxLength="50" />
+          <Property Name="FirstNameAr" Type="nvarchar" MaxLength="50" />
+          <Property Name="SecondNameAr" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThirdNameAr" Type="nvarchar" MaxLength="50" />
+          <Property Name="FourthNameAr" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="PhoneNo" Type="nvarchar" MaxLength="12" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="15" />
+          <Property Name="ExtenistonNo" Type="nvarchar" MaxLength="10" />
+          <Property Name="Gender" Type="char" MaxLength="1" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="100" />
+          <Property Name="MaritalStatus" Type="int" />
+          <Property Name="MilitaryStatus" Type="int" />
+          <Property Name="UniversityID" Type="int" />
+          <Property Name="FacultyID" Type="int" />
+          <Property Name="IntakeID" Type="int" />
+          <Property Name="Flag" Type="int" />
+          <Property Name="GraduationYear" Type="int" />
+          <Property Name="Grade" Type="nvarchar" MaxLength="50" />
+          <Property Name="AttendanceFlag" Type="int" />
+          <Property Name="PositionName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpStatus" Type="int" />
+          <Property Name="msrepl_tran_version" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IDCard" Type="nvarchar" MaxLength="50" />
+          <Property Name="AttachmentID" Type="nvarchar" MaxLength="255" />
+          <Property Name="AttachmentCV" Type="nvarchar" MaxLength="255" />
+          <Property Name="ATMStatus" Type="int" />
+          <Property Name="ATMNo" Type="nvarchar" MaxLength="255" />
+          <Property Name="SpecialRate" Type="int" />
+          <Property Name="RateNotes" Type="nvarchar(max)" />
+          <Property Name="ATMExpiryDate" Type="datetime" />
+          <Property Name="Religionid" Type="int" />
+          <Property Name="empno" Type="int" />
+          <Property Name="cat" Type="int" />
+        </EntityType>
+        <EntityType Name="Intake">
+          <Key>
+            <PropertyRef Name="IntakeID" />
+          </Key>
+          <Property Name="IntakeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IntakeNo" Type="int" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="IntakeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="msrepl_tran_version" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlatfromIntake">
+          <Key>
+            <PropertyRef Name="PlatformIntakeID" />
+          </Key>
+          <Property Name="PlatformIntakeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BranchID" Type="int" />
+          <Property Name="SubTrackID" Type="int" />
+          <Property Name="ProgramIntakeID" Type="int" />
+          <Property Name="OwnedBy" Type="int" />
+          <Property Name="GraduateProfile" Type="ntext" />
+        </EntityType>
+        <EntityType Name="ProgramIntake">
+          <Key>
+            <PropertyRef Name="ProgramIntakeID" />
+          </Key>
+          <Property Name="IntakeID" Type="int" Nullable="false" />
+          <Property Name="ProgramID" Type="int" Nullable="false" />
+          <Property Name="ProgramIntakeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="programs">
+          <Key>
+            <PropertyRef Name="programId" />
+          </Key>
+          <Property Name="programId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="programName" Type="nvarchar" MaxLength="255" />
+          <Property Name="programnotes" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="StudentBasicData">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="englishname" Type="nvarchar" MaxLength="255" />
+          <Property Name="arabicname" Type="nvarchar" MaxLength="255" />
+          <Property Name="ApplicationNo" Type="nvarchar" MaxLength="255" />
+          <Property Name="FK_UniversityFaculty_SpecializationId" Type="int" />
+          <Property Name="FK_FacultyId" Type="int" />
+          <Property Name="FK_SpecializationId" Type="int" />
+          <Property Name="FK_GraduationGradeId" Type="int" />
+          <Property Name="GraduationYear" Type="nvarchar" MaxLength="255" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="255" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="SubTrackID" Type="int" Nullable="false" />
+          <Property Name="Barcode" Type="nvarchar" MaxLength="255" />
+          <Property Name="AccFlag" Type="int" />
+          <Property Name="Username" Type="nvarchar" MaxLength="100" />
+          <Property Name="userpwd" Type="nvarchar" MaxLength="100" />
+          <Property Name="imagepath" Type="nvarchar(max)" />
+          <Property Name="RejectReason" Type="nvarchar(max)" />
+          <Property Name="DateOB" Type="datetime" />
+          <Property Name="gender" Type="nchar" MaxLength="1" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" />
+          <Property Name="IDNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="GraduationGrade" Type="nchar" MaxLength="3" />
+          <Property Name="Rank" Type="int" />
+          <Property Name="Marital" Type="int" />
+          <Property Name="Military" Type="int" />
+          <Property Name="Language" Type="int" />
+          <Property Name="SocialAccount" Type="nvarchar" MaxLength="50" />
+          <Property Name="School" Type="nvarchar" MaxLength="50" />
+          <Property Name="GradProjIdea" Type="nvarchar(max)" />
+          <Property Name="ProjGrade" Type="nvarchar" MaxLength="50" />
+          <Property Name="CertAqui" Type="nvarchar(max)" />
+          <Property Name="PostGradStud" Type="nvarchar(max)" />
+          <Property Name="AcadimicInst" Type="nvarchar(max)" />
+          <Property Name="cvpath" Type="nvarchar" MaxLength="50" />
+          <Property Name="SchoolName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="subTrack">
+          <Key>
+            <PropertyRef Name="subtrackID" />
+          </Key>
+          <Property Name="subtrackID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="subtrackName" Type="nvarchar" MaxLength="255" />
+          <Property Name="code" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TrackManager">
+          <Key>
+            <PropertyRef Name="TrackManagerID" />
+          </Key>
+          <Property Name="TrackManagerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="PlatformIntakeID" Type="int" />
+        </EntityType>
+        <EntityType Name="TrackManual">
+          <Key>
+            <PropertyRef Name="TrackManualID" />
+          </Key>
+          <Property Name="TrackManualID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseManualID" Type="int" />
+          <Property Name="PlatformIntakeID" Type="int" />
+          <Property Name="IsElective" Type="bit" />
+          <Property Name="ElecetiveGroupID" Type="int" />
+        </EntityType>
+        <EntityType Name="TrackSupervisor">
+          <Key>
+            <PropertyRef Name="TrackGroupID" />
+          </Key>
+          <Property Name="TrackGroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlatformIntakeID" Type="int" />
+          <Property Name="EmployeeID" Type="int" />
+        </EntityType>
+        <EntityType Name="TrainBranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NewData.Examination.DepartmentsExam' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DepartmentsExam">
+          <Key>
+            <PropertyRef Name="Exam_Id" />
+          </Key>
+          <Property Name="Exam_Id" Type="int" Nullable="false" />
+          <Property Name="PlatformIntakeID" Type="int" />
+          <Property Name="Exam_Date" Type="date" />
+        </EntityType>
+        <EntityType Name="Exams">
+          <Key>
+            <PropertyRef Name="Exam_Id" />
+          </Key>
+          <Property Name="Exam_Id" Type="int" Nullable="false" />
+          <Property Name="Exam_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Creation_Date" Type="date" />
+          <Property Name="Number_Of_Questions" Type="int" />
+          <Property Name="Ins_Id" Type="int" />
+          <Property Name="Exam_Corrected" Type="bit" />
+          <Property Name="Exam_Duration" Type="int" />
+          <Property Name="PlatformIntake_Id" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NewData.Examination.ExternalInstructorAuthorization' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ExternalInstructorAuthorization">
+          <Key>
+            <PropertyRef Name="Ins_Id" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Expiration_Date" />
+          </Key>
+          <Property Name="Ins_Id" Type="int" Nullable="false" />
+          <Property Name="Code" Type="int" Nullable="false" />
+          <Property Name="Expiration_Date" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'NewData.Examination.InstructorNotifications' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="InstructorNotifications">
+          <Property Name="Ins_Id" Type="int" />
+          <Property Name="Notification_Id" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'NewData.Examination.InstructorsConnectionIds' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="InstructorsConnectionIds">
+          <Property Name="Ins_Id" Type="int" />
+          <Property Name="Connection_Ids" Type="uniqueidentifier" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NewData.Examination.NewDateExamForPermittedStudent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="NewDateExamForPermittedStudent">
+          <Key>
+            <PropertyRef Name="Std_Id" />
+            <PropertyRef Name="New_Exam_Id" />
+          </Key>
+          <Property Name="Std_Id" Type="int" Nullable="false" />
+          <Property Name="New_Exam_Id" Type="int" Nullable="false" />
+          <Property Name="New_Date" Type="date" />
+        </EntityType>
+        <EntityType Name="Notifications">
+          <Key>
+            <PropertyRef Name="Notification_Id" />
+          </Key>
+          <Property Name="Notification_Id" Type="int" Nullable="false" />
+          <Property Name="Notification_Text" Type="nvarchar(max)" />
+          <Property Name="Is_Read" Type="bit" />
+          <Property Name="Creation_Time" Type="smalldatetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'NewData.Examination.PointsInQuestion' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="PointsInQuestion">
+          <Property Name="Point_Id" Type="int" />
+          <Property Name="Ques_Id" Type="int" />
+        </EntityType>-->
+        <EntityType Name="QuestionAnswers">
+          <Key>
+            <PropertyRef Name="Ques_Id" />
+            <PropertyRef Name="Answer_Id" />
+          </Key>
+          <Property Name="Ques_Id" Type="int" Nullable="false" />
+          <Property Name="Answer_Id" Type="int" Nullable="false" />
+          <Property Name="Answer_Content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Is_It_RightAnswer" Type="bit" />
+        </EntityType>
+        <EntityType Name="Questions">
+          <Key>
+            <PropertyRef Name="Ques_Id" />
+          </Key>
+          <Property Name="Ques_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ques_Type" Type="int" Nullable="false" />
+          <Property Name="Ques_Content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Ques_Activation" Type="bit" />
+          <Property Name="Ques_Level" Type="int" />
+          <Property Name="Ques_Repetation" Type="int" />
+          <Property Name="Topic_Id" Type="int" />
+          <Property Name="Ins_Id" Type="int" />
+          <Property Name="Points_Indicator" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NewData.Examination.QuestionsInExam' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="QuestionsInExam">
+          <Key>
+            <PropertyRef Name="Ques_Id" />
+            <PropertyRef Name="Exam_Id" />
+          </Key>
+          <Property Name="Ques_Id" Type="int" Nullable="false" />
+          <Property Name="Exam_Id" Type="int" Nullable="false" />
+          <Property Name="Degree" Type="int" />
+        </EntityType>
+        <EntityType Name="StudentAnswerQuestionInExam">
+          <Key>
+            <PropertyRef Name="Std_Answer_Id" />
+          </Key>
+          <Property Name="Std_Answer_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Std_Id" Type="int" Nullable="false" />
+          <Property Name="Exam_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NewData.Examination.StudentMultiAnswersQuestion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="StudentMultiAnswersQuestion">
+          <Key>
+            <PropertyRef Name="Std_Answer_Id" />
+            <PropertyRef Name="Ques_Id" />
+          </Key>
+          <Property Name="Std_Answer_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Ques_Id" Type="int" Nullable="false" />
+          <Property Name="Answer_Content" Type="nvarchar(max)" />
+          <Property Name="Grade" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'NewData.Examination.StudentNotifications' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="StudentNotifications">
+          <Property Name="Student_Id" Type="int" />
+          <Property Name="Notification_Id" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NewData.Examination.StudentPermissionInExam' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="StudentPermissionInExam">
+          <Key>
+            <PropertyRef Name="Std_Id" />
+            <PropertyRef Name="Exam_Id" />
+          </Key>
+          <Property Name="Std_Id" Type="int" Nullable="false" />
+          <Property Name="Exam_Id" Type="int" Nullable="false" />
+          <Property Name="Permission_Date" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'NewData.Examination.StudentsConnectionIds' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="StudentsConnectionIds">
+          <Property Name="Std_Id" Type="int" />
+          <Property Name="Connection_Ids" Type="uniqueidentifier" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'NewData.Examination.SupervisiorNotifications' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="SupervisiorNotifications">
+          <Property Name="Supervisior_Id" Type="int" />
+          <Property Name="Notification_Id" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'NewData.Examination.SupervisiorsConnectionIds' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="SupervisiorsConnectionIds">
+          <Property Name="Supv_Id" Type="int" />
+          <Property Name="Connection_Ids" Type="uniqueidentifier" />
+        </EntityType>-->
+        <EntityType Name="TopicsInCourse">
+          <Key>
+            <PropertyRef Name="Topic_Id" />
+          </Key>
+          <Property Name="Topic_Id" Type="int" Nullable="false" />
+          <Property Name="Topic_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Crs_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_courseManual_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CourseManual" Type="Self.CourseManual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="CourseManual">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DepartmentsExam_Exams">
+          <End Role="Exams" Type="Self.Exams" Multiplicity="1" />
+          <End Role="DepartmentsExam" Type="Self.DepartmentsExam" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Exams">
+              <PropertyRef Name="Exam_Id" />
+            </Principal>
+            <Dependent Role="DepartmentsExam">
+              <PropertyRef Name="Exam_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DepartmentsExam_PlatfromIntake">
+          <End Role="PlatfromIntake" Type="Self.PlatfromIntake" Multiplicity="0..1" />
+          <End Role="DepartmentsExam" Type="Self.DepartmentsExam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlatfromIntake">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Principal>
+            <Dependent Role="DepartmentsExam">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exams_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Exams" Type="Self.Exams" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Exams">
+              <PropertyRef Name="Ins_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exams_PlatfromIntake">
+          <End Role="PlatfromIntake" Type="Self.PlatfromIntake" Multiplicity="0..1" />
+          <End Role="Exams" Type="Self.Exams" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlatfromIntake">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Principal>
+            <Dependent Role="Exams">
+              <PropertyRef Name="PlatformIntake_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExternalInstructorAuthorization_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="ExternalInstructorAuthorization" Type="Self.ExternalInstructorAuthorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="ExternalInstructorAuthorization">
+              <PropertyRef Name="Ins_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+error 6004: The table 'NewData.Examination.InstructorNotifications' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_InstructorNotifications_Employee" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'NewData.Examination.InstructorNotifications' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_InstructorNotifications_Notifications" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'NewData.Examination.InstructorsConnectionIds' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_InstructorsConnectionIds_Employee" />-->
+        <Association Name="FK_PlatfromIntake2_Branch">
+          <End Role="Branch" Type="Self.Branch" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PlatfromIntake" Type="Self.PlatfromIntake" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="BranchID" />
+            </Principal>
+            <Dependent Role="PlatfromIntake">
+              <PropertyRef Name="BranchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlatfromIntake2_ProgramIntake">
+          <End Role="ProgramIntake" Type="Self.ProgramIntake" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PlatfromIntake" Type="Self.PlatfromIntake" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProgramIntake">
+              <PropertyRef Name="ProgramIntakeID" />
+            </Principal>
+            <Dependent Role="PlatfromIntake">
+              <PropertyRef Name="ProgramIntakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlatfromIntake2_subTrack">
+          <End Role="subTrack" Type="Self.subTrack" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PlatfromIntake" Type="Self.PlatfromIntake" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="subTrack">
+              <PropertyRef Name="subtrackID" />
+            </Principal>
+            <Dependent Role="PlatfromIntake">
+              <PropertyRef Name="SubTrackID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+error 6004: The table 'NewData.Examination.PointsInQuestion' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_PointsInQuestion_Questions" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'NewData.Examination.PointsInQuestion' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_PointsInQuestion_Questions1" />-->
+        <Association Name="FK_ProgramIntake_programs">
+          <End Role="programs" Type="Self.programs" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProgramIntake" Type="Self.ProgramIntake" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="programs">
+              <PropertyRef Name="programId" />
+            </Principal>
+            <Dependent Role="ProgramIntake">
+              <PropertyRef Name="ProgramID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionAnswers_Questions">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+          <End Role="QuestionAnswers" Type="Self.QuestionAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="Ques_Id" />
+            </Principal>
+            <Dependent Role="QuestionAnswers">
+              <PropertyRef Name="Ques_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questions_Employee1">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Questions" Type="Self.Questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Questions">
+              <PropertyRef Name="Ins_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questions_TopicsInCourse">
+          <End Role="TopicsInCourse" Type="Self.TopicsInCourse" Multiplicity="0..1" />
+          <End Role="Questions" Type="Self.Questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TopicsInCourse">
+              <PropertyRef Name="Topic_Id" />
+            </Principal>
+            <Dependent Role="Questions">
+              <PropertyRef Name="Topic_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionsInExam_Exams">
+          <End Role="Exams" Type="Self.Exams" Multiplicity="1" />
+          <End Role="QuestionsInExam" Type="Self.QuestionsInExam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exams">
+              <PropertyRef Name="Exam_Id" />
+            </Principal>
+            <Dependent Role="QuestionsInExam">
+              <PropertyRef Name="Exam_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionsInExam_Questions">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+          <End Role="QuestionsInExam" Type="Self.QuestionsInExam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="Ques_Id" />
+            </Principal>
+            <Dependent Role="QuestionsInExam">
+              <PropertyRef Name="Ques_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAnswerQuestionInExam_Exams">
+          <End Role="Exams" Type="Self.Exams" Multiplicity="1" />
+          <End Role="StudentAnswerQuestionInExam" Type="Self.StudentAnswerQuestionInExam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exams">
+              <PropertyRef Name="Exam_Id" />
+            </Principal>
+            <Dependent Role="StudentAnswerQuestionInExam">
+              <PropertyRef Name="Exam_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAnswerQuestionInExam_StudentBasicData">
+          <End Role="StudentBasicData" Type="Self.StudentBasicData" Multiplicity="1" />
+          <End Role="StudentAnswerQuestionInExam" Type="Self.StudentAnswerQuestionInExam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentBasicData">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="StudentAnswerQuestionInExam">
+              <PropertyRef Name="Std_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentBasicData2_PlatfromIntake2">
+          <End Role="PlatfromIntake" Type="Self.PlatfromIntake" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="StudentBasicData" Type="Self.StudentBasicData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlatfromIntake">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Principal>
+            <Dependent Role="StudentBasicData">
+              <PropertyRef Name="SubTrackID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentMultiAnswersQuestion_Questions">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+          <End Role="StudentMultiAnswersQuestion" Type="Self.StudentMultiAnswersQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="Ques_Id" />
+            </Principal>
+            <Dependent Role="StudentMultiAnswersQuestion">
+              <PropertyRef Name="Ques_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentMultiAnswersQuestion_StudentAnswerQuestionInExam">
+          <End Role="StudentAnswerQuestionInExam" Type="Self.StudentAnswerQuestionInExam" Multiplicity="1" />
+          <End Role="StudentMultiAnswersQuestion" Type="Self.StudentMultiAnswersQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentAnswerQuestionInExam">
+              <PropertyRef Name="Std_Answer_Id" />
+            </Principal>
+            <Dependent Role="StudentMultiAnswersQuestion">
+              <PropertyRef Name="Std_Answer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+error 6004: The table 'NewData.Examination.StudentNotifications' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_StudentNotifications_Notifications" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'NewData.Examination.StudentNotifications' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_StudentNotifications_StudentBasicData" />-->
+        <Association Name="FK_StudentPermissionInExam_Exams">
+          <End Role="Exams" Type="Self.Exams" Multiplicity="1" />
+          <End Role="StudentPermissionInExam" Type="Self.StudentPermissionInExam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exams">
+              <PropertyRef Name="Exam_Id" />
+            </Principal>
+            <Dependent Role="StudentPermissionInExam">
+              <PropertyRef Name="Exam_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentPermissionInExam_StudentBasicData">
+          <End Role="StudentBasicData" Type="Self.StudentBasicData" Multiplicity="1" />
+          <End Role="StudentPermissionInExam" Type="Self.StudentPermissionInExam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentBasicData">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="StudentPermissionInExam">
+              <PropertyRef Name="Std_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+error 6004: The table 'NewData.Examination.StudentsConnectionIds' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_StudentsConnectionIds_StudentBasicData" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'NewData.Examination.SupervisiorNotifications' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_SupervisiorNotifications_Employee" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'NewData.Examination.SupervisiorNotifications' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_SupervisiorNotifications_Notifications" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'NewData.Examination.SupervisiorsConnectionIds' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_SupervisiorsConnectionIds_Employee" />-->
+        <Association Name="FK_TopicsInCourse_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="TopicsInCourse" Type="Self.TopicsInCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="TopicsInCourse">
+              <PropertyRef Name="Crs_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrackManager_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="TrackManager" Type="Self.TrackManager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="TrackManager">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrackManager_PlatfromIntake">
+          <End Role="PlatfromIntake" Type="Self.PlatfromIntake" Multiplicity="0..1" />
+          <End Role="TrackManager" Type="Self.TrackManager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlatfromIntake">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Principal>
+            <Dependent Role="TrackManager">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrackManual_courseManual">
+          <End Role="CourseManual" Type="Self.CourseManual" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TrackManual" Type="Self.TrackManual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseManual">
+              <PropertyRef Name="courseManualID" />
+            </Principal>
+            <Dependent Role="TrackManual">
+              <PropertyRef Name="CourseManualID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrackManual_PlatfromIntake1">
+          <End Role="PlatfromIntake" Type="Self.PlatfromIntake" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TrackManual" Type="Self.TrackManual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlatfromIntake">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Principal>
+            <Dependent Role="TrackManual">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrackSupervisor_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TrackSupervisor" Type="Self.TrackSupervisor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="TrackSupervisor">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrackSupervisor_PlatfromIntake">
+          <End Role="PlatfromIntake" Type="Self.PlatfromIntake" Multiplicity="0..1" />
+          <End Role="TrackSupervisor" Type="Self.TrackSupervisor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlatfromIntake">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Principal>
+            <Dependent Role="TrackSupervisor">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetEmployeeByBranch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BranchID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="DbContextNSStoreContainer">
+          <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseManual" EntityType="Self.CourseManual" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Intake" EntityType="Self.Intake" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlatfromIntake" EntityType="Self.PlatfromIntake" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgramIntake" EntityType="Self.ProgramIntake" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="programs" EntityType="Self.programs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentBasicData" EntityType="Self.StudentBasicData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="subTrack" EntityType="Self.subTrack" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrackManager" EntityType="Self.TrackManager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrackManual" EntityType="Self.TrackManual" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrackSupervisor" EntityType="Self.TrackSupervisor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrainBranch" EntityType="Self.TrainBranch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exams" EntityType="Self.Exams" Schema="Examination" store:Type="Tables" />
+          <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="Examination" store:Type="Tables" />
+          <EntitySet Name="QuestionAnswers" EntityType="Self.QuestionAnswers" Schema="Examination" store:Type="Tables" />
+          <EntitySet Name="Questions" EntityType="Self.Questions" Schema="Examination" store:Type="Tables" />
+          <EntitySet Name="StudentAnswerQuestionInExam" EntityType="Self.StudentAnswerQuestionInExam" Schema="Examination" store:Type="Tables" />
+          <EntitySet Name="TopicsInCourse" EntityType="Self.TopicsInCourse" Schema="Examination" store:Type="Tables" />
+          <EntitySet Name="DepartmentsExam" EntityType="Self.DepartmentsExam" store:Type="Tables" store:Schema="Examination">
+            <DefiningQuery>SELECT 
+[DepartmentsExam].[Exam_Id] AS [Exam_Id], 
+[DepartmentsExam].[PlatformIntakeID] AS [PlatformIntakeID], 
+[DepartmentsExam].[Exam_Date] AS [Exam_Date]
+FROM [Examination].[DepartmentsExam] AS [DepartmentsExam]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ExternalInstructorAuthorization" EntityType="Self.ExternalInstructorAuthorization" store:Type="Tables" store:Schema="Examination">
+            <DefiningQuery>SELECT 
+[ExternalInstructorAuthorization].[Ins_Id] AS [Ins_Id], 
+[ExternalInstructorAuthorization].[Code] AS [Code], 
+[ExternalInstructorAuthorization].[Expiration_Date] AS [Expiration_Date]
+FROM [Examination].[ExternalInstructorAuthorization] AS [ExternalInstructorAuthorization]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="NewDateExamForPermittedStudent" EntityType="Self.NewDateExamForPermittedStudent" store:Type="Tables" store:Schema="Examination">
+            <DefiningQuery>SELECT 
+[NewDateExamForPermittedStudent].[Std_Id] AS [Std_Id], 
+[NewDateExamForPermittedStudent].[New_Exam_Id] AS [New_Exam_Id], 
+[NewDateExamForPermittedStudent].[New_Date] AS [New_Date]
+FROM [Examination].[NewDateExamForPermittedStudent] AS [NewDateExamForPermittedStudent]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="QuestionsInExam" EntityType="Self.QuestionsInExam" store:Type="Tables" store:Schema="Examination">
+            <DefiningQuery>SELECT 
+[QuestionsInExam].[Ques_Id] AS [Ques_Id], 
+[QuestionsInExam].[Exam_Id] AS [Exam_Id], 
+[QuestionsInExam].[Degree] AS [Degree]
+FROM [Examination].[QuestionsInExam] AS [QuestionsInExam]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="StudentMultiAnswersQuestion" EntityType="Self.StudentMultiAnswersQuestion" store:Type="Tables" store:Schema="Examination">
+            <DefiningQuery>SELECT 
+[StudentMultiAnswersQuestion].[Std_Answer_Id] AS [Std_Answer_Id], 
+[StudentMultiAnswersQuestion].[Ques_Id] AS [Ques_Id], 
+[StudentMultiAnswersQuestion].[Answer_Content] AS [Answer_Content], 
+[StudentMultiAnswersQuestion].[Grade] AS [Grade]
+FROM [Examination].[StudentMultiAnswersQuestion] AS [StudentMultiAnswersQuestion]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="StudentPermissionInExam" EntityType="Self.StudentPermissionInExam" store:Type="Tables" store:Schema="Examination">
+            <DefiningQuery>SELECT 
+[StudentPermissionInExam].[Std_Id] AS [Std_Id], 
+[StudentPermissionInExam].[Exam_Id] AS [Exam_Id], 
+[StudentPermissionInExam].[Permission_Date] AS [Permission_Date]
+FROM [Examination].[StudentPermissionInExam] AS [StudentPermissionInExam]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_courseManual_Course" Association="Self.FK_courseManual_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="CourseManual" EntitySet="CourseManual" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DepartmentsExam_Exams" Association="Self.FK_DepartmentsExam_Exams">
+            <End Role="Exams" EntitySet="Exams" />
+            <End Role="DepartmentsExam" EntitySet="DepartmentsExam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DepartmentsExam_PlatfromIntake" Association="Self.FK_DepartmentsExam_PlatfromIntake">
+            <End Role="PlatfromIntake" EntitySet="PlatfromIntake" />
+            <End Role="DepartmentsExam" EntitySet="DepartmentsExam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exams_Employee" Association="Self.FK_Exams_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Exams" EntitySet="Exams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exams_PlatfromIntake" Association="Self.FK_Exams_PlatfromIntake">
+            <End Role="PlatfromIntake" EntitySet="PlatfromIntake" />
+            <End Role="Exams" EntitySet="Exams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExternalInstructorAuthorization_Employee" Association="Self.FK_ExternalInstructorAuthorization_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="ExternalInstructorAuthorization" EntitySet="ExternalInstructorAuthorization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlatfromIntake2_Branch" Association="Self.FK_PlatfromIntake2_Branch">
+            <End Role="Branch" EntitySet="Branch" />
+            <End Role="PlatfromIntake" EntitySet="PlatfromIntake" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlatfromIntake2_ProgramIntake" Association="Self.FK_PlatfromIntake2_ProgramIntake">
+            <End Role="ProgramIntake" EntitySet="ProgramIntake" />
+            <End Role="PlatfromIntake" EntitySet="PlatfromIntake" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlatfromIntake2_subTrack" Association="Self.FK_PlatfromIntake2_subTrack">
+            <End Role="subTrack" EntitySet="subTrack" />
+            <End Role="PlatfromIntake" EntitySet="PlatfromIntake" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramIntake_programs" Association="Self.FK_ProgramIntake_programs">
+            <End Role="programs" EntitySet="programs" />
+            <End Role="ProgramIntake" EntitySet="ProgramIntake" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionAnswers_Questions" Association="Self.FK_QuestionAnswers_Questions">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="QuestionAnswers" EntitySet="QuestionAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questions_Employee1" Association="Self.FK_Questions_Employee1">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Questions" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questions_TopicsInCourse" Association="Self.FK_Questions_TopicsInCourse">
+            <End Role="TopicsInCourse" EntitySet="TopicsInCourse" />
+            <End Role="Questions" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionsInExam_Exams" Association="Self.FK_QuestionsInExam_Exams">
+            <End Role="Exams" EntitySet="Exams" />
+            <End Role="QuestionsInExam" EntitySet="QuestionsInExam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionsInExam_Questions" Association="Self.FK_QuestionsInExam_Questions">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="QuestionsInExam" EntitySet="QuestionsInExam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAnswerQuestionInExam_Exams" Association="Self.FK_StudentAnswerQuestionInExam_Exams">
+            <End Role="Exams" EntitySet="Exams" />
+            <End Role="StudentAnswerQuestionInExam" EntitySet="StudentAnswerQuestionInExam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAnswerQuestionInExam_StudentBasicData" Association="Self.FK_StudentAnswerQuestionInExam_StudentBasicData">
+            <End Role="StudentBasicData" EntitySet="StudentBasicData" />
+            <End Role="StudentAnswerQuestionInExam" EntitySet="StudentAnswerQuestionInExam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentBasicData2_PlatfromIntake2" Association="Self.FK_StudentBasicData2_PlatfromIntake2">
+            <End Role="PlatfromIntake" EntitySet="PlatfromIntake" />
+            <End Role="StudentBasicData" EntitySet="StudentBasicData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentMultiAnswersQuestion_Questions" Association="Self.FK_StudentMultiAnswersQuestion_Questions">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="StudentMultiAnswersQuestion" EntitySet="StudentMultiAnswersQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentMultiAnswersQuestion_StudentAnswerQuestionInExam" Association="Self.FK_StudentMultiAnswersQuestion_StudentAnswerQuestionInExam">
+            <End Role="StudentAnswerQuestionInExam" EntitySet="StudentAnswerQuestionInExam" />
+            <End Role="StudentMultiAnswersQuestion" EntitySet="StudentMultiAnswersQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentPermissionInExam_Exams" Association="Self.FK_StudentPermissionInExam_Exams">
+            <End Role="Exams" EntitySet="Exams" />
+            <End Role="StudentPermissionInExam" EntitySet="StudentPermissionInExam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentPermissionInExam_StudentBasicData" Association="Self.FK_StudentPermissionInExam_StudentBasicData">
+            <End Role="StudentBasicData" EntitySet="StudentBasicData" />
+            <End Role="StudentPermissionInExam" EntitySet="StudentPermissionInExam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TopicsInCourse_Course" Association="Self.FK_TopicsInCourse_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="TopicsInCourse" EntitySet="TopicsInCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrackManager_Employee" Association="Self.FK_TrackManager_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="TrackManager" EntitySet="TrackManager" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrackManager_PlatfromIntake" Association="Self.FK_TrackManager_PlatfromIntake">
+            <End Role="PlatfromIntake" EntitySet="PlatfromIntake" />
+            <End Role="TrackManager" EntitySet="TrackManager" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrackManual_courseManual" Association="Self.FK_TrackManual_courseManual">
+            <End Role="CourseManual" EntitySet="CourseManual" />
+            <End Role="TrackManual" EntitySet="TrackManual" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrackManual_PlatfromIntake1" Association="Self.FK_TrackManual_PlatfromIntake1">
+            <End Role="PlatfromIntake" EntitySet="PlatfromIntake" />
+            <End Role="TrackManual" EntitySet="TrackManual" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrackSupervisor_Employee" Association="Self.FK_TrackSupervisor_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="TrackSupervisor" EntitySet="TrackSupervisor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrackSupervisor_PlatfromIntake" Association="Self.FK_TrackSupervisor_PlatfromIntake">
+            <End Role="PlatfromIntake" EntitySet="PlatfromIntake" />
+            <End Role="TrackSupervisor" EntitySet="TrackSupervisor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbContextNS" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="BranchID" />
+          </Key>
+          <Property Name="BranchID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="arabicname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="msrepl_tran_version" Type="Guid" Nullable="false" />
+          <Property Name="trainbranchid" Type="Int32" />
+          <NavigationProperty Name="PlatfromIntakes" Relationship="Self.FK_PlatfromIntake2_Branch" FromRole="Branch" ToRole="PlatfromIntake" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="CourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="Int32" />
+          <NavigationProperty Name="CourseManuals" Relationship="Self.FK_courseManual_Course" FromRole="Course" ToRole="CourseManual" />
+          <NavigationProperty Name="TopicsInCourses" Relationship="Self.FK_TopicsInCourse_Course" FromRole="Course" ToRole="TopicsInCourse" />
+        </EntityType>
+        <EntityType Name="CourseManual">
+          <Key>
+            <PropertyRef Name="courseManualID" />
+          </Key>
+          <Property Name="courseManualID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseID" Type="Int32" />
+          <Property Name="totalGrade" Type="Int32" />
+          <Property Name="minGrade" Type="Int32" />
+          <Property Name="labsNumber" Type="Int32" />
+          <Property Name="lecturesNumber" Type="Int32" />
+          <Property Name="lech" Type="Int32" />
+          <Property Name="selfh" Type="Int32" />
+          <Property Name="labh" Type="Int32" />
+          <Property Name="credit" Type="Int32" />
+          <Property Name="coursenote" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="swReq" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hwReq" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CourseCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CourseDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CourseObjective" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CourseContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProgramIntakeID" Type="Int32" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_courseManual_Course" FromRole="CourseManual" ToRole="Course" />
+          <NavigationProperty Name="TrackManuals" Relationship="Self.FK_TrackManual_courseManual" FromRole="CourseManual" ToRole="TrackManual" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InstructorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BranchID" Type="Int32" Nullable="false" />
+          <Property Name="IPassword" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="UserName2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlatformID" Type="Int32" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="TypeID" Type="Int32" />
+          <Property Name="ArabicName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CertificateID" Type="Int32" />
+          <Property Name="FirstNameEn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SecondNameEn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="imagepath" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="org_branchid" Type="Int32" />
+          <Property Name="StatusID" Type="Int32" />
+          <Property Name="PositionID" Type="Int32" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="HiringDate" Type="DateTime" Precision="3" />
+          <Property Name="ThirdNameEn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FourthNameEn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FirstNameAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecondNameAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThirdNameAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FourthNameAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="PhoneNo" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ExtenistonNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MaritalStatus" Type="Int32" />
+          <Property Name="MilitaryStatus" Type="Int32" />
+          <Property Name="UniversityID" Type="Int32" />
+          <Property Name="FacultyID" Type="Int32" />
+          <Property Name="IntakeID" Type="Int32" />
+          <Property Name="Flag" Type="Int32" />
+          <Property Name="GraduationYear" Type="Int32" />
+          <Property Name="Grade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AttendanceFlag" Type="Int32" />
+          <Property Name="PositionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmpStatus" Type="Int32" />
+          <Property Name="msrepl_tran_version" Type="Guid" Nullable="false" />
+          <Property Name="IDCard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AttachmentID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AttachmentCV" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ATMStatus" Type="Int32" />
+          <Property Name="ATMNo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SpecialRate" Type="Int32" />
+          <Property Name="RateNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ATMExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="Religionid" Type="Int32" />
+          <Property Name="empno" Type="Int32" />
+          <Property Name="cat" Type="Int32" />
+          <NavigationProperty Name="Exams" Relationship="Self.FK_Exams_Employee" FromRole="Employee" ToRole="Exams" />
+          <NavigationProperty Name="ExternalInstructorAuthorizations" Relationship="Self.FK_ExternalInstructorAuthorization_Employee" FromRole="Employee" ToRole="ExternalInstructorAuthorization" />
+          <NavigationProperty Name="Questions" Relationship="Self.FK_Questions_Employee1" FromRole="Employee" ToRole="Questions" />
+          <NavigationProperty Name="TrackManagers" Relationship="Self.FK_TrackManager_Employee" FromRole="Employee" ToRole="TrackManager" />
+          <NavigationProperty Name="TrackSupervisors" Relationship="Self.FK_TrackSupervisor_Employee" FromRole="Employee" ToRole="TrackSupervisor" />
+        </EntityType>
+        <EntityType Name="Intake">
+          <Key>
+            <PropertyRef Name="IntakeID" />
+          </Key>
+          <Property Name="IntakeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IntakeNo" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="IntakeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="msrepl_tran_version" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlatfromIntake">
+          <Key>
+            <PropertyRef Name="PlatformIntakeID" />
+          </Key>
+          <Property Name="PlatformIntakeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BranchID" Type="Int32" />
+          <Property Name="SubTrackID" Type="Int32" />
+          <Property Name="ProgramIntakeID" Type="Int32" />
+          <Property Name="OwnedBy" Type="Int32" />
+          <Property Name="GraduateProfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Branch" Relationship="Self.FK_PlatfromIntake2_Branch" FromRole="PlatfromIntake" ToRole="Branch" />
+          <NavigationProperty Name="DepartmentsExams" Relationship="Self.FK_DepartmentsExam_PlatfromIntake" FromRole="PlatfromIntake" ToRole="DepartmentsExam" />
+          <NavigationProperty Name="Exams" Relationship="Self.FK_Exams_PlatfromIntake" FromRole="PlatfromIntake" ToRole="Exams" />
+          <NavigationProperty Name="ProgramIntake" Relationship="Self.FK_PlatfromIntake2_ProgramIntake" FromRole="PlatfromIntake" ToRole="ProgramIntake" />
+          <NavigationProperty Name="subTrack" Relationship="Self.FK_PlatfromIntake2_subTrack" FromRole="PlatfromIntake" ToRole="subTrack" />
+          <NavigationProperty Name="StudentBasicDatas" Relationship="Self.FK_StudentBasicData2_PlatfromIntake2" FromRole="PlatfromIntake" ToRole="StudentBasicData" />
+          <NavigationProperty Name="TrackManagers" Relationship="Self.FK_TrackManager_PlatfromIntake" FromRole="PlatfromIntake" ToRole="TrackManager" />
+          <NavigationProperty Name="TrackManuals" Relationship="Self.FK_TrackManual_PlatfromIntake1" FromRole="PlatfromIntake" ToRole="TrackManual" />
+          <NavigationProperty Name="TrackSupervisors" Relationship="Self.FK_TrackSupervisor_PlatfromIntake" FromRole="PlatfromIntake" ToRole="TrackSupervisor" />
+        </EntityType>
+        <EntityType Name="ProgramIntake">
+          <Key>
+            <PropertyRef Name="ProgramIntakeID" />
+          </Key>
+          <Property Name="IntakeID" Type="Int32" Nullable="false" />
+          <Property Name="ProgramID" Type="Int32" Nullable="false" />
+          <Property Name="ProgramIntakeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="PlatfromIntakes" Relationship="Self.FK_PlatfromIntake2_ProgramIntake" FromRole="ProgramIntake" ToRole="PlatfromIntake" />
+          <NavigationProperty Name="program" Relationship="Self.FK_ProgramIntake_programs" FromRole="ProgramIntake" ToRole="programs" />
+        </EntityType>
+        <EntityType Name="program">
+          <Key>
+            <PropertyRef Name="programId" />
+          </Key>
+          <Property Name="programId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="programName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="programnotes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProgramIntakes" Relationship="Self.FK_ProgramIntake_programs" FromRole="programs" ToRole="ProgramIntake" />
+        </EntityType>
+        <EntityType Name="StudentBasicData">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="englishname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="arabicname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationNo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FK_UniversityFaculty_SpecializationId" Type="Int32" />
+          <Property Name="FK_FacultyId" Type="Int32" />
+          <Property Name="FK_SpecializationId" Type="Int32" />
+          <Property Name="FK_GraduationGradeId" Type="Int32" />
+          <Property Name="GraduationYear" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SubTrackID" Type="Int32" Nullable="false" />
+          <Property Name="Barcode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AccFlag" Type="Int32" />
+          <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="userpwd" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="imagepath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RejectReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateOB" Type="DateTime" Precision="3" />
+          <Property Name="gender" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IDNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GraduationGrade" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="Rank" Type="Int32" />
+          <Property Name="Marital" Type="Int32" />
+          <Property Name="Military" Type="Int32" />
+          <Property Name="Language" Type="Int32" />
+          <Property Name="SocialAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="School" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GradProjIdea" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProjGrade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CertAqui" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PostGradStud" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AcadimicInst" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="cvpath" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SchoolName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PlatfromIntake" Relationship="Self.FK_StudentBasicData2_PlatfromIntake2" FromRole="StudentBasicData" ToRole="PlatfromIntake" />
+          <NavigationProperty Name="StudentAnswerQuestionInExams" Relationship="Self.FK_StudentAnswerQuestionInExam_StudentBasicData" FromRole="StudentBasicData" ToRole="StudentAnswerQuestionInExam" />
+          <NavigationProperty Name="StudentPermissionInExams" Relationship="Self.FK_StudentPermissionInExam_StudentBasicData" FromRole="StudentBasicData" ToRole="StudentPermissionInExam" />
+        </EntityType>
+        <EntityType Name="subTrack">
+          <Key>
+            <PropertyRef Name="subtrackID" />
+          </Key>
+          <Property Name="subtrackID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subtrackName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PlatfromIntakes" Relationship="Self.FK_PlatfromIntake2_subTrack" FromRole="subTrack" ToRole="PlatfromIntake" />
+        </EntityType>
+        <EntityType Name="TrackManager">
+          <Key>
+            <PropertyRef Name="TrackManagerID" />
+          </Key>
+          <Property Name="TrackManagerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="PlatformIntakeID" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_TrackManager_Employee" FromRole="TrackManager" ToRole="Employee" />
+          <NavigationProperty Name="PlatfromIntake" Relationship="Self.FK_TrackManager_PlatfromIntake" FromRole="TrackManager" ToRole="PlatfromIntake" />
+        </EntityType>
+        <EntityType Name="TrackManual">
+          <Key>
+            <PropertyRef Name="TrackManualID" />
+          </Key>
+          <Property Name="TrackManualID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseManualID" Type="Int32" />
+          <Property Name="PlatformIntakeID" Type="Int32" />
+          <Property Name="IsElective" Type="Boolean" />
+          <Property Name="ElecetiveGroupID" Type="Int32" />
+          <NavigationProperty Name="CourseManual" Relationship="Self.FK_TrackManual_courseManual" FromRole="TrackManual" ToRole="CourseManual" />
+          <NavigationProperty Name="PlatfromIntake" Relationship="Self.FK_TrackManual_PlatfromIntake1" FromRole="TrackManual" ToRole="PlatfromIntake" />
+        </EntityType>
+        <EntityType Name="TrackSupervisor">
+          <Key>
+            <PropertyRef Name="TrackGroupID" />
+          </Key>
+          <Property Name="TrackGroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlatformIntakeID" Type="Int32" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_TrackSupervisor_Employee" FromRole="TrackSupervisor" ToRole="Employee" />
+          <NavigationProperty Name="PlatfromIntake" Relationship="Self.FK_TrackSupervisor_PlatfromIntake" FromRole="TrackSupervisor" ToRole="PlatfromIntake" />
+        </EntityType>
+        <EntityType Name="TrainBranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Exam">
+          <Key>
+            <PropertyRef Name="Exam_Id" />
+          </Key>
+          <Property Name="Exam_Id" Type="Int32" Nullable="false" />
+          <Property Name="Exam_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Creation_Date" Type="DateTime" Precision="0" />
+          <Property Name="Number_Of_Questions" Type="Int32" />
+          <Property Name="Ins_Id" Type="Int32" />
+          <Property Name="Exam_Corrected" Type="Boolean" />
+          <Property Name="Exam_Duration" Type="Int32" />
+          <Property Name="PlatformIntake_Id" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Exams_Employee" FromRole="Exams" ToRole="Employee" />
+          <NavigationProperty Name="PlatfromIntake" Relationship="Self.FK_Exams_PlatfromIntake" FromRole="Exams" ToRole="PlatfromIntake" />
+          <NavigationProperty Name="DepartmentsExam" Relationship="Self.FK_DepartmentsExam_Exams" FromRole="Exams" ToRole="DepartmentsExam" />
+          <NavigationProperty Name="QuestionsInExams" Relationship="Self.FK_QuestionsInExam_Exams" FromRole="Exams" ToRole="QuestionsInExam" />
+          <NavigationProperty Name="StudentAnswerQuestionInExams" Relationship="Self.FK_StudentAnswerQuestionInExam_Exams" FromRole="Exams" ToRole="StudentAnswerQuestionInExam" />
+          <NavigationProperty Name="StudentPermissionInExams" Relationship="Self.FK_StudentPermissionInExam_Exams" FromRole="Exams" ToRole="StudentPermissionInExam" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="Notification_Id" />
+          </Key>
+          <Property Name="Notification_Id" Type="Int32" Nullable="false" />
+          <Property Name="Notification_Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Is_Read" Type="Boolean" />
+          <Property Name="Creation_Time" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="QuestionAnswer">
+          <Key>
+            <PropertyRef Name="Ques_Id" />
+            <PropertyRef Name="Answer_Id" />
+          </Key>
+          <Property Name="Ques_Id" Type="Int32" Nullable="false" />
+          <Property Name="Answer_Id" Type="Int32" Nullable="false" />
+          <Property Name="Answer_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Is_It_RightAnswer" Type="Boolean" />
+          <NavigationProperty Name="Question" Relationship="Self.FK_QuestionAnswers_Questions" FromRole="QuestionAnswers" ToRole="Questions" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="Ques_Id" />
+          </Key>
+          <Property Name="Ques_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ques_Type" Type="Int32" Nullable="false" />
+          <Property Name="Ques_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ques_Activation" Type="Boolean" />
+          <Property Name="Ques_Level" Type="Int32" />
+          <Property Name="Ques_Repetation" Type="Int32" />
+          <Property Name="Topic_Id" Type="Int32" />
+          <Property Name="Ins_Id" Type="Int32" />
+          <Property Name="Points_Indicator" Type="Boolean" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Questions_Employee1" FromRole="Questions" ToRole="Employee" />
+          <NavigationProperty Name="QuestionAnswers" Relationship="Self.FK_QuestionAnswers_Questions" FromRole="Questions" ToRole="QuestionAnswers" />
+          <NavigationProperty Name="TopicsInCourse" Relationship="Self.FK_Questions_TopicsInCourse" FromRole="Questions" ToRole="TopicsInCourse" />
+          <NavigationProperty Name="QuestionsInExams" Relationship="Self.FK_QuestionsInExam_Questions" FromRole="Questions" ToRole="QuestionsInExam" />
+          <NavigationProperty Name="StudentMultiAnswersQuestions" Relationship="Self.FK_StudentMultiAnswersQuestion_Questions" FromRole="Questions" ToRole="StudentMultiAnswersQuestion" />
+        </EntityType>
+        <EntityType Name="StudentAnswerQuestionInExam">
+          <Key>
+            <PropertyRef Name="Std_Answer_Id" />
+          </Key>
+          <Property Name="Std_Answer_Id" Type="Guid" Nullable="false" />
+          <Property Name="Std_Id" Type="Int32" Nullable="false" />
+          <Property Name="Exam_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="StudentBasicData" Relationship="Self.FK_StudentAnswerQuestionInExam_StudentBasicData" FromRole="StudentAnswerQuestionInExam" ToRole="StudentBasicData" />
+          <NavigationProperty Name="Exam" Relationship="Self.FK_StudentAnswerQuestionInExam_Exams" FromRole="StudentAnswerQuestionInExam" ToRole="Exams" />
+          <NavigationProperty Name="StudentMultiAnswersQuestions" Relationship="Self.FK_StudentMultiAnswersQuestion_StudentAnswerQuestionInExam" FromRole="StudentAnswerQuestionInExam" ToRole="StudentMultiAnswersQuestion" />
+        </EntityType>
+        <EntityType Name="TopicsInCourse">
+          <Key>
+            <PropertyRef Name="Topic_Id" />
+          </Key>
+          <Property Name="Topic_Id" Type="Int32" Nullable="false" />
+          <Property Name="Topic_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Crs_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_TopicsInCourse_Course" FromRole="TopicsInCourse" ToRole="Course" />
+          <NavigationProperty Name="Questions" Relationship="Self.FK_Questions_TopicsInCourse" FromRole="TopicsInCourse" ToRole="Questions" />
+        </EntityType>
+        <EntityType Name="DepartmentsExam">
+          <Key>
+            <PropertyRef Name="Exam_Id" />
+          </Key>
+          <Property Name="Exam_Id" Type="Int32" Nullable="false" />
+          <Property Name="PlatformIntakeID" Type="Int32" />
+          <Property Name="Exam_Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="PlatfromIntake" Relationship="Self.FK_DepartmentsExam_PlatfromIntake" FromRole="DepartmentsExam" ToRole="PlatfromIntake" />
+          <NavigationProperty Name="Exam" Relationship="Self.FK_DepartmentsExam_Exams" FromRole="DepartmentsExam" ToRole="Exams" />
+        </EntityType>
+        <EntityType Name="ExternalInstructorAuthorization">
+          <Key>
+            <PropertyRef Name="Ins_Id" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Expiration_Date" />
+          </Key>
+          <Property Name="Ins_Id" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="Int32" Nullable="false" />
+          <Property Name="Expiration_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_ExternalInstructorAuthorization_Employee" FromRole="ExternalInstructorAuthorization" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="NewDateExamForPermittedStudent">
+          <Key>
+            <PropertyRef Name="Std_Id" />
+            <PropertyRef Name="New_Exam_Id" />
+          </Key>
+          <Property Name="Std_Id" Type="Int32" Nullable="false" />
+          <Property Name="New_Exam_Id" Type="Int32" Nullable="false" />
+          <Property Name="New_Date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="QuestionsInExam">
+          <Key>
+            <PropertyRef Name="Ques_Id" />
+            <PropertyRef Name="Exam_Id" />
+          </Key>
+          <Property Name="Ques_Id" Type="Int32" Nullable="false" />
+          <Property Name="Exam_Id" Type="Int32" Nullable="false" />
+          <Property Name="Degree" Type="Int32" />
+          <NavigationProperty Name="Exam" Relationship="Self.FK_QuestionsInExam_Exams" FromRole="QuestionsInExam" ToRole="Exams" />
+          <NavigationProperty Name="Question" Relationship="Self.FK_QuestionsInExam_Questions" FromRole="QuestionsInExam" ToRole="Questions" />
+        </EntityType>
+        <EntityType Name="StudentMultiAnswersQuestion">
+          <Key>
+            <PropertyRef Name="Std_Answer_Id" />
+            <PropertyRef Name="Ques_Id" />
+          </Key>
+          <Property Name="Std_Answer_Id" Type="Guid" Nullable="false" />
+          <Property Name="Ques_Id" Type="Int32" Nullable="false" />
+          <Property Name="Answer_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Grade" Type="Int32" />
+          <NavigationProperty Name="Question" Relationship="Self.FK_StudentMultiAnswersQuestion_Questions" FromRole="StudentMultiAnswersQuestion" ToRole="Questions" />
+          <NavigationProperty Name="StudentAnswerQuestionInExam" Relationship="Self.FK_StudentMultiAnswersQuestion_StudentAnswerQuestionInExam" FromRole="StudentMultiAnswersQuestion" ToRole="StudentAnswerQuestionInExam" />
+        </EntityType>
+        <EntityType Name="StudentPermissionInExam">
+          <Key>
+            <PropertyRef Name="Std_Id" />
+            <PropertyRef Name="Exam_Id" />
+          </Key>
+          <Property Name="Std_Id" Type="Int32" Nullable="false" />
+          <Property Name="Exam_Id" Type="Int32" Nullable="false" />
+          <Property Name="Permission_Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="StudentBasicData" Relationship="Self.FK_StudentPermissionInExam_StudentBasicData" FromRole="StudentPermissionInExam" ToRole="StudentBasicData" />
+          <NavigationProperty Name="Exam" Relationship="Self.FK_StudentPermissionInExam_Exams" FromRole="StudentPermissionInExam" ToRole="Exams" />
+        </EntityType>
+        <Association Name="FK_PlatfromIntake2_Branch">
+          <End Role="Branch" Type="Self.Branch" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PlatfromIntake" Type="Self.PlatfromIntake" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="BranchID" />
+            </Principal>
+            <Dependent Role="PlatfromIntake">
+              <PropertyRef Name="BranchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_courseManual_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CourseManual" Type="Self.CourseManual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="CourseManual">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TopicsInCourse_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="TopicsInCourse" Type="Self.TopicsInCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="TopicsInCourse">
+              <PropertyRef Name="Crs_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrackManual_courseManual">
+          <End Role="CourseManual" Type="Self.CourseManual" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TrackManual" Type="Self.TrackManual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseManual">
+              <PropertyRef Name="courseManualID" />
+            </Principal>
+            <Dependent Role="TrackManual">
+              <PropertyRef Name="CourseManualID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exams_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Exams" Type="Self.Exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Exams">
+              <PropertyRef Name="Ins_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExternalInstructorAuthorization_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="ExternalInstructorAuthorization" Type="Self.ExternalInstructorAuthorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="ExternalInstructorAuthorization">
+              <PropertyRef Name="Ins_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questions_Employee1">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Questions" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Questions">
+              <PropertyRef Name="Ins_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrackManager_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="TrackManager" Type="Self.TrackManager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="TrackManager">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrackSupervisor_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TrackSupervisor" Type="Self.TrackSupervisor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="TrackSupervisor">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DepartmentsExam_PlatfromIntake">
+          <End Role="PlatfromIntake" Type="Self.PlatfromIntake" Multiplicity="0..1" />
+          <End Role="DepartmentsExam" Type="Self.DepartmentsExam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlatfromIntake">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Principal>
+            <Dependent Role="DepartmentsExam">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exams_PlatfromIntake">
+          <End Role="PlatfromIntake" Type="Self.PlatfromIntake" Multiplicity="0..1" />
+          <End Role="Exams" Type="Self.Exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlatfromIntake">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Principal>
+            <Dependent Role="Exams">
+              <PropertyRef Name="PlatformIntake_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlatfromIntake2_ProgramIntake">
+          <End Role="ProgramIntake" Type="Self.ProgramIntake" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PlatfromIntake" Type="Self.PlatfromIntake" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProgramIntake">
+              <PropertyRef Name="ProgramIntakeID" />
+            </Principal>
+            <Dependent Role="PlatfromIntake">
+              <PropertyRef Name="ProgramIntakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlatfromIntake2_subTrack">
+          <End Role="subTrack" Type="Self.subTrack" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PlatfromIntake" Type="Self.PlatfromIntake" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="subTrack">
+              <PropertyRef Name="subtrackID" />
+            </Principal>
+            <Dependent Role="PlatfromIntake">
+              <PropertyRef Name="SubTrackID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentBasicData2_PlatfromIntake2">
+          <End Role="PlatfromIntake" Type="Self.PlatfromIntake" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="StudentBasicData" Type="Self.StudentBasicData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlatfromIntake">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Principal>
+            <Dependent Role="StudentBasicData">
+              <PropertyRef Name="SubTrackID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrackManager_PlatfromIntake">
+          <End Role="PlatfromIntake" Type="Self.PlatfromIntake" Multiplicity="0..1" />
+          <End Role="TrackManager" Type="Self.TrackManager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlatfromIntake">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Principal>
+            <Dependent Role="TrackManager">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrackManual_PlatfromIntake1">
+          <End Role="PlatfromIntake" Type="Self.PlatfromIntake" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TrackManual" Type="Self.TrackManual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlatfromIntake">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Principal>
+            <Dependent Role="TrackManual">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrackSupervisor_PlatfromIntake">
+          <End Role="PlatfromIntake" Type="Self.PlatfromIntake" Multiplicity="0..1" />
+          <End Role="TrackSupervisor" Type="Self.TrackSupervisor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlatfromIntake">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Principal>
+            <Dependent Role="TrackSupervisor">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramIntake_programs">
+          <End Role="programs" Type="Self.program" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProgramIntake" Type="Self.ProgramIntake" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="programs">
+              <PropertyRef Name="programId" />
+            </Principal>
+            <Dependent Role="ProgramIntake">
+              <PropertyRef Name="ProgramID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAnswerQuestionInExam_StudentBasicData">
+          <End Role="StudentBasicData" Type="Self.StudentBasicData" Multiplicity="1" />
+          <End Role="StudentAnswerQuestionInExam" Type="Self.StudentAnswerQuestionInExam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentBasicData">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="StudentAnswerQuestionInExam">
+              <PropertyRef Name="Std_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentPermissionInExam_StudentBasicData">
+          <End Role="StudentBasicData" Type="Self.StudentBasicData" Multiplicity="1" />
+          <End Role="StudentPermissionInExam" Type="Self.StudentPermissionInExam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentBasicData">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="StudentPermissionInExam">
+              <PropertyRef Name="Std_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DepartmentsExam_Exams">
+          <End Role="Exams" Type="Self.Exam" Multiplicity="1" />
+          <End Role="DepartmentsExam" Type="Self.DepartmentsExam" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Exams">
+              <PropertyRef Name="Exam_Id" />
+            </Principal>
+            <Dependent Role="DepartmentsExam">
+              <PropertyRef Name="Exam_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionsInExam_Exams">
+          <End Role="Exams" Type="Self.Exam" Multiplicity="1" />
+          <End Role="QuestionsInExam" Type="Self.QuestionsInExam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exams">
+              <PropertyRef Name="Exam_Id" />
+            </Principal>
+            <Dependent Role="QuestionsInExam">
+              <PropertyRef Name="Exam_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAnswerQuestionInExam_Exams">
+          <End Role="Exams" Type="Self.Exam" Multiplicity="1" />
+          <End Role="StudentAnswerQuestionInExam" Type="Self.StudentAnswerQuestionInExam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exams">
+              <PropertyRef Name="Exam_Id" />
+            </Principal>
+            <Dependent Role="StudentAnswerQuestionInExam">
+              <PropertyRef Name="Exam_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentPermissionInExam_Exams">
+          <End Role="Exams" Type="Self.Exam" Multiplicity="1" />
+          <End Role="StudentPermissionInExam" Type="Self.StudentPermissionInExam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exams">
+              <PropertyRef Name="Exam_Id" />
+            </Principal>
+            <Dependent Role="StudentPermissionInExam">
+              <PropertyRef Name="Exam_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionAnswers_Questions">
+          <End Role="Questions" Type="Self.Question" Multiplicity="1" />
+          <End Role="QuestionAnswers" Type="Self.QuestionAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="Ques_Id" />
+            </Principal>
+            <Dependent Role="QuestionAnswers">
+              <PropertyRef Name="Ques_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questions_TopicsInCourse">
+          <End Role="TopicsInCourse" Type="Self.TopicsInCourse" Multiplicity="0..1" />
+          <End Role="Questions" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TopicsInCourse">
+              <PropertyRef Name="Topic_Id" />
+            </Principal>
+            <Dependent Role="Questions">
+              <PropertyRef Name="Topic_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionsInExam_Questions">
+          <End Role="Questions" Type="Self.Question" Multiplicity="1" />
+          <End Role="QuestionsInExam" Type="Self.QuestionsInExam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="Ques_Id" />
+            </Principal>
+            <Dependent Role="QuestionsInExam">
+              <PropertyRef Name="Ques_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentMultiAnswersQuestion_Questions">
+          <End Role="Questions" Type="Self.Question" Multiplicity="1" />
+          <End Role="StudentMultiAnswersQuestion" Type="Self.StudentMultiAnswersQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="Ques_Id" />
+            </Principal>
+            <Dependent Role="StudentMultiAnswersQuestion">
+              <PropertyRef Name="Ques_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentMultiAnswersQuestion_StudentAnswerQuestionInExam">
+          <End Role="StudentAnswerQuestionInExam" Type="Self.StudentAnswerQuestionInExam" Multiplicity="1" />
+          <End Role="StudentMultiAnswersQuestion" Type="Self.StudentMultiAnswersQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentAnswerQuestionInExam">
+              <PropertyRef Name="Std_Answer_Id" />
+            </Principal>
+            <Dependent Role="StudentMultiAnswersQuestion">
+              <PropertyRef Name="Std_Answer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Branches" EntityType="Self.Branch" />
+          <EntitySet Name="Courses" EntityType="Self.Course" />
+          <EntitySet Name="CourseManuals" EntityType="Self.CourseManual" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Intakes" EntityType="Self.Intake" />
+          <EntitySet Name="PlatfromIntakes" EntityType="Self.PlatfromIntake" />
+          <EntitySet Name="ProgramIntakes" EntityType="Self.ProgramIntake" />
+          <EntitySet Name="programs" EntityType="Self.program" />
+          <EntitySet Name="StudentBasicDatas" EntityType="Self.StudentBasicData" />
+          <EntitySet Name="subTracks" EntityType="Self.subTrack" />
+          <EntitySet Name="TrackManagers" EntityType="Self.TrackManager" />
+          <EntitySet Name="TrackManuals" EntityType="Self.TrackManual" />
+          <EntitySet Name="TrackSupervisors" EntityType="Self.TrackSupervisor" />
+          <EntitySet Name="TrainBranches" EntityType="Self.TrainBranch" />
+          <EntitySet Name="Exams" EntityType="Self.Exam" />
+          <EntitySet Name="Notifications" EntityType="Self.Notification" />
+          <EntitySet Name="QuestionAnswers" EntityType="Self.QuestionAnswer" />
+          <EntitySet Name="Questions" EntityType="Self.Question" />
+          <EntitySet Name="StudentAnswerQuestionInExams" EntityType="Self.StudentAnswerQuestionInExam" />
+          <EntitySet Name="TopicsInCourses" EntityType="Self.TopicsInCourse" />
+          <EntitySet Name="DepartmentsExams" EntityType="Self.DepartmentsExam" />
+          <EntitySet Name="ExternalInstructorAuthorizations" EntityType="Self.ExternalInstructorAuthorization" />
+          <EntitySet Name="NewDateExamForPermittedStudents" EntityType="Self.NewDateExamForPermittedStudent" />
+          <EntitySet Name="QuestionsInExams" EntityType="Self.QuestionsInExam" />
+          <EntitySet Name="StudentMultiAnswersQuestions" EntityType="Self.StudentMultiAnswersQuestion" />
+          <EntitySet Name="StudentPermissionInExams" EntityType="Self.StudentPermissionInExam" />
+          <AssociationSet Name="FK_PlatfromIntake2_Branch" Association="Self.FK_PlatfromIntake2_Branch">
+            <End Role="Branch" EntitySet="Branches" />
+            <End Role="PlatfromIntake" EntitySet="PlatfromIntakes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_courseManual_Course" Association="Self.FK_courseManual_Course">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="CourseManual" EntitySet="CourseManuals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TopicsInCourse_Course" Association="Self.FK_TopicsInCourse_Course">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="TopicsInCourse" EntitySet="TopicsInCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrackManual_courseManual" Association="Self.FK_TrackManual_courseManual">
+            <End Role="CourseManual" EntitySet="CourseManuals" />
+            <End Role="TrackManual" EntitySet="TrackManuals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exams_Employee" Association="Self.FK_Exams_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Exams" EntitySet="Exams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExternalInstructorAuthorization_Employee" Association="Self.FK_ExternalInstructorAuthorization_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="ExternalInstructorAuthorization" EntitySet="ExternalInstructorAuthorizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questions_Employee1" Association="Self.FK_Questions_Employee1">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Questions" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrackManager_Employee" Association="Self.FK_TrackManager_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="TrackManager" EntitySet="TrackManagers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrackSupervisor_Employee" Association="Self.FK_TrackSupervisor_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="TrackSupervisor" EntitySet="TrackSupervisors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DepartmentsExam_PlatfromIntake" Association="Self.FK_DepartmentsExam_PlatfromIntake">
+            <End Role="PlatfromIntake" EntitySet="PlatfromIntakes" />
+            <End Role="DepartmentsExam" EntitySet="DepartmentsExams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exams_PlatfromIntake" Association="Self.FK_Exams_PlatfromIntake">
+            <End Role="PlatfromIntake" EntitySet="PlatfromIntakes" />
+            <End Role="Exams" EntitySet="Exams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlatfromIntake2_ProgramIntake" Association="Self.FK_PlatfromIntake2_ProgramIntake">
+            <End Role="ProgramIntake" EntitySet="ProgramIntakes" />
+            <End Role="PlatfromIntake" EntitySet="PlatfromIntakes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlatfromIntake2_subTrack" Association="Self.FK_PlatfromIntake2_subTrack">
+            <End Role="subTrack" EntitySet="subTracks" />
+            <End Role="PlatfromIntake" EntitySet="PlatfromIntakes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentBasicData2_PlatfromIntake2" Association="Self.FK_StudentBasicData2_PlatfromIntake2">
+            <End Role="PlatfromIntake" EntitySet="PlatfromIntakes" />
+            <End Role="StudentBasicData" EntitySet="StudentBasicDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrackManager_PlatfromIntake" Association="Self.FK_TrackManager_PlatfromIntake">
+            <End Role="PlatfromIntake" EntitySet="PlatfromIntakes" />
+            <End Role="TrackManager" EntitySet="TrackManagers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrackManual_PlatfromIntake1" Association="Self.FK_TrackManual_PlatfromIntake1">
+            <End Role="PlatfromIntake" EntitySet="PlatfromIntakes" />
+            <End Role="TrackManual" EntitySet="TrackManuals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrackSupervisor_PlatfromIntake" Association="Self.FK_TrackSupervisor_PlatfromIntake">
+            <End Role="PlatfromIntake" EntitySet="PlatfromIntakes" />
+            <End Role="TrackSupervisor" EntitySet="TrackSupervisors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramIntake_programs" Association="Self.FK_ProgramIntake_programs">
+            <End Role="programs" EntitySet="programs" />
+            <End Role="ProgramIntake" EntitySet="ProgramIntakes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAnswerQuestionInExam_StudentBasicData" Association="Self.FK_StudentAnswerQuestionInExam_StudentBasicData">
+            <End Role="StudentBasicData" EntitySet="StudentBasicDatas" />
+            <End Role="StudentAnswerQuestionInExam" EntitySet="StudentAnswerQuestionInExams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentPermissionInExam_StudentBasicData" Association="Self.FK_StudentPermissionInExam_StudentBasicData">
+            <End Role="StudentBasicData" EntitySet="StudentBasicDatas" />
+            <End Role="StudentPermissionInExam" EntitySet="StudentPermissionInExams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DepartmentsExam_Exams" Association="Self.FK_DepartmentsExam_Exams">
+            <End Role="Exams" EntitySet="Exams" />
+            <End Role="DepartmentsExam" EntitySet="DepartmentsExams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionsInExam_Exams" Association="Self.FK_QuestionsInExam_Exams">
+            <End Role="Exams" EntitySet="Exams" />
+            <End Role="QuestionsInExam" EntitySet="QuestionsInExams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAnswerQuestionInExam_Exams" Association="Self.FK_StudentAnswerQuestionInExam_Exams">
+            <End Role="Exams" EntitySet="Exams" />
+            <End Role="StudentAnswerQuestionInExam" EntitySet="StudentAnswerQuestionInExams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentPermissionInExam_Exams" Association="Self.FK_StudentPermissionInExam_Exams">
+            <End Role="Exams" EntitySet="Exams" />
+            <End Role="StudentPermissionInExam" EntitySet="StudentPermissionInExams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionAnswers_Questions" Association="Self.FK_QuestionAnswers_Questions">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="QuestionAnswers" EntitySet="QuestionAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questions_TopicsInCourse" Association="Self.FK_Questions_TopicsInCourse">
+            <End Role="TopicsInCourse" EntitySet="TopicsInCourses" />
+            <End Role="Questions" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionsInExam_Questions" Association="Self.FK_QuestionsInExam_Questions">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="QuestionsInExam" EntitySet="QuestionsInExams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentMultiAnswersQuestion_Questions" Association="Self.FK_StudentMultiAnswersQuestion_Questions">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="StudentMultiAnswersQuestion" EntitySet="StudentMultiAnswersQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentMultiAnswersQuestion_StudentAnswerQuestionInExam" Association="Self.FK_StudentMultiAnswersQuestion_StudentAnswerQuestionInExam">
+            <End Role="StudentAnswerQuestionInExam" EntitySet="StudentAnswerQuestionInExams" />
+            <End Role="StudentMultiAnswersQuestion" EntitySet="StudentMultiAnswersQuestions" />
+          </AssociationSet>
+          <FunctionImport Name="GetEmployeeByBranch" ReturnType="Collection(DbContextNS.GetEmployeeByBranch_Result)">
+            <Parameter Name="BranchID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetEmployeeByBranch_Result">
+          <Property Type="Int32" Name="EmployeeID" Nullable="false" />
+          <Property Type="String" Name="InstructorName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="BranchID" Nullable="false" />
+          <Property Type="String" Name="IPassword" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="UserName2" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="PlatformID" Nullable="true" />
+          <Property Type="Int32" Name="RoleID" Nullable="true" />
+          <Property Type="Int32" Name="TypeID" Nullable="true" />
+          <Property Type="String" Name="ArabicName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="CertificateID" Nullable="true" />
+          <Property Type="String" Name="FirstNameEn" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SecondNameEn" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="barcode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="imagepath" Nullable="true" MaxLength="80" />
+          <Property Type="Int32" Name="org_branchid" Nullable="true" />
+          <Property Type="Int32" Name="StatusID" Nullable="true" />
+          <Property Type="Int32" Name="PositionID" Nullable="true" />
+          <Property Type="Int32" Name="CategoryID" Nullable="true" />
+          <Property Type="DateTime" Name="HiringDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ThirdNameEn" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FourthNameEn" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FirstNameAr" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SecondNameAr" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ThirdNameAr" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FourthNameAr" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="DOB" Nullable="true" Precision="23" />
+          <Property Type="String" Name="PhoneNo" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="MobileNo" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="ExtenistonNo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="MaritalStatus" Nullable="true" />
+          <Property Type="Int32" Name="MilitaryStatus" Nullable="true" />
+          <Property Type="Int32" Name="UniversityID" Nullable="true" />
+          <Property Type="Int32" Name="FacultyID" Nullable="true" />
+          <Property Type="Int32" Name="IntakeID" Nullable="true" />
+          <Property Type="Int32" Name="Flag" Nullable="true" />
+          <Property Type="Int32" Name="GraduationYear" Nullable="true" />
+          <Property Type="String" Name="Grade" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="AttendanceFlag" Nullable="true" />
+          <Property Type="String" Name="PositionName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="EmpStatus" Nullable="true" />
+          <Property Type="Guid" Name="msrepl_tran_version" Nullable="false" />
+          <Property Type="String" Name="IDCard" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AttachmentID" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="AttachmentCV" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="ATMStatus" Nullable="true" />
+          <Property Type="String" Name="ATMNo" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="SpecialRate" Nullable="true" />
+          <Property Type="String" Name="RateNotes" Nullable="true" />
+          <Property Type="DateTime" Name="ATMExpiryDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Religionid" Nullable="true" />
+          <Property Type="Int32" Name="empno" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DbContextNSStoreContainer" CdmEntityContainer="DbContext">
+          <EntitySetMapping Name="Branches">
+            <EntityTypeMapping TypeName="DbContextNS.Branch">
+              <MappingFragment StoreEntitySet="Branch">
+                <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="arabicname" ColumnName="arabicname" />
+                <ScalarProperty Name="msrepl_tran_version" ColumnName="msrepl_tran_version" />
+                <ScalarProperty Name="trainbranchid" ColumnName="trainbranchid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="DbContextNS.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseManuals">
+            <EntityTypeMapping TypeName="DbContextNS.CourseManual">
+              <MappingFragment StoreEntitySet="CourseManual">
+                <ScalarProperty Name="courseManualID" ColumnName="courseManualID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="totalGrade" ColumnName="totalGrade" />
+                <ScalarProperty Name="minGrade" ColumnName="minGrade" />
+                <ScalarProperty Name="labsNumber" ColumnName="labsNumber" />
+                <ScalarProperty Name="lecturesNumber" ColumnName="lecturesNumber" />
+                <ScalarProperty Name="lech" ColumnName="lech" />
+                <ScalarProperty Name="selfh" ColumnName="selfh" />
+                <ScalarProperty Name="labh" ColumnName="labh" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+                <ScalarProperty Name="coursenote" ColumnName="coursenote" />
+                <ScalarProperty Name="swReq" ColumnName="swReq" />
+                <ScalarProperty Name="hwReq" ColumnName="hwReq" />
+                <ScalarProperty Name="CourseCode" ColumnName="CourseCode" />
+                <ScalarProperty Name="CourseDescription" ColumnName="CourseDescription" />
+                <ScalarProperty Name="CourseObjective" ColumnName="CourseObjective" />
+                <ScalarProperty Name="CourseContent" ColumnName="CourseContent" />
+                <ScalarProperty Name="ProgramIntakeID" ColumnName="ProgramIntakeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="DbContextNS.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="InstructorName" ColumnName="InstructorName" />
+                <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+                <ScalarProperty Name="IPassword" ColumnName="IPassword" />
+                <ScalarProperty Name="UserName2" ColumnName="UserName2" />
+                <ScalarProperty Name="PlatformID" ColumnName="PlatformID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+                <ScalarProperty Name="CertificateID" ColumnName="CertificateID" />
+                <ScalarProperty Name="FirstNameEn" ColumnName="FirstNameEn" />
+                <ScalarProperty Name="SecondNameEn" ColumnName="SecondNameEn" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="imagepath" ColumnName="imagepath" />
+                <ScalarProperty Name="org_branchid" ColumnName="org_branchid" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="HiringDate" ColumnName="HiringDate" />
+                <ScalarProperty Name="ThirdNameEn" ColumnName="ThirdNameEn" />
+                <ScalarProperty Name="FourthNameEn" ColumnName="FourthNameEn" />
+                <ScalarProperty Name="FirstNameAr" ColumnName="FirstNameAr" />
+                <ScalarProperty Name="SecondNameAr" ColumnName="SecondNameAr" />
+                <ScalarProperty Name="ThirdNameAr" ColumnName="ThirdNameAr" />
+                <ScalarProperty Name="FourthNameAr" ColumnName="FourthNameAr" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="ExtenistonNo" ColumnName="ExtenistonNo" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="MilitaryStatus" ColumnName="MilitaryStatus" />
+                <ScalarProperty Name="UniversityID" ColumnName="UniversityID" />
+                <ScalarProperty Name="FacultyID" ColumnName="FacultyID" />
+                <ScalarProperty Name="IntakeID" ColumnName="IntakeID" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="GraduationYear" ColumnName="GraduationYear" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="AttendanceFlag" ColumnName="AttendanceFlag" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="EmpStatus" ColumnName="EmpStatus" />
+                <ScalarProperty Name="msrepl_tran_version" ColumnName="msrepl_tran_version" />
+                <ScalarProperty Name="IDCard" ColumnName="IDCard" />
+                <ScalarProperty Name="AttachmentID" ColumnName="AttachmentID" />
+                <ScalarProperty Name="AttachmentCV" ColumnName="AttachmentCV" />
+                <ScalarProperty Name="ATMStatus" ColumnName="ATMStatus" />
+                <ScalarProperty Name="ATMNo" ColumnName="ATMNo" />
+                <ScalarProperty Name="SpecialRate" ColumnName="SpecialRate" />
+                <ScalarProperty Name="RateNotes" ColumnName="RateNotes" />
+                <ScalarProperty Name="ATMExpiryDate" ColumnName="ATMExpiryDate" />
+                <ScalarProperty Name="Religionid" ColumnName="Religionid" />
+                <ScalarProperty Name="empno" ColumnName="empno" />
+                <ScalarProperty Name="cat" ColumnName="cat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Intakes">
+            <EntityTypeMapping TypeName="DbContextNS.Intake">
+              <MappingFragment StoreEntitySet="Intake">
+                <ScalarProperty Name="IntakeID" ColumnName="IntakeID" />
+                <ScalarProperty Name="IntakeNo" ColumnName="IntakeNo" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="IntakeName" ColumnName="IntakeName" />
+                <ScalarProperty Name="msrepl_tran_version" ColumnName="msrepl_tran_version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlatfromIntakes">
+            <EntityTypeMapping TypeName="DbContextNS.PlatfromIntake">
+              <MappingFragment StoreEntitySet="PlatfromIntake">
+                <ScalarProperty Name="PlatformIntakeID" ColumnName="PlatformIntakeID" />
+                <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+                <ScalarProperty Name="SubTrackID" ColumnName="SubTrackID" />
+                <ScalarProperty Name="ProgramIntakeID" ColumnName="ProgramIntakeID" />
+                <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+                <ScalarProperty Name="GraduateProfile" ColumnName="GraduateProfile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgramIntakes">
+            <EntityTypeMapping TypeName="DbContextNS.ProgramIntake">
+              <MappingFragment StoreEntitySet="ProgramIntake">
+                <ScalarProperty Name="IntakeID" ColumnName="IntakeID" />
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="ProgramIntakeID" ColumnName="ProgramIntakeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="programs">
+            <EntityTypeMapping TypeName="DbContextNS.program">
+              <MappingFragment StoreEntitySet="programs">
+                <ScalarProperty Name="programId" ColumnName="programId" />
+                <ScalarProperty Name="programName" ColumnName="programName" />
+                <ScalarProperty Name="programnotes" ColumnName="programnotes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentBasicDatas">
+            <EntityTypeMapping TypeName="DbContextNS.StudentBasicData">
+              <MappingFragment StoreEntitySet="StudentBasicData">
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="englishname" ColumnName="englishname" />
+                <ScalarProperty Name="arabicname" ColumnName="arabicname" />
+                <ScalarProperty Name="ApplicationNo" ColumnName="ApplicationNo" />
+                <ScalarProperty Name="FK_UniversityFaculty_SpecializationId" ColumnName="FK_UniversityFaculty_SpecializationId" />
+                <ScalarProperty Name="FK_FacultyId" ColumnName="FK_FacultyId" />
+                <ScalarProperty Name="FK_SpecializationId" ColumnName="FK_SpecializationId" />
+                <ScalarProperty Name="FK_GraduationGradeId" ColumnName="FK_GraduationGradeId" />
+                <ScalarProperty Name="GraduationYear" ColumnName="GraduationYear" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="SubTrackID" ColumnName="SubTrackID" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="AccFlag" ColumnName="AccFlag" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="userpwd" ColumnName="userpwd" />
+                <ScalarProperty Name="imagepath" ColumnName="imagepath" />
+                <ScalarProperty Name="RejectReason" ColumnName="RejectReason" />
+                <ScalarProperty Name="DateOB" ColumnName="DateOB" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="IDNo" ColumnName="IDNo" />
+                <ScalarProperty Name="GraduationGrade" ColumnName="GraduationGrade" />
+                <ScalarProperty Name="Rank" ColumnName="Rank" />
+                <ScalarProperty Name="Marital" ColumnName="Marital" />
+                <ScalarProperty Name="Military" ColumnName="Military" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="SocialAccount" ColumnName="SocialAccount" />
+                <ScalarProperty Name="School" ColumnName="School" />
+                <ScalarProperty Name="GradProjIdea" ColumnName="GradProjIdea" />
+                <ScalarProperty Name="ProjGrade" ColumnName="ProjGrade" />
+                <ScalarProperty Name="CertAqui" ColumnName="CertAqui" />
+                <ScalarProperty Name="PostGradStud" ColumnName="PostGradStud" />
+                <ScalarProperty Name="AcadimicInst" ColumnName="AcadimicInst" />
+                <ScalarProperty Name="cvpath" ColumnName="cvpath" />
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="subTracks">
+            <EntityTypeMapping TypeName="DbContextNS.subTrack">
+              <MappingFragment StoreEntitySet="subTrack">
+                <ScalarProperty Name="subtrackID" ColumnName="subtrackID" />
+                <ScalarProperty Name="subtrackName" ColumnName="subtrackName" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrackManagers">
+            <EntityTypeMapping TypeName="DbContextNS.TrackManager">
+              <MappingFragment StoreEntitySet="TrackManager">
+                <ScalarProperty Name="TrackManagerID" ColumnName="TrackManagerID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="PlatformIntakeID" ColumnName="PlatformIntakeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrackManuals">
+            <EntityTypeMapping TypeName="DbContextNS.TrackManual">
+              <MappingFragment StoreEntitySet="TrackManual">
+                <ScalarProperty Name="TrackManualID" ColumnName="TrackManualID" />
+                <ScalarProperty Name="CourseManualID" ColumnName="CourseManualID" />
+                <ScalarProperty Name="PlatformIntakeID" ColumnName="PlatformIntakeID" />
+                <ScalarProperty Name="IsElective" ColumnName="IsElective" />
+                <ScalarProperty Name="ElecetiveGroupID" ColumnName="ElecetiveGroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrackSupervisors">
+            <EntityTypeMapping TypeName="DbContextNS.TrackSupervisor">
+              <MappingFragment StoreEntitySet="TrackSupervisor">
+                <ScalarProperty Name="TrackGroupID" ColumnName="TrackGroupID" />
+                <ScalarProperty Name="PlatformIntakeID" ColumnName="PlatformIntakeID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrainBranches">
+            <EntityTypeMapping TypeName="DbContextNS.TrainBranch">
+              <MappingFragment StoreEntitySet="TrainBranch">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exams">
+            <EntityTypeMapping TypeName="DbContextNS.Exam">
+              <MappingFragment StoreEntitySet="Exams">
+                <ScalarProperty Name="Exam_Id" ColumnName="Exam_Id" />
+                <ScalarProperty Name="Exam_Name" ColumnName="Exam_Name" />
+                <ScalarProperty Name="Creation_Date" ColumnName="Creation_Date" />
+                <ScalarProperty Name="Number_Of_Questions" ColumnName="Number_Of_Questions" />
+                <ScalarProperty Name="Ins_Id" ColumnName="Ins_Id" />
+                <ScalarProperty Name="Exam_Corrected" ColumnName="Exam_Corrected" />
+                <ScalarProperty Name="Exam_Duration" ColumnName="Exam_Duration" />
+                <ScalarProperty Name="PlatformIntake_Id" ColumnName="PlatformIntake_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="DbContextNS.Notification">
+              <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="Notification_Id" ColumnName="Notification_Id" />
+                <ScalarProperty Name="Notification_Text" ColumnName="Notification_Text" />
+                <ScalarProperty Name="Is_Read" ColumnName="Is_Read" />
+                <ScalarProperty Name="Creation_Time" ColumnName="Creation_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionAnswers">
+            <EntityTypeMapping TypeName="DbContextNS.QuestionAnswer">
+              <MappingFragment StoreEntitySet="QuestionAnswers">
+                <ScalarProperty Name="Ques_Id" ColumnName="Ques_Id" />
+                <ScalarProperty Name="Answer_Id" ColumnName="Answer_Id" />
+                <ScalarProperty Name="Answer_Content" ColumnName="Answer_Content" />
+                <ScalarProperty Name="Is_It_RightAnswer" ColumnName="Is_It_RightAnswer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="DbContextNS.Question">
+              <MappingFragment StoreEntitySet="Questions">
+                <ScalarProperty Name="Ques_Id" ColumnName="Ques_Id" />
+                <ScalarProperty Name="Ques_Type" ColumnName="Ques_Type" />
+                <ScalarProperty Name="Ques_Content" ColumnName="Ques_Content" />
+                <ScalarProperty Name="Ques_Activation" ColumnName="Ques_Activation" />
+                <ScalarProperty Name="Ques_Level" ColumnName="Ques_Level" />
+                <ScalarProperty Name="Ques_Repetation" ColumnName="Ques_Repetation" />
+                <ScalarProperty Name="Topic_Id" ColumnName="Topic_Id" />
+                <ScalarProperty Name="Ins_Id" ColumnName="Ins_Id" />
+                <ScalarProperty Name="Points_Indicator" ColumnName="Points_Indicator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentAnswerQuestionInExams">
+            <EntityTypeMapping TypeName="DbContextNS.StudentAnswerQuestionInExam">
+              <MappingFragment StoreEntitySet="StudentAnswerQuestionInExam">
+                <ScalarProperty Name="Std_Answer_Id" ColumnName="Std_Answer_Id" />
+                <ScalarProperty Name="Std_Id" ColumnName="Std_Id" />
+                <ScalarProperty Name="Exam_Id" ColumnName="Exam_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TopicsInCourses">
+            <EntityTypeMapping TypeName="DbContextNS.TopicsInCourse">
+              <MappingFragment StoreEntitySet="TopicsInCourse">
+                <ScalarProperty Name="Topic_Id" ColumnName="Topic_Id" />
+                <ScalarProperty Name="Topic_Name" ColumnName="Topic_Name" />
+                <ScalarProperty Name="Crs_Id" ColumnName="Crs_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DepartmentsExams">
+            <EntityTypeMapping TypeName="DbContextNS.DepartmentsExam">
+              <MappingFragment StoreEntitySet="DepartmentsExam">
+                <ScalarProperty Name="Exam_Id" ColumnName="Exam_Id" />
+                <ScalarProperty Name="PlatformIntakeID" ColumnName="PlatformIntakeID" />
+                <ScalarProperty Name="Exam_Date" ColumnName="Exam_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExternalInstructorAuthorizations">
+            <EntityTypeMapping TypeName="DbContextNS.ExternalInstructorAuthorization">
+              <MappingFragment StoreEntitySet="ExternalInstructorAuthorization">
+                <ScalarProperty Name="Ins_Id" ColumnName="Ins_Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewDateExamForPermittedStudents">
+            <EntityTypeMapping TypeName="DbContextNS.NewDateExamForPermittedStudent">
+              <MappingFragment StoreEntitySet="NewDateExamForPermittedStudent">
+                <ScalarProperty Name="Std_Id" ColumnName="Std_Id" />
+                <ScalarProperty Name="New_Exam_Id" ColumnName="New_Exam_Id" />
+                <ScalarProperty Name="New_Date" ColumnName="New_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionsInExams">
+            <EntityTypeMapping TypeName="DbContextNS.QuestionsInExam">
+              <MappingFragment StoreEntitySet="QuestionsInExam">
+                <ScalarProperty Name="Ques_Id" ColumnName="Ques_Id" />
+                <ScalarProperty Name="Exam_Id" ColumnName="Exam_Id" />
+                <ScalarProperty Name="Degree" ColumnName="Degree" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentMultiAnswersQuestions">
+            <EntityTypeMapping TypeName="DbContextNS.StudentMultiAnswersQuestion">
+              <MappingFragment StoreEntitySet="StudentMultiAnswersQuestion">
+                <ScalarProperty Name="Std_Answer_Id" ColumnName="Std_Answer_Id" />
+                <ScalarProperty Name="Ques_Id" ColumnName="Ques_Id" />
+                <ScalarProperty Name="Answer_Content" ColumnName="Answer_Content" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentPermissionInExams">
+            <EntityTypeMapping TypeName="DbContextNS.StudentPermissionInExam">
+              <MappingFragment StoreEntitySet="StudentPermissionInExam">
+                <ScalarProperty Name="Std_Id" ColumnName="Std_Id" />
+                <ScalarProperty Name="Exam_Id" ColumnName="Exam_Id" />
+                <ScalarProperty Name="Permission_Date" ColumnName="Permission_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetEmployeeByBranch" FunctionName="DbContextNS.Store.GetEmployeeByBranch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbContextNS.GetEmployeeByBranch_Result">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="InstructorName" ColumnName="InstructorName" />
+                <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+                <ScalarProperty Name="IPassword" ColumnName="IPassword" />
+                <ScalarProperty Name="UserName2" ColumnName="UserName2" />
+                <ScalarProperty Name="PlatformID" ColumnName="PlatformID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+                <ScalarProperty Name="CertificateID" ColumnName="CertificateID" />
+                <ScalarProperty Name="FirstNameEn" ColumnName="FirstNameEn" />
+                <ScalarProperty Name="SecondNameEn" ColumnName="SecondNameEn" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="imagepath" ColumnName="imagepath" />
+                <ScalarProperty Name="org_branchid" ColumnName="org_branchid" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="HiringDate" ColumnName="HiringDate" />
+                <ScalarProperty Name="ThirdNameEn" ColumnName="ThirdNameEn" />
+                <ScalarProperty Name="FourthNameEn" ColumnName="FourthNameEn" />
+                <ScalarProperty Name="FirstNameAr" ColumnName="FirstNameAr" />
+                <ScalarProperty Name="SecondNameAr" ColumnName="SecondNameAr" />
+                <ScalarProperty Name="ThirdNameAr" ColumnName="ThirdNameAr" />
+                <ScalarProperty Name="FourthNameAr" ColumnName="FourthNameAr" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="ExtenistonNo" ColumnName="ExtenistonNo" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="MilitaryStatus" ColumnName="MilitaryStatus" />
+                <ScalarProperty Name="UniversityID" ColumnName="UniversityID" />
+                <ScalarProperty Name="FacultyID" ColumnName="FacultyID" />
+                <ScalarProperty Name="IntakeID" ColumnName="IntakeID" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="GraduationYear" ColumnName="GraduationYear" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="AttendanceFlag" ColumnName="AttendanceFlag" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="EmpStatus" ColumnName="EmpStatus" />
+                <ScalarProperty Name="msrepl_tran_version" ColumnName="msrepl_tran_version" />
+                <ScalarProperty Name="IDCard" ColumnName="IDCard" />
+                <ScalarProperty Name="AttachmentID" ColumnName="AttachmentID" />
+                <ScalarProperty Name="AttachmentCV" ColumnName="AttachmentCV" />
+                <ScalarProperty Name="ATMStatus" ColumnName="ATMStatus" />
+                <ScalarProperty Name="ATMNo" ColumnName="ATMNo" />
+                <ScalarProperty Name="SpecialRate" ColumnName="SpecialRate" />
+                <ScalarProperty Name="RateNotes" ColumnName="RateNotes" />
+                <ScalarProperty Name="ATMExpiryDate" ColumnName="ATMExpiryDate" />
+                <ScalarProperty Name="Religionid" ColumnName="Religionid" />
+                <ScalarProperty Name="empno" ColumnName="empno" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
