@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="DataLayer">
       <HintPath>..\DataLayer\bin\Debug\DataLayer.dll</HintPath>
     </Reference>
@@ -54,6 +57,17 @@
   <ItemGroup>
     <Compile Include="DataFactory.cs" />
     <Compile Include="IOperations.cs" />
+    <Compile Include="Map\BranchMap.cs" />
+    <Compile Include="Map\CourseManualMap.cs" />
+    <Compile Include="Map\CourseMap.cs" />
+    <Compile Include="Map\IntakMap.cs" />
+    <Compile Include="Map\MapConfig.cs" />
+    <Compile Include="Map\PlatfromIntakeMap.cs" />
+    <Compile Include="Map\ProgramIntakeMap.cs" />
+    <Compile Include="Map\programMap.cs" />
+    <Compile Include="Map\StudentMap.cs" />
+    <Compile Include="Map\subTrackMap.cs" />
+    <Compile Include="Map\TrackManualMap.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

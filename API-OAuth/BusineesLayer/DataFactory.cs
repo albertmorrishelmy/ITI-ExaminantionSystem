@@ -47,17 +47,39 @@ namespace BusineesLayer
 
         public int Count()
         {
-            throw new NotImplementedException();
+            return _Data.Set<T>().Count();
         }
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            bool DFlag = false;
+            T Obj = _Data.Set<T>().Find(id);
+            _Data.Entry(Obj).State = EntityState.Deleted;
+            if (_Data.SaveChanges()>0)
+            {
+                DFlag = true;
+            }
+            return DFlag; 
         }
 
         public bool Delete(T EntityToDelete)
         {
-            throw new NotImplementedException();
+            bool DFalgo = false; 
+            if (EntityToDelete != null)
+            {
+                _Data.Entry(EntityToDelete).State = EntityState.Deleted;
+                if (_Data.SaveChanges() > 0 )
+                {
+                    DFalgo = true;
+                }
+            }
+            return DFalgo; 
+        }
+
+        public T FindBy(Expression<Func<T, bool>> Condition)
+        {
+            T query = _Data.Set<T>().Where(Condition).Single();
+            return query;
         }
 
         public T FindBy(Expression<Func<bool, T>> Condition)
@@ -65,29 +87,39 @@ namespace BusineesLayer
             throw new NotImplementedException();
         }
 
-        public IQueryable<T> FindListBy(Expression<Func<bool, T>> Condition)
+        public IQueryable<T> FindListBy(Expression<Func<T, bool>> Condition)
         {
-            throw new NotImplementedException();
+            IQueryable<T> query = _Data.Set<T>().Where(Condition);
+            return query;
         }
+
 
         public IQueryable<T> GetAll()
         {
-            throw new NotImplementedException();
+            IQueryable<T> query = _Data.Set<T>();
+            return query;
         }
 
         public T GetById(int id)
         {
-            throw new NotImplementedException();
+            return _Data.Set<T>().Find(id);
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _Data.SaveChanges();
         }
 
         public bool Update(T EntityToUpdate)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            _Data.Entry(EntityToUpdate).State = EntityState.Modified; 
+            if (_Data.SaveChanges() > 0)
+            {
+                result = true;
+            }
+
+            return result;
         }
     }
 }

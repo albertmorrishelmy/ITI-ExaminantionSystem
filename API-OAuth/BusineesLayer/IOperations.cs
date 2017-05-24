@@ -12,7 +12,7 @@ namespace BusineesLayer
         IQueryable<T> GetAll();   // 
         T GetById(int id);
         T FindBy(Expression<Func<bool, T>> Condition);
-        IQueryable<T> FindListBy(Expression<Func<bool, T>> Condition);  
+        //IQueryable<T> FindListBy(Expression<Func<bool, T>> Condition);  
         T Add(T Entity);
         bool AddRange(List<T> Entities);   
         bool Delete(int id);
