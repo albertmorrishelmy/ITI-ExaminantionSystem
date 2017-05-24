@@ -32,12 +32,17 @@ namespace BusineesLayer
                 ReturnObj = Entity;
             }
             return ReturnObj; 
-
         }
 
         public bool AddRange(List<T> Entities)
         {
-            throw new NotImplementedException();
+            bool Flag = false;
+            _Data.Set<T>().AddRange(Entities);
+            if (_Data.SaveChanges() > 0)
+            {
+                Flag = true;
+            }
+            return Flag;
         }
 
         public int Count()
