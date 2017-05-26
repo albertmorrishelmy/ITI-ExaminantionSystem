@@ -1,5 +1,4 @@
-﻿using BusineesLayer;
-using DataLayer.Models;
+﻿using DataAccessLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +24,6 @@ namespace BusineesLayer
         public virtual BranchMap Branch { get; set; }
         public virtual ProgramIntakeMap ProgramIntake { get; set; }
 
-        public virtual ICollection<TrackManager> TrackManagers { get; set; }
 
         public virtual ICollection<TrackSupervisor> TrackSupervisors { get; set; }
     }

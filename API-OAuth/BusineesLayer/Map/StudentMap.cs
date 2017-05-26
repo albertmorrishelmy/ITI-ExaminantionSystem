@@ -1,4 +1,4 @@
-﻿using DataLayer.Models;
+﻿using DataAccessLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,7 +49,6 @@ namespace BusineesLayer
         public string Comment { get; set; }
 
 
-        public virtual ICollection<UserDevice> UserDevices { get; set; }
 
 
     }

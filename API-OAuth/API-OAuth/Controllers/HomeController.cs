@@ -11,8 +11,9 @@ namespace API_OAuth.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-
+            
             return View();
         }
+
     }
 }

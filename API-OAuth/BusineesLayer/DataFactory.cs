@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using DataLayer.Models;
+using DataAccessLayer.Models;
 using System.Data.Entity;
 
 
 namespace BusineesLayer
 {
-    class DataFactory<C, T> : IOperations<T>
+   public class DataFactory<C,T> : IOperations<T>
         where T : class
-        where C : ApplicationContext, new() // It must be a class (reference type) and must have a public parameter-less default constructor.
+        where C : DataBaseCTX, new()  // It must be a class (reference type) and must have a public parameter-less default constructor.
     {
 
         private C _Data = new C();
@@ -76,18 +74,23 @@ namespace BusineesLayer
             return DFalgo; 
         }
 
+        public bool DeleteEntity(T EntityToDelete)
+        {
+            throw new NotImplementedException();
+        }
+
         public T FindBy(Expression<Func<T, bool>> Condition)
         {
             T query = _Data.Set<T>().Where(Condition).Single();
             return query;
         }
 
-        public T FindBy(Expression<Func<bool, T>> Condition)
+        public T FindBy(Expression<Func<bool, T>> Condition) //FindBy(x => x.Some.Equals(somevlue))
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<T> FindListBy(Expression<Func<T, bool>> Condition)
+        public IQueryable<T> FindListBy(Expression<Func<T, bool>> Condition) //FindBy(x => x.Some.Equals(somevlue))
         {
             IQueryable<T> query = _Data.Set<T>().Where(Condition);
             return query;

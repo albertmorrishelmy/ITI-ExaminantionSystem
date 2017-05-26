@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using DataLayer.Models;
-using BusineesLayer;
+using DataAccessLayer.Models;
 
 namespace BusineesLayer
 {
@@ -44,6 +43,9 @@ namespace BusineesLayer
 
                 cfg.CreateMap<CourseManual, CourseManualMap>();
                 cfg.CreateMap<CourseManualMap, CourseManual>();
+
+                
+                
             });
 
         }

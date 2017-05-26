@@ -1,4 +1,4 @@
-﻿using DataLayer.Models;
+﻿using DataAccessLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +16,5 @@ namespace BusineesLayer
         public int? trainbranchid { get; set; }
         
         public virtual ICollection<PlatfromIntake> PlatfromIntakes { get; set; }
-        public virtual TrainBranch TrainBranch { get; set; }
     }
 }
