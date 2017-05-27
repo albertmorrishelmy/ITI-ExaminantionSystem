@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using DataAccessLayer.Models;
+using BusineesLayer.Map;
 
 namespace BusineesLayer
 {
@@ -44,8 +45,39 @@ namespace BusineesLayer
                 cfg.CreateMap<CourseManual, CourseManualMap>();
                 cfg.CreateMap<CourseManualMap, CourseManual>();
 
-                
-                
+                cfg.CreateMap<Exam, ExamMap>()
+                .ForMember(dto => dto.Ins_Id, conf => conf.MapFrom(ol => ol.Employee.EmployeeID));
+
+                cfg.CreateMap<DepartmentsExam, DepartmentsExamMap>()
+                .ForMember(dto => dto.Exam_Id, conf => conf.MapFrom(ol => ol.Exam.Exam_Id));
+
+                cfg.CreateMap<ExternalInstructorAuthorization, ExternalInstructorAuthorizationMap>()
+                .ForMember(dto => dto.Ins_Id, conf => conf.MapFrom(ol => ol.Employee.EmployeeID));
+
+                cfg.CreateMap<InstructorsConnectionId, InstructorsConnectionIdMap>()
+                .ForMember(dto => dto.Ins_Id, conf => conf.MapFrom(ol => ol.Employee.EmployeeID));
+
+                cfg.CreateMap<NewDateExamForPermittedStudent, NewDateExamForPermittedStudentMap>()
+                .ForMember(dto => dto.Std_Id, conf => conf.MapFrom(ol => ol.StudentBasicData.StudentID));
+
+                cfg.CreateMap<Notification, NotificationMap>();
+                cfg.CreateMap<NotificationMap, Notification>();
+
+                cfg.CreateMap<Question, QuestionMap>()
+                .ForMember(dto => dto.Ins_Id, conf => conf.MapFrom(ol => ol.Employee.EmployeeID))
+                .ForMember(dto=>dto.Topic_Id,conf=>conf.MapFrom(ol=>ol.TopicsInCourse.Topic_Id));
+
+                cfg.CreateMap<QuestionAnswer, QuestionAnswerMap>();
+                cfg.CreateMap<QuestionAnswerMap, QuestionAnswer>();
+
+                cfg.CreateMap<QuestionsInExam, QuestionsInExamMap>();
+                cfg.CreateMap<QuestionsInExamMap, QuestionsInExam>();
+
+                cfg.CreateMap<StudentPermissionInExam, StudentPermissionInExamMap>();
+                cfg.CreateMap<StudentPermissionInExamMap, StudentPermissionInExam>();
+
+                cfg.CreateMap<DepartmentsExam, DepartmentsExamMap>();
+                cfg.CreateMap<DepartmentsExamMap, DepartmentsExam>();
             });
 
         }
