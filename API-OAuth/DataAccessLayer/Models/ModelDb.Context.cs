@@ -18,10 +18,14 @@ namespace DataAccessLayer.Models
     public partial class DataBaseCTX : DbContext
     {
         public DataBaseCTX()
-            : base("DataBaseCTX")
+            : base("name=DataBaseCTX")
         {
         }
     
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            throw new UnintentionalCodeFirstException();
+        }
     
         public virtual DbSet<Branch> Branches { get; set; }
         public virtual DbSet<Course> Courses { get; set; }
@@ -30,22 +34,24 @@ namespace DataAccessLayer.Models
         public virtual DbSet<CourseManual> CourseManuals { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
-        public virtual DbSet<Employee_Type> Employee_Type { get; set; }
         public virtual DbSet<EvaluationCriteria> EvaluationCriterias { get; set; }
-        public virtual DbSet<InstructorCourse> InstructorCourses { get; set; }
-        public virtual DbSet<InstructorType> InstructorTypes { get; set; }
         public virtual DbSet<Intake> Intakes { get; set; }
         public virtual DbSet<Platform> Platforms { get; set; }
+        public virtual DbSet<PlatformDepartment> PlatformDepartments { get; set; }
         public virtual DbSet<PlatfromIntake> PlatfromIntakes { get; set; }
         public virtual DbSet<ProgramIntake> ProgramIntakes { get; set; }
         public virtual DbSet<program> programs { get; set; }
+        public virtual DbSet<Student_Enrollment> Student_Enrollments { get; set; }
         public virtual DbSet<StudentBasicData> StudentBasicDatas { get; set; }
         public virtual DbSet<subTrack> subTracks { get; set; }
+        public virtual DbSet<TrackManager> TrackManagers { get; set; }
         public virtual DbSet<TrackManual> TrackManuals { get; set; }
         public virtual DbSet<TrackSupervisor> TrackSupervisors { get; set; }
         public virtual DbSet<DepartmentsExam> DepartmentsExams { get; set; }
+        public virtual DbSet<EmployeeNotification> EmployeeNotifications { get; set; }
         public virtual DbSet<Exam> Exams { get; set; }
         public virtual DbSet<ExternalInstructorAuthorization> ExternalInstructorAuthorizations { get; set; }
+        public virtual DbSet<InstructorNotification> InstructorNotifications { get; set; }
         public virtual DbSet<InstructorsConnectionId> InstructorsConnectionIds { get; set; }
         public virtual DbSet<NewDateExamForPermittedStudent> NewDateExamForPermittedStudents { get; set; }
         public virtual DbSet<Notification> Notifications { get; set; }
@@ -54,33 +60,38 @@ namespace DataAccessLayer.Models
         public virtual DbSet<QuestionsInExam> QuestionsInExams { get; set; }
         public virtual DbSet<StudentAnswerQuestionInExam> StudentAnswerQuestionInExams { get; set; }
         public virtual DbSet<StudentMultiAnswersQuestion> StudentMultiAnswersQuestions { get; set; }
+        public virtual DbSet<StudentNotification> StudentNotifications { get; set; }
         public virtual DbSet<StudentPermissionInExam> StudentPermissionInExams { get; set; }
         public virtual DbSet<StudentsConnectionId> StudentsConnectionIds { get; set; }
+        public virtual DbSet<SupervisiorNotification> SupervisiorNotifications { get; set; }
         public virtual DbSet<SupervisiorsConnectionId> SupervisiorsConnectionIds { get; set; }
         public virtual DbSet<TopicsInCourse> TopicsInCourses { get; set; }
         public virtual DbSet<evaluationiteminstructor> evaluationiteminstructors { get; set; }
+        public virtual DbSet<CoursesDataView> CoursesDataViews { get; set; }
         public virtual DbSet<Employee_metadata> Employee_metadata { get; set; }
-    
-        public virtual ObjectResult<GetAllEmp_Result> GetAllEmp(Nullable<int> flag, Nullable<int> deptid, Nullable<int> employeeid)
-        {
-            var flagParameter = flag.HasValue ?
-                new ObjectParameter("flag", flag) :
-                new ObjectParameter("flag", typeof(int));
-    
-            var deptidParameter = deptid.HasValue ?
-                new ObjectParameter("deptid", deptid) :
-                new ObjectParameter("deptid", typeof(int));
-    
-            var employeeidParameter = employeeid.HasValue ?
-                new ObjectParameter("employeeid", employeeid) :
-                new ObjectParameter("employeeid", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllEmp_Result>("GetAllEmp", flagParameter, deptidParameter, employeeidParameter);
-        }
     
         public virtual ObjectResult<GetAllEmployee_Result> GetAllEmployee()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllEmployee_Result>("GetAllEmployee");
+        }
+    
+        public virtual ObjectResult<GetAllInstructor_Result> GetAllInstructor()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllInstructor_Result>("GetAllInstructor");
+        }
+    
+        public virtual ObjectResult<GetAllIntake_Result> GetAllIntake(Nullable<int> subTrackID)
+        {
+            var subTrackIDParameter = subTrackID.HasValue ?
+                new ObjectParameter("SubTrackID", subTrackID) :
+                new ObjectParameter("SubTrackID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllIntake_Result>("GetAllIntake", subTrackIDParameter);
+        }
+    
+        public virtual ObjectResult<GetAllsubTrack_Result> GetAllsubTrack()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllsubTrack_Result>("GetAllsubTrack");
         }
     
         public virtual ObjectResult<GetEmployeeByBranch_Result> GetEmployeeByBranch(Nullable<int> branchID)
@@ -90,88 +101,6 @@ namespace DataAccessLayer.Models
                 new ObjectParameter("BranchID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetEmployeeByBranch_Result>("GetEmployeeByBranch", branchIDParameter);
-        }
-    
-        public virtual ObjectResult<GetEmployeeByName_Result> GetEmployeeByName(string instructorname)
-        {
-            var instructornameParameter = instructorname != null ?
-                new ObjectParameter("Instructorname", instructorname) :
-                new ObjectParameter("Instructorname", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetEmployeeByName_Result>("GetEmployeeByName", instructornameParameter);
-        }
-    
-        public virtual ObjectResult<GetEmployeeName_Result> GetEmployeeName(string employeeName, Nullable<int> branchID, Nullable<int> platformID, Nullable<int> roleID, Nullable<int> typeID, string arabicName, Nullable<int> certificateID, string firstNameEn, string secondNameEn, Nullable<int> orgBranch, string thirdNameEn, string fourthNameEn, string firstNameAr, string secondNameAr, string thirdNameAr, string fourthNameAr, Nullable<int> intakeID)
-        {
-            var employeeNameParameter = employeeName != null ?
-                new ObjectParameter("EmployeeName", employeeName) :
-                new ObjectParameter("EmployeeName", typeof(string));
-    
-            var branchIDParameter = branchID.HasValue ?
-                new ObjectParameter("BranchID", branchID) :
-                new ObjectParameter("BranchID", typeof(int));
-    
-            var platformIDParameter = platformID.HasValue ?
-                new ObjectParameter("PlatformID", platformID) :
-                new ObjectParameter("PlatformID", typeof(int));
-    
-            var roleIDParameter = roleID.HasValue ?
-                new ObjectParameter("RoleID", roleID) :
-                new ObjectParameter("RoleID", typeof(int));
-    
-            var typeIDParameter = typeID.HasValue ?
-                new ObjectParameter("TypeID", typeID) :
-                new ObjectParameter("TypeID", typeof(int));
-    
-            var arabicNameParameter = arabicName != null ?
-                new ObjectParameter("ArabicName", arabicName) :
-                new ObjectParameter("ArabicName", typeof(string));
-    
-            var certificateIDParameter = certificateID.HasValue ?
-                new ObjectParameter("CertificateID", certificateID) :
-                new ObjectParameter("CertificateID", typeof(int));
-    
-            var firstNameEnParameter = firstNameEn != null ?
-                new ObjectParameter("FirstNameEn", firstNameEn) :
-                new ObjectParameter("FirstNameEn", typeof(string));
-    
-            var secondNameEnParameter = secondNameEn != null ?
-                new ObjectParameter("SecondNameEn", secondNameEn) :
-                new ObjectParameter("SecondNameEn", typeof(string));
-    
-            var orgBranchParameter = orgBranch.HasValue ?
-                new ObjectParameter("OrgBranch", orgBranch) :
-                new ObjectParameter("OrgBranch", typeof(int));
-    
-            var thirdNameEnParameter = thirdNameEn != null ?
-                new ObjectParameter("ThirdNameEn", thirdNameEn) :
-                new ObjectParameter("ThirdNameEn", typeof(string));
-    
-            var fourthNameEnParameter = fourthNameEn != null ?
-                new ObjectParameter("FourthNameEn", fourthNameEn) :
-                new ObjectParameter("FourthNameEn", typeof(string));
-    
-            var firstNameArParameter = firstNameAr != null ?
-                new ObjectParameter("FirstNameAr", firstNameAr) :
-                new ObjectParameter("FirstNameAr", typeof(string));
-    
-            var secondNameArParameter = secondNameAr != null ?
-                new ObjectParameter("SecondNameAr", secondNameAr) :
-                new ObjectParameter("SecondNameAr", typeof(string));
-    
-            var thirdNameArParameter = thirdNameAr != null ?
-                new ObjectParameter("ThirdNameAr", thirdNameAr) :
-                new ObjectParameter("ThirdNameAr", typeof(string));
-    
-            var fourthNameArParameter = fourthNameAr != null ?
-                new ObjectParameter("FourthNameAr", fourthNameAr) :
-                new ObjectParameter("FourthNameAr", typeof(string));
-    
-            var intakeIDParameter = intakeID.HasValue ?
-                new ObjectParameter("IntakeID", intakeID) :
-                new ObjectParameter("IntakeID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetEmployeeName_Result>("GetEmployeeName", employeeNameParameter, branchIDParameter, platformIDParameter, roleIDParameter, typeIDParameter, arabicNameParameter, certificateIDParameter, firstNameEnParameter, secondNameEnParameter, orgBranchParameter, thirdNameEnParameter, fourthNameEnParameter, firstNameArParameter, secondNameArParameter, thirdNameArParameter, fourthNameArParameter, intakeIDParameter);
         }
     }
 }

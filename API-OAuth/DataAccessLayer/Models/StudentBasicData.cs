@@ -17,11 +17,12 @@ namespace DataAccessLayer.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public StudentBasicData()
         {
+            this.Student_Enrollment = new HashSet<Student_Enrollment>();
             this.NewDateExamForPermittedStudents = new HashSet<NewDateExamForPermittedStudent>();
             this.StudentAnswerQuestionInExams = new HashSet<StudentAnswerQuestionInExam>();
+            this.StudentNotifications = new HashSet<StudentNotification>();
             this.StudentPermissionInExams = new HashSet<StudentPermissionInExam>();
             this.StudentsConnectionIds = new HashSet<StudentsConnectionId>();
-            this.Notifications = new HashSet<Notification>();
         }
     
         public int StudentID { get; set; }
@@ -65,14 +66,16 @@ namespace DataAccessLayer.Models
     
         public virtual PlatfromIntake PlatfromIntake { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Student_Enrollment> Student_Enrollment { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NewDateExamForPermittedStudent> NewDateExamForPermittedStudents { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentAnswerQuestionInExam> StudentAnswerQuestionInExams { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentNotification> StudentNotifications { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentPermissionInExam> StudentPermissionInExams { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentsConnectionId> StudentsConnectionIds { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Notification> Notifications { get; set; }
     }
 }

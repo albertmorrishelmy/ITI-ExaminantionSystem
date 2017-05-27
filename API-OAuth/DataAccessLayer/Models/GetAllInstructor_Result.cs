@@ -11,7 +11,7 @@ namespace DataAccessLayer.Models
 {
     using System;
     
-    public partial class GetEmployeeName_Result
+    public partial class GetAllInstructor_Result
     {
         public int EmployeeID { get; set; }
         public string InstructorName { get; set; }

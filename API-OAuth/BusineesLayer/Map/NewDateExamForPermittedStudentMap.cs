@@ -12,7 +12,6 @@ namespace BusineesLayer.Map
         public int Std_Id { get; set; }
         public int New_Exam_Id { get; set; }
         public Nullable<System.DateTime> New_Date { get; set; }
-        
         public virtual Exam Exam { get; set; }
     }
 }

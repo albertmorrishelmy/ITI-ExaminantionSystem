@@ -17,16 +17,17 @@ namespace DataAccessLayer.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employee()
         {
-            this.InstructorCourses = new HashSet<InstructorCourse>();
+            this.EmployeeNotifications = new HashSet<EmployeeNotification>();
             this.Exams = new HashSet<Exam>();
             this.ExternalInstructorAuthorizations = new HashSet<ExternalInstructorAuthorization>();
+            this.InstructorNotifications = new HashSet<InstructorNotification>();
             this.InstructorsConnectionIds = new HashSet<InstructorsConnectionId>();
             this.Platforms = new HashSet<Platform>();
             this.Questions = new HashSet<Question>();
+            this.SupervisiorNotifications = new HashSet<SupervisiorNotification>();
             this.SupervisiorsConnectionIds = new HashSet<SupervisiorsConnectionId>();
+            this.TrackManagers = new HashSet<TrackManager>();
             this.TrackSupervisors = new HashSet<TrackSupervisor>();
-            this.Notifications = new HashSet<Notification>();
-            this.Notifications1 = new HashSet<Notification>();
         }
     
         public int EmployeeID { get; set; }
@@ -85,14 +86,15 @@ namespace DataAccessLayer.Models
         public Nullable<int> empno { get; set; }
         public Nullable<int> cat { get; set; }
     
-        public virtual Employee_Type Employee_Type { get; set; }
         public virtual Platform Platform { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<InstructorCourse> InstructorCourses { get; set; }
+        public virtual ICollection<EmployeeNotification> EmployeeNotifications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Exam> Exams { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExternalInstructorAuthorization> ExternalInstructorAuthorizations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<InstructorNotification> InstructorNotifications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InstructorsConnectionId> InstructorsConnectionIds { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -100,12 +102,12 @@ namespace DataAccessLayer.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Question> Questions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SupervisiorNotification> SupervisiorNotifications { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupervisiorsConnectionId> SupervisiorsConnectionIds { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TrackManager> TrackManagers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TrackSupervisor> TrackSupervisors { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Notification> Notifications { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Notification> Notifications1 { get; set; }
     }
 }

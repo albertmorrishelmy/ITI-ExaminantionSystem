@@ -12,14 +12,13 @@ namespace DataAccessLayer.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class InstructorCourse
+    public partial class EmployeeNotification
     {
-        public int InstructorCourseID { get; set; }
-        public int instructorID { get; set; }
-        public Nullable<int> courseID { get; set; }
-        public int TypeId { get; set; }
+        public int Emp_Id { get; set; }
+        public int Notification_Id { get; set; }
+        public int Notify_Id { get; set; }
     
-        public virtual Course Course { get; set; }
         public virtual Employee Employee { get; set; }
+        public virtual Notification Notification { get; set; }
     }
 }

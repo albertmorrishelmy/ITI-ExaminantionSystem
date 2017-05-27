@@ -31,6 +31,7 @@ namespace DataAccessLayer.Models
         public Nullable<int> Ins_Id { get; set; }
         public Nullable<bool> Exam_Corrected { get; set; }
         public Nullable<int> Exam_Duration { get; set; }
+        public string Exam_FullDegree { get; set; }
         public Nullable<int> PlatformIntake_Id { get; set; }
     
         public virtual Employee Employee { get; set; }

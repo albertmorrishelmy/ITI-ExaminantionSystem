@@ -20,6 +20,7 @@ namespace DataAccessLayer.Models
             this.DepartmentsExams = new HashSet<DepartmentsExam>();
             this.Exams = new HashSet<Exam>();
             this.StudentBasicDatas = new HashSet<StudentBasicData>();
+            this.TrackManagers = new HashSet<TrackManager>();
             this.TrackManuals = new HashSet<TrackManual>();
             this.TrackSupervisors = new HashSet<TrackSupervisor>();
         }
@@ -41,6 +42,8 @@ namespace DataAccessLayer.Models
         public virtual subTrack subTrack { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentBasicData> StudentBasicDatas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TrackManager> TrackManagers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TrackManual> TrackManuals { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

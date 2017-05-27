@@ -63,10 +63,6 @@ namespace BusineesLayer
                 cfg.CreateMap<Notification, NotificationMap>();
                 cfg.CreateMap<NotificationMap, Notification>();
 
-                cfg.CreateMap<Question, QuestionMap>()
-                .ForMember(dto => dto.Ins_Id, conf => conf.MapFrom(ol => ol.Employee.EmployeeID))
-                .ForMember(dto=>dto.Topic_Id,conf=>conf.MapFrom(ol=>ol.TopicsInCourse.Topic_Id));
-
                 cfg.CreateMap<QuestionAnswer, QuestionAnswerMap>();
                 cfg.CreateMap<QuestionAnswerMap, QuestionAnswer>();
 
@@ -78,6 +74,10 @@ namespace BusineesLayer
 
                 cfg.CreateMap<DepartmentsExam, DepartmentsExamMap>();
                 cfg.CreateMap<DepartmentsExamMap, DepartmentsExam>();
+
+
+
+
             });
 
         }

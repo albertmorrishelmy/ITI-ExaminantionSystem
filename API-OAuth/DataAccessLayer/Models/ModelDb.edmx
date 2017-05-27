@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ExaminationNS.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ExaminationNS.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Branch">
           <Key>
             <PropertyRef Name="BranchID" />
@@ -132,15 +132,6 @@
           <Property Name="empno" Type="int" />
           <Property Name="cat" Type="int" />
         </EntityType>
-        <EntityType Name="Employee_Type">
-          <Key>
-            <PropertyRef Name="TypeId" />
-          </Key>
-          <Property Name="TypeId" Type="int" Nullable="false" />
-          <Property Name="TypeName" Type="nvarchar" MaxLength="50" />
-          <Property Name="levelid" Type="int" />
-          <Property Name="msrepl_tran_version" Type="uniqueidentifier" Nullable="false" />
-        </EntityType>
         <EntityType Name="EvaluationCriteria">
           <Key>
             <PropertyRef Name="ExID" />
@@ -166,23 +157,6 @@ warning 6002: The table/view 'NewData.dbo.evaluationiteminstructor' does not hav
           <Property Name="it1" Type="float" />
           <Property Name="itemgrade" Type="varbinary" MaxLength="50" />
         </EntityType>
-        <EntityType Name="InstructorCourse">
-          <Key>
-            <PropertyRef Name="InstructorCourseID" />
-          </Key>
-          <Property Name="InstructorCourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="instructorID" Type="int" Nullable="false" />
-          <Property Name="courseID" Type="int" />
-          <Property Name="TypeId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="InstructorType">
-          <Key>
-            <PropertyRef Name="TypeID" />
-          </Key>
-          <Property Name="TypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TypeName" Type="nvarchar" MaxLength="50" />
-          <Property Name="msrepl_tran_version" Type="uniqueidentifier" Nullable="false" />
-        </EntityType>
         <EntityType Name="Intake">
           <Key>
             <PropertyRef Name="IntakeID" />
@@ -206,6 +180,17 @@ warning 6002: The table/view 'NewData.dbo.evaluationiteminstructor' does not hav
           <Property Name="msrepl_tran_version" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ISMonthPlat" Type="bit" />
           <Property Name="OwnerEmployeeID" Type="int" />
+        </EntityType>
+        <EntityType Name="PlatformDepartment">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+            <PropertyRef Name="BranchID" />
+            <PropertyRef Name="PlatformID" />
+          </Key>
+          <Property Name="DepartmentID" Type="int" Nullable="false" />
+          <Property Name="BranchID" Type="int" Nullable="false" />
+          <Property Name="PlatformID" Type="int" Nullable="false" />
+          <Property Name="msrepl_tran_version" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="PlatfromIntake">
           <Key>
@@ -233,6 +218,14 @@ warning 6002: The table/view 'NewData.dbo.evaluationiteminstructor' does not hav
           <Property Name="programId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="programName" Type="nvarchar" MaxLength="255" />
           <Property Name="programnotes" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Student Enrollment">
+          <Key>
+            <PropertyRef Name="StudentEnrollmentID" />
+          </Key>
+          <Property Name="StudentEnrollmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" />
+          <Property Name="CourseInstanceDetailsID" Type="int" />
         </EntityType>
         <EntityType Name="StudentBasicData">
           <Key>
@@ -285,6 +278,14 @@ warning 6002: The table/view 'NewData.dbo.evaluationiteminstructor' does not hav
           <Property Name="subtrackName" Type="nvarchar" MaxLength="255" />
           <Property Name="code" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="TrackManager">
+          <Key>
+            <PropertyRef Name="TrackManagerID" />
+          </Key>
+          <Property Name="TrackManagerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="PlatformIntakeID" Type="int" />
+        </EntityType>
         <EntityType Name="TrackManual">
           <Key>
             <PropertyRef Name="TrackManualID" />
@@ -312,6 +313,14 @@ warning 6002: The table/view 'NewData.dbo.evaluationiteminstructor' does not hav
           <Property Name="PlatformIntakeID" Type="int" Nullable="false" />
           <Property Name="Exam_Date" Type="date" />
         </EntityType>
+        <EntityType Name="EmployeeNotifications">
+          <Key>
+            <PropertyRef Name="Notify_Id" />
+          </Key>
+          <Property Name="Emp_Id" Type="int" Nullable="false" />
+          <Property Name="Notification_Id" Type="int" Nullable="false" />
+          <Property Name="Notify_Id" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Exams">
           <Key>
             <PropertyRef Name="Exam_Id" />
@@ -323,6 +332,7 @@ warning 6002: The table/view 'NewData.dbo.evaluationiteminstructor' does not hav
           <Property Name="Ins_Id" Type="int" />
           <Property Name="Exam_Corrected" Type="bit" />
           <Property Name="Exam_Duration" Type="int" />
+          <Property Name="Exam_FullDegree" Type="nchar" MaxLength="10" />
           <Property Name="PlatformIntake_Id" Type="int" />
         </EntityType>
         <EntityType Name="ExternalInstructorAuthorization">
@@ -336,11 +346,11 @@ warning 6002: The table/view 'NewData.dbo.evaluationiteminstructor' does not hav
         </EntityType>
         <EntityType Name="InstructorNotifications">
           <Key>
-            <PropertyRef Name="Ins_Id" />
-            <PropertyRef Name="Notification_Id" />
+            <PropertyRef Name="Notify_Id" />
           </Key>
           <Property Name="Ins_Id" Type="int" Nullable="false" />
           <Property Name="Notification_Id" Type="int" Nullable="false" />
+          <Property Name="Notify_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="InstructorsConnectionIds">
           <Key>
@@ -429,11 +439,11 @@ warning 6002: The table/view 'NewData.dbo.evaluationiteminstructor' does not hav
         </EntityType>
         <EntityType Name="StudentNotifications">
           <Key>
-            <PropertyRef Name="Student_Id" />
-            <PropertyRef Name="Notification_Id" />
+            <PropertyRef Name="Notify_Id" />
           </Key>
           <Property Name="Student_Id" Type="int" Nullable="false" />
           <Property Name="Notification_Id" Type="int" Nullable="false" />
+          <Property Name="Notify_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="StudentPermissionInExam">
           <Key>
@@ -454,11 +464,11 @@ warning 6002: The table/view 'NewData.dbo.evaluationiteminstructor' does not hav
         </EntityType>
         <EntityType Name="SupervisiorNotifications">
           <Key>
-            <PropertyRef Name="Supervisior_Id" />
-            <PropertyRef Name="Notification_Id" />
+            <PropertyRef Name="Notify_Id" />
           </Key>
           <Property Name="Supervisior_Id" Type="int" Nullable="false" />
           <Property Name="Notification_Id" Type="int" Nullable="false" />
+          <Property Name="Notify_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="SupervisiorsConnectionIds">
           <Key>
@@ -477,6 +487,29 @@ warning 6002: The table/view 'NewData.dbo.evaluationiteminstructor' does not hav
           <Property Name="Crs_Id" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'NewData.dbo.CoursesDataView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CoursesDataView">
+          <Key>
+            <PropertyRef Name="CourseID" />
+            <PropertyRef Name="CourseInstanceID" />
+            <PropertyRef Name="courseManualID" />
+            <PropertyRef Name="TrackManualID" />
+            <PropertyRef Name="programId" />
+            <PropertyRef Name="ProgramIntakeID" />
+            <PropertyRef Name="IntakeID" />
+          </Key>
+          <Property Name="CourseName" Type="nvarchar" MaxLength="150" />
+          <Property Name="programName" Type="nvarchar" MaxLength="255" />
+          <Property Name="IntakeNo" Type="int" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+          <Property Name="CourseInstanceID" Type="int" Nullable="false" />
+          <Property Name="courseManualID" Type="int" Nullable="false" />
+          <Property Name="TrackManualID" Type="int" Nullable="false" />
+          <Property Name="programId" Type="int" Nullable="false" />
+          <Property Name="ProgramIntakeID" Type="int" Nullable="false" />
+          <Property Name="IntakeID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Employee_metadata">
           <Key>
@@ -486,6 +519,7 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             <PropertyRef Name="subtrackID" />
             <PropertyRef Name="PlatformID" />
             <PropertyRef Name="PlatformIntakeID" />
+            
           </Key>
           <Property Name="EmployeeID" Type="int" Nullable="false" />
           <Property Name="InstructorName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -536,18 +570,6 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Employee_Employee_Type">
-          <End Role="Employee_Type" Type="Self.Employee_Type" Multiplicity="0..1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee_Type">
-              <PropertyRef Name="TypeId" />
-            </Principal>
-            <Dependent Role="Employee">
-              <PropertyRef Name="TypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Employee_Platform">
           <End Role="Platform" Type="Self.Platform" Multiplicity="0..1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
@@ -560,15 +582,27 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_employeeCourse_employee">
+        <Association Name="FK_EmployeeNotifications_Employee">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-          <End Role="InstructorCourse" Type="Self.InstructorCourse" Multiplicity="*" />
+          <End Role="EmployeeNotifications" Type="Self.EmployeeNotifications" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmployeeID" />
             </Principal>
-            <Dependent Role="InstructorCourse">
-              <PropertyRef Name="instructorID" />
+            <Dependent Role="EmployeeNotifications">
+              <PropertyRef Name="Emp_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeNotifications_Notifications">
+          <End Role="Notifications" Type="Self.Notifications" Multiplicity="1" />
+          <End Role="EmployeeNotifications" Type="Self.EmployeeNotifications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Notifications">
+              <PropertyRef Name="Notification_Id" />
+            </Principal>
+            <Dependent Role="EmployeeNotifications">
+              <PropertyRef Name="Notification_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -633,20 +667,6 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             </Principal>
             <Dependent Role="ExternalInstructorAuthorization">
               <PropertyRef Name="Ins_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_InstructorCourse_Course">
-          <End Role="Course" Type="Self.Course" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="InstructorCourse" Type="Self.InstructorCourse" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Course">
-              <PropertyRef Name="CourseID" />
-            </Principal>
-            <Dependent Role="InstructorCourse">
-              <PropertyRef Name="courseID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -888,6 +908,34 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Student Enrollment_CourseInstanceDetails1">
+          <End Role="CourseInstanceDetails" Type="Self.CourseInstanceDetails" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Student Enrollment" Type="Self.Student Enrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseInstanceDetails">
+              <PropertyRef Name="CourseInstanceID" />
+            </Principal>
+            <Dependent Role="Student Enrollment">
+              <PropertyRef Name="CourseInstanceDetailsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student Enrollment_StudentBasicData2">
+          <End Role="StudentBasicData" Type="Self.StudentBasicData" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Student Enrollment" Type="Self.Student Enrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentBasicData">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="Student Enrollment">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_StudentAnswerQuestionInExam_Exams">
           <End Role="Exams" Type="Self.Exams" Multiplicity="1" />
           <End Role="StudentAnswerQuestionInExam" Type="Self.StudentAnswerQuestionInExam" Multiplicity="*" />
@@ -1046,15 +1094,27 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TopicsInCourse_Course">
-          <End Role="Course" Type="Self.Course" Multiplicity="1" />
-          <End Role="TopicsInCourse" Type="Self.TopicsInCourse" Multiplicity="*" />
+        <Association Name="FK_TrackManager_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="TrackManager" Type="Self.TrackManager" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Course">
-              <PropertyRef Name="CourseID" />
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
             </Principal>
-            <Dependent Role="TopicsInCourse">
-              <PropertyRef Name="Crs_Id" />
+            <Dependent Role="TrackManager">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrackManager_PlatfromIntake">
+          <End Role="PlatfromIntake" Type="Self.PlatfromIntake" Multiplicity="0..1" />
+          <End Role="TrackManager" Type="Self.TrackManager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlatfromIntake">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Principal>
+            <Dependent Role="TrackManager">
+              <PropertyRef Name="PlatformIntakeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1112,36 +1172,14 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="GetAllEmp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="flag" Type="int" Mode="In" />
-          <Parameter Name="deptid" Type="int" Mode="In" />
-          <Parameter Name="employeeid" Type="int" Mode="In" />
-        </Function>
         <Function Name="GetAllEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllInstructor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllIntake" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubTrackID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetAllsubTrack" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetEmployeeByBranch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="BranchID" Type="int" Mode="In" />
-        </Function>
-        <Function Name="GetEmployeeByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Instructorname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="GetEmployeeName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="EmployeeName" Type="nvarchar" Mode="In" />
-          <Parameter Name="BranchID" Type="int" Mode="In" />
-          <Parameter Name="PlatformID" Type="int" Mode="In" />
-          <Parameter Name="RoleID" Type="int" Mode="In" />
-          <Parameter Name="TypeID" Type="int" Mode="In" />
-          <Parameter Name="ArabicName" Type="nvarchar" Mode="In" />
-          <Parameter Name="CertificateID" Type="int" Mode="In" />
-          <Parameter Name="FirstNameEn" Type="varchar" Mode="In" />
-          <Parameter Name="SecondNameEn" Type="varchar" Mode="In" />
-          <Parameter Name="OrgBranch" Type="int" Mode="In" />
-          <Parameter Name="ThirdNameEn" Type="varchar" Mode="In" />
-          <Parameter Name="FourthNameEn" Type="varchar" Mode="In" />
-          <Parameter Name="FirstNameAr" Type="nvarchar" Mode="In" />
-          <Parameter Name="SecondNameAr" Type="nvarchar" Mode="In" />
-          <Parameter Name="ThirdNameAr" Type="nvarchar" Mode="In" />
-          <Parameter Name="FourthNameAr" Type="nvarchar" Mode="In" />
-          <Parameter Name="IntakeID" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="ExaminationNSStoreContainer">
           <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
@@ -1151,20 +1189,21 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <EntitySet Name="CourseManual" EntityType="Self.CourseManual" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Employee_Type" EntityType="Self.Employee_Type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EvaluationCriteria" EntityType="Self.EvaluationCriteria" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="InstructorCourse" EntityType="Self.InstructorCourse" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="InstructorType" EntityType="Self.InstructorType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Intake" EntityType="Self.Intake" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Platform" EntityType="Self.Platform" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlatformDepartment" EntityType="Self.PlatformDepartment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlatfromIntake" EntityType="Self.PlatfromIntake" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProgramIntake" EntityType="Self.ProgramIntake" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="programs" EntityType="Self.programs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student Enrollment" EntityType="Self.Student Enrollment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentBasicData" EntityType="Self.StudentBasicData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="subTrack" EntityType="Self.subTrack" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrackManager" EntityType="Self.TrackManager" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TrackManual" EntityType="Self.TrackManual" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TrackSupervisor" EntityType="Self.TrackSupervisor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DepartmentsExam" EntityType="Self.DepartmentsExam" Schema="Examination" store:Type="Tables" />
+          <EntitySet Name="EmployeeNotifications" EntityType="Self.EmployeeNotifications" Schema="Examination" store:Type="Tables" />
           <EntitySet Name="Exams" EntityType="Self.Exams" Schema="Examination" store:Type="Tables" />
           <EntitySet Name="ExternalInstructorAuthorization" EntityType="Self.ExternalInstructorAuthorization" Schema="Examination" store:Type="Tables" />
           <EntitySet Name="InstructorNotifications" EntityType="Self.InstructorNotifications" Schema="Examination" store:Type="Tables" />
@@ -1196,6 +1235,20 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
     [evaluationiteminstructor].[itemgrade] AS [itemgrade]
     FROM [dbo].[evaluationiteminstructor] AS [evaluationiteminstructor]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="CoursesDataView" EntityType="Self.CoursesDataView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CoursesDataView].[CourseName] AS [CourseName], 
+    [CoursesDataView].[programName] AS [programName], 
+    [CoursesDataView].[IntakeNo] AS [IntakeNo], 
+    [CoursesDataView].[CourseID] AS [CourseID], 
+    [CoursesDataView].[CourseInstanceID] AS [CourseInstanceID], 
+    [CoursesDataView].[courseManualID] AS [courseManualID], 
+    [CoursesDataView].[TrackManualID] AS [TrackManualID], 
+    [CoursesDataView].[programId] AS [programId], 
+    [CoursesDataView].[ProgramIntakeID] AS [ProgramIntakeID], 
+    [CoursesDataView].[IntakeID] AS [IntakeID]
+    FROM [dbo].[CoursesDataView] AS [CoursesDataView]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="Employee_metadata" EntityType="Self.Employee_metadata" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Employee_metadata].[EmployeeID] AS [EmployeeID], 
@@ -1222,17 +1275,17 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             <End Role="PlatfromIntake" EntitySet="PlatfromIntake" />
             <End Role="DepartmentsExam" EntitySet="DepartmentsExam" />
           </AssociationSet>
-          <AssociationSet Name="FK_Employee_Employee_Type" Association="Self.FK_Employee_Employee_Type">
-            <End Role="Employee_Type" EntitySet="Employee_Type" />
-            <End Role="Employee" EntitySet="Employee" />
-          </AssociationSet>
           <AssociationSet Name="FK_Employee_Platform" Association="Self.FK_Employee_Platform">
             <End Role="Platform" EntitySet="Platform" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
-          <AssociationSet Name="FK_employeeCourse_employee" Association="Self.FK_employeeCourse_employee">
+          <AssociationSet Name="FK_EmployeeNotifications_Employee" Association="Self.FK_EmployeeNotifications_Employee">
             <End Role="Employee" EntitySet="Employee" />
-            <End Role="InstructorCourse" EntitySet="InstructorCourse" />
+            <End Role="EmployeeNotifications" EntitySet="EmployeeNotifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeNotifications_Notifications" Association="Self.FK_EmployeeNotifications_Notifications">
+            <End Role="Notifications" EntitySet="Notifications" />
+            <End Role="EmployeeNotifications" EntitySet="EmployeeNotifications" />
           </AssociationSet>
           <AssociationSet Name="FK_ExamCriteria2_CourseEvaluationItems" Association="Self.FK_ExamCriteria2_CourseEvaluationItems">
             <End Role="CourseEvaluationItems" EntitySet="CourseEvaluationItems" />
@@ -1253,10 +1306,6 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <AssociationSet Name="FK_ExternalInstructorAuthorization_Employee" Association="Self.FK_ExternalInstructorAuthorization_Employee">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="ExternalInstructorAuthorization" EntitySet="ExternalInstructorAuthorization" />
-          </AssociationSet>
-          <AssociationSet Name="FK_InstructorCourse_Course" Association="Self.FK_InstructorCourse_Course">
-            <End Role="Course" EntitySet="Course" />
-            <End Role="InstructorCourse" EntitySet="InstructorCourse" />
           </AssociationSet>
           <AssociationSet Name="FK_InstructorNotifications_Employee" Association="Self.FK_InstructorNotifications_Employee">
             <End Role="Employee" EntitySet="Employee" />
@@ -1334,6 +1383,14 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             <End Role="Questions" EntitySet="Questions" />
             <End Role="QuestionsInExam" EntitySet="QuestionsInExam" />
           </AssociationSet>
+          <AssociationSet Name="FK_Student Enrollment_CourseInstanceDetails1" Association="Self.FK_Student Enrollment_CourseInstanceDetails1">
+            <End Role="CourseInstanceDetails" EntitySet="CourseInstanceDetails" />
+            <End Role="Student Enrollment" EntitySet="Student Enrollment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student Enrollment_StudentBasicData2" Association="Self.FK_Student Enrollment_StudentBasicData2">
+            <End Role="StudentBasicData" EntitySet="StudentBasicData" />
+            <End Role="Student Enrollment" EntitySet="Student Enrollment" />
+          </AssociationSet>
           <AssociationSet Name="FK_StudentAnswerQuestionInExam_Exams" Association="Self.FK_StudentAnswerQuestionInExam_Exams">
             <End Role="Exams" EntitySet="Exams" />
             <End Role="StudentAnswerQuestionInExam" EntitySet="StudentAnswerQuestionInExam" />
@@ -1386,9 +1443,13 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             <End Role="Employee" EntitySet="Employee" />
             <End Role="SupervisiorsConnectionIds" EntitySet="SupervisiorsConnectionIds" />
           </AssociationSet>
-          <AssociationSet Name="FK_TopicsInCourse_Course" Association="Self.FK_TopicsInCourse_Course">
-            <End Role="Course" EntitySet="Course" />
-            <End Role="TopicsInCourse" EntitySet="TopicsInCourse" />
+          <AssociationSet Name="FK_TrackManager_Employee" Association="Self.FK_TrackManager_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="TrackManager" EntitySet="TrackManager" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrackManager_PlatfromIntake" Association="Self.FK_TrackManager_PlatfromIntake">
+            <End Role="PlatfromIntake" EntitySet="PlatfromIntake" />
+            <End Role="TrackManager" EntitySet="TrackManager" />
           </AssociationSet>
           <AssociationSet Name="FK_TrackManual_courseManual" Association="Self.FK_TrackManual_courseManual">
             <End Role="CourseManual" EntitySet="CourseManual" />
@@ -1407,7 +1468,8 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             <End Role="TrackSupervisor" EntitySet="TrackSupervisor" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ExaminationNS" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1430,8 +1492,6 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <Property Name="CourseName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="CategoryID" Type="Int32" />
           <NavigationProperty Name="CourseManuals" Relationship="Self.FK_courseManual_Course" FromRole="Course" ToRole="CourseManual" />
-          <NavigationProperty Name="InstructorCourses" Relationship="Self.FK_InstructorCourse_Course" FromRole="Course" ToRole="InstructorCourse" />
-          <NavigationProperty Name="TopicsInCourses" Relationship="Self.FK_TopicsInCourse_Course" FromRole="Course" ToRole="TopicsInCourse" />
         </EntityType>
         <EntityType Name="CourseEvaluationItem">
           <Key>
@@ -1449,6 +1509,7 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <Property Name="TrackManualID" Type="Int32" />
           <Property Name="GroupID" Type="Int32" />
           <Property Name="finished" Type="Int32" />
+          <NavigationProperty Name="Student_Enrollment" Relationship="Self.FK_Student_Enrollment_CourseInstanceDetails1" FromRole="CourseInstanceDetails" ToRole="Student_Enrollment" />
         </EntityType>
         <EntityType Name="CourseManual">
           <Key>
@@ -1546,28 +1607,18 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <Property Name="Religionid" Type="Int32" />
           <Property Name="empno" Type="Int32" />
           <Property Name="cat" Type="Int32" />
-          <NavigationProperty Name="Employee_Type" Relationship="Self.FK_Employee_Employee_Type" FromRole="Employee" ToRole="Employee_Type" />
           <NavigationProperty Name="Platform" Relationship="Self.FK_Employee_Platform" FromRole="Employee" ToRole="Platform" />
-          <NavigationProperty Name="InstructorCourses" Relationship="Self.FK_employeeCourse_employee" FromRole="Employee" ToRole="InstructorCourse" />
+          <NavigationProperty Name="EmployeeNotifications" Relationship="Self.FK_EmployeeNotifications_Employee" FromRole="Employee" ToRole="EmployeeNotifications" />
           <NavigationProperty Name="Exams" Relationship="Self.FK_Exams_Employee" FromRole="Employee" ToRole="Exams" />
           <NavigationProperty Name="ExternalInstructorAuthorizations" Relationship="Self.FK_ExternalInstructorAuthorization_Employee" FromRole="Employee" ToRole="ExternalInstructorAuthorization" />
+          <NavigationProperty Name="InstructorNotifications" Relationship="Self.FK_InstructorNotifications_Employee" FromRole="Employee" ToRole="InstructorNotifications" />
           <NavigationProperty Name="InstructorsConnectionIds" Relationship="Self.FK_InstructorsConnectionIds_Employee" FromRole="Employee" ToRole="InstructorsConnectionIds" />
           <NavigationProperty Name="Platforms" Relationship="Self.FK_Platform_Employee" FromRole="Employee" ToRole="Platform" />
           <NavigationProperty Name="Questions" Relationship="Self.FK_Questions_Employee1" FromRole="Employee" ToRole="Questions" />
+          <NavigationProperty Name="SupervisiorNotifications" Relationship="Self.FK_SupervisiorNotifications_Employee" FromRole="Employee" ToRole="SupervisiorNotifications" />
           <NavigationProperty Name="SupervisiorsConnectionIds" Relationship="Self.FK_SupervisiorsConnectionIds_Employee" FromRole="Employee" ToRole="SupervisiorsConnectionIds" />
+          <NavigationProperty Name="TrackManagers" Relationship="Self.FK_TrackManager_Employee" FromRole="Employee" ToRole="TrackManager" />
           <NavigationProperty Name="TrackSupervisors" Relationship="Self.FK_TrackSupervisor_Employee" FromRole="Employee" ToRole="TrackSupervisor" />
-          <NavigationProperty Name="Notifications" Relationship="Self.InstructorNotifications" FromRole="Employee" ToRole="Notifications" />
-          <NavigationProperty Name="Notifications1" Relationship="Self.SupervisiorNotifications" FromRole="Employee" ToRole="Notifications" />
-        </EntityType>
-        <EntityType Name="Employee_Type">
-          <Key>
-            <PropertyRef Name="TypeId" />
-          </Key>
-          <Property Name="TypeId" Type="Int32" Nullable="false" />
-          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="levelid" Type="Int32" />
-          <Property Name="msrepl_tran_version" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Employee_Type" FromRole="Employee_Type" ToRole="Employee" />
         </EntityType>
         <EntityType Name="EvaluationCriteria">
           <Key>
@@ -1579,25 +1630,6 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <Property Name="CourseManualID" Type="Int32" />
           <NavigationProperty Name="CourseEvaluationItem" Relationship="Self.FK_ExamCriteria2_CourseEvaluationItems" FromRole="EvaluationCriteria" ToRole="CourseEvaluationItems" />
           <NavigationProperty Name="CourseManual" Relationship="Self.FK_ExamCriteria2_courseManual" FromRole="EvaluationCriteria" ToRole="CourseManual" />
-        </EntityType>
-        <EntityType Name="InstructorCourse">
-          <Key>
-            <PropertyRef Name="InstructorCourseID" />
-          </Key>
-          <Property Name="InstructorCourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="instructorID" Type="Int32" Nullable="false" />
-          <Property Name="courseID" Type="Int32" />
-          <Property Name="TypeId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Course" Relationship="Self.FK_InstructorCourse_Course" FromRole="InstructorCourse" ToRole="Course" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_employeeCourse_employee" FromRole="InstructorCourse" ToRole="Employee" />
-        </EntityType>
-        <EntityType Name="InstructorType">
-          <Key>
-            <PropertyRef Name="TypeID" />
-          </Key>
-          <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="msrepl_tran_version" Type="Guid" Nullable="false" />
         </EntityType>
         <EntityType Name="Intake">
           <Key>
@@ -1627,6 +1659,17 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <NavigationProperty Name="Employee" Relationship="Self.FK_Platform_Employee" FromRole="Platform" ToRole="Employee" />
           <NavigationProperty Name="PlatfromIntakes" Relationship="Self.FK_PlatfromIntake2_Platform" FromRole="Platform" ToRole="PlatfromIntake" />
         </EntityType>
+        <EntityType Name="PlatformDepartment">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+            <PropertyRef Name="BranchID" />
+            <PropertyRef Name="PlatformID" />
+          </Key>
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+          <Property Name="BranchID" Type="Int32" Nullable="false" />
+          <Property Name="PlatformID" Type="Int32" Nullable="false" />
+          <Property Name="msrepl_tran_version" Type="Guid" Nullable="false" />
+        </EntityType>
         <EntityType Name="PlatfromIntake">
           <Key>
             <PropertyRef Name="PlatformIntakeID" />
@@ -1644,6 +1687,7 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <NavigationProperty Name="ProgramIntake" Relationship="Self.FK_PlatfromIntake2_ProgramIntake" FromRole="PlatfromIntake" ToRole="ProgramIntake" />
           <NavigationProperty Name="subTrack" Relationship="Self.FK_PlatfromIntake2_subTrack" FromRole="PlatfromIntake" ToRole="subTrack" />
           <NavigationProperty Name="StudentBasicDatas" Relationship="Self.FK_StudentBasicData2_PlatfromIntake2" FromRole="PlatfromIntake" ToRole="StudentBasicData" />
+          <NavigationProperty Name="TrackManagers" Relationship="Self.FK_TrackManager_PlatfromIntake" FromRole="PlatfromIntake" ToRole="TrackManager" />
           <NavigationProperty Name="TrackManuals" Relationship="Self.FK_TrackManual_PlatfromIntake1" FromRole="PlatfromIntake" ToRole="TrackManual" />
           <NavigationProperty Name="TrackSupervisors" Relationship="Self.FK_TrackSupervisor_PlatfromIntake" FromRole="PlatfromIntake" ToRole="TrackSupervisor" />
         </EntityType>
@@ -1665,6 +1709,16 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <Property Name="programName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="programnotes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ProgramIntakes" Relationship="Self.FK_ProgramIntake_programs" FromRole="programs" ToRole="ProgramIntake" />
+        </EntityType>
+        <EntityType Name="Student_Enrollment">
+          <Key>
+            <PropertyRef Name="StudentEnrollmentID" />
+          </Key>
+          <Property Name="StudentEnrollmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" />
+          <Property Name="CourseInstanceDetailsID" Type="Int32" />
+          <NavigationProperty Name="CourseInstanceDetail" Relationship="Self.FK_Student_Enrollment_CourseInstanceDetails1" FromRole="Student_Enrollment" ToRole="CourseInstanceDetails" />
+          <NavigationProperty Name="StudentBasicData" Relationship="Self.FK_Student_Enrollment_StudentBasicData2" FromRole="Student_Enrollment" ToRole="StudentBasicData" />
         </EntityType>
         <EntityType Name="StudentBasicData">
           <Key>
@@ -1709,11 +1763,12 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <Property Name="SchoolName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PlatfromIntake" Relationship="Self.FK_StudentBasicData2_PlatfromIntake2" FromRole="StudentBasicData" ToRole="PlatfromIntake" />
+          <NavigationProperty Name="Student_Enrollment" Relationship="Self.FK_Student_Enrollment_StudentBasicData2" FromRole="StudentBasicData" ToRole="Student_Enrollment" />
           <NavigationProperty Name="NewDateExamForPermittedStudents" Relationship="Self.FK_NewDateExamForPermittedStudent_StudentBasicData" FromRole="StudentBasicData" ToRole="NewDateExamForPermittedStudent" />
           <NavigationProperty Name="StudentAnswerQuestionInExams" Relationship="Self.FK_StudentAnswerQuestionInExam_StudentBasicData" FromRole="StudentBasicData" ToRole="StudentAnswerQuestionInExam" />
+          <NavigationProperty Name="StudentNotifications" Relationship="Self.FK_StudentNotifications_StudentBasicData" FromRole="StudentBasicData" ToRole="StudentNotifications" />
           <NavigationProperty Name="StudentPermissionInExams" Relationship="Self.FK_StudentPermissionInExam_StudentBasicData" FromRole="StudentBasicData" ToRole="StudentPermissionInExam" />
           <NavigationProperty Name="StudentsConnectionIds" Relationship="Self.FK_StudentsConnectionIds_StudentBasicData" FromRole="StudentBasicData" ToRole="StudentsConnectionIds" />
-          <NavigationProperty Name="Notifications" Relationship="Self.StudentNotifications" FromRole="StudentBasicData" ToRole="Notifications" />
         </EntityType>
         <EntityType Name="subTrack">
           <Key>
@@ -1723,6 +1778,16 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <Property Name="subtrackName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PlatfromIntakes" Relationship="Self.FK_PlatfromIntake2_subTrack" FromRole="subTrack" ToRole="PlatfromIntake" />
+        </EntityType>
+        <EntityType Name="TrackManager">
+          <Key>
+            <PropertyRef Name="TrackManagerID" />
+          </Key>
+          <Property Name="TrackManagerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="PlatformIntakeID" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_TrackManager_Employee" FromRole="TrackManager" ToRole="Employee" />
+          <NavigationProperty Name="PlatfromIntake" Relationship="Self.FK_TrackManager_PlatfromIntake" FromRole="TrackManager" ToRole="PlatfromIntake" />
         </EntityType>
         <EntityType Name="TrackManual">
           <Key>
@@ -1757,6 +1822,16 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <NavigationProperty Name="PlatfromIntake" Relationship="Self.FK_DepartmentsExam_PlatfromIntake" FromRole="DepartmentsExam" ToRole="PlatfromIntake" />
           <NavigationProperty Name="Exam" Relationship="Self.FK_DepartmentsExam_Exams" FromRole="DepartmentsExam" ToRole="Exams" />
         </EntityType>
+        <EntityType Name="EmployeeNotification">
+          <Key>
+            <PropertyRef Name="Notify_Id" />
+          </Key>
+          <Property Name="Emp_Id" Type="Int32" Nullable="false" />
+          <Property Name="Notification_Id" Type="Int32" Nullable="false" />
+          <Property Name="Notify_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_EmployeeNotifications_Employee" FromRole="EmployeeNotifications" ToRole="Employee" />
+          <NavigationProperty Name="Notification" Relationship="Self.FK_EmployeeNotifications_Notifications" FromRole="EmployeeNotifications" ToRole="Notifications" />
+        </EntityType>
         <EntityType Name="Exam">
           <Key>
             <PropertyRef Name="Exam_Id" />
@@ -1768,6 +1843,7 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <Property Name="Ins_Id" Type="Int32" />
           <Property Name="Exam_Corrected" Type="Boolean" />
           <Property Name="Exam_Duration" Type="Int32" />
+          <Property Name="Exam_FullDegree" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="PlatformIntake_Id" Type="Int32" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Exams_Employee" FromRole="Exams" ToRole="Employee" />
           <NavigationProperty Name="PlatfromIntake" Relationship="Self.FK_Exams_PlatfromIntake" FromRole="Exams" ToRole="PlatfromIntake" />
@@ -1786,6 +1862,16 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <Property Name="Code" Type="Int32" Nullable="false" />
           <Property Name="Expiration_Date" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_ExternalInstructorAuthorization_Employee" FromRole="ExternalInstructorAuthorization" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="InstructorNotification">
+          <Key>
+            <PropertyRef Name="Notify_Id" />
+          </Key>
+          <Property Name="Ins_Id" Type="Int32" Nullable="false" />
+          <Property Name="Notification_Id" Type="Int32" Nullable="false" />
+          <Property Name="Notify_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_InstructorNotifications_Employee" FromRole="InstructorNotifications" ToRole="Employee" />
+          <NavigationProperty Name="Notification" Relationship="Self.FK_InstructorNotifications_Notifications1" FromRole="InstructorNotifications" ToRole="Notifications" />
         </EntityType>
         <EntityType Name="InstructorsConnectionId">
           <Key>
@@ -1815,9 +1901,10 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <Property Name="Notification_Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Is_Read" Type="Boolean" />
           <Property Name="Creation_Time" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Employees" Relationship="Self.InstructorNotifications" FromRole="Notifications" ToRole="Employee" />
-          <NavigationProperty Name="StudentBasicDatas" Relationship="Self.StudentNotifications" FromRole="Notifications" ToRole="StudentBasicData" />
-          <NavigationProperty Name="Employees1" Relationship="Self.SupervisiorNotifications" FromRole="Notifications" ToRole="Employee" />
+          <NavigationProperty Name="EmployeeNotifications" Relationship="Self.FK_EmployeeNotifications_Notifications" FromRole="Notifications" ToRole="EmployeeNotifications" />
+          <NavigationProperty Name="InstructorNotifications" Relationship="Self.FK_InstructorNotifications_Notifications1" FromRole="Notifications" ToRole="InstructorNotifications" />
+          <NavigationProperty Name="StudentNotifications" Relationship="Self.FK_StudentNotifications_Notifications1" FromRole="Notifications" ToRole="StudentNotifications" />
+          <NavigationProperty Name="SupervisiorNotifications" Relationship="Self.FK_SupervisiorNotifications_Notifications1" FromRole="Notifications" ToRole="SupervisiorNotifications" />
         </EntityType>
         <EntityType Name="QuestionAnswer">
           <Key>
@@ -1885,6 +1972,16 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <NavigationProperty Name="Question" Relationship="Self.FK_StudentMultiAnswersQuestion_Questions" FromRole="StudentMultiAnswersQuestion" ToRole="Questions" />
           <NavigationProperty Name="StudentAnswerQuestionInExam" Relationship="Self.FK_StudentMultiAnswersQuestion_StudentAnswerQuestionInExam" FromRole="StudentMultiAnswersQuestion" ToRole="StudentAnswerQuestionInExam" />
         </EntityType>
+        <EntityType Name="StudentNotification">
+          <Key>
+            <PropertyRef Name="Notify_Id" />
+          </Key>
+          <Property Name="Student_Id" Type="Int32" Nullable="false" />
+          <Property Name="Notification_Id" Type="Int32" Nullable="false" />
+          <Property Name="Notify_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="StudentBasicData" Relationship="Self.FK_StudentNotifications_StudentBasicData" FromRole="StudentNotifications" ToRole="StudentBasicData" />
+          <NavigationProperty Name="Notification" Relationship="Self.FK_StudentNotifications_Notifications1" FromRole="StudentNotifications" ToRole="Notifications" />
+        </EntityType>
         <EntityType Name="StudentPermissionInExam">
           <Key>
             <PropertyRef Name="Std_Id" />
@@ -1905,6 +2002,16 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <Property Name="Connection_Ids" Type="Guid" Nullable="false" />
           <NavigationProperty Name="StudentBasicData" Relationship="Self.FK_StudentsConnectionIds_StudentBasicData" FromRole="StudentsConnectionIds" ToRole="StudentBasicData" />
         </EntityType>
+        <EntityType Name="SupervisiorNotification">
+          <Key>
+            <PropertyRef Name="Notify_Id" />
+          </Key>
+          <Property Name="Supervisior_Id" Type="Int32" Nullable="false" />
+          <Property Name="Notification_Id" Type="Int32" Nullable="false" />
+          <Property Name="Notify_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_SupervisiorNotifications_Employee" FromRole="SupervisiorNotifications" ToRole="Employee" />
+          <NavigationProperty Name="Notification" Relationship="Self.FK_SupervisiorNotifications_Notifications1" FromRole="SupervisiorNotifications" ToRole="Notifications" />
+        </EntityType>
         <EntityType Name="SupervisiorsConnectionId">
           <Key>
             <PropertyRef Name="Supv_Id" />
@@ -1921,7 +2028,6 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <Property Name="Topic_Id" Type="Int32" Nullable="false" />
           <Property Name="Topic_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Crs_Id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Course" Relationship="Self.FK_TopicsInCourse_Course" FromRole="TopicsInCourse" ToRole="Course" />
           <NavigationProperty Name="Questions" Relationship="Self.FK_Questions_TopicsInCourse" FromRole="TopicsInCourse" ToRole="Questions" />
         </EntityType>
         <EntityType Name="evaluationiteminstructor">
@@ -1937,6 +2043,27 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <Property Name="USERID" Type="Int32" />
           <Property Name="it1" Type="Double" />
           <Property Name="itemgrade" Type="Binary" MaxLength="50" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="CoursesDataView">
+          <Key>
+            <PropertyRef Name="CourseID" />
+            <PropertyRef Name="CourseInstanceID" />
+            <PropertyRef Name="courseManualID" />
+            <PropertyRef Name="TrackManualID" />
+            <PropertyRef Name="programId" />
+            <PropertyRef Name="ProgramIntakeID" />
+            <PropertyRef Name="IntakeID" />
+          </Key>
+          <Property Name="CourseName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="programName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IntakeNo" Type="Int32" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <Property Name="CourseInstanceID" Type="Int32" Nullable="false" />
+          <Property Name="courseManualID" Type="Int32" Nullable="false" />
+          <Property Name="TrackManualID" Type="Int32" Nullable="false" />
+          <Property Name="programId" Type="Int32" Nullable="false" />
+          <Property Name="ProgramIntakeID" Type="Int32" Nullable="false" />
+          <Property Name="IntakeID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee_metadata">
           <Key>
@@ -1986,32 +2113,6 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_InstructorCourse_Course">
-          <End Role="Course" Type="Self.Course" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="InstructorCourse" Type="Self.InstructorCourse" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Course">
-              <PropertyRef Name="CourseID" />
-            </Principal>
-            <Dependent Role="InstructorCourse">
-              <PropertyRef Name="courseID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TopicsInCourse_Course">
-          <End Role="Course" Type="Self.Course" Multiplicity="1" />
-          <End Role="TopicsInCourse" Type="Self.TopicsInCourse" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Course">
-              <PropertyRef Name="CourseID" />
-            </Principal>
-            <Dependent Role="TopicsInCourse">
-              <PropertyRef Name="Crs_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ExamCriteria2_CourseEvaluationItems">
           <End Role="CourseEvaluationItems" Type="Self.CourseEvaluationItem" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -2023,6 +2124,20 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             </Principal>
             <Dependent Role="EvaluationCriteria">
               <PropertyRef Name="EvalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Enrollment_CourseInstanceDetails1">
+          <End Role="CourseInstanceDetails" Type="Self.CourseInstanceDetail" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Student_Enrollment" Type="Self.Student_Enrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseInstanceDetails">
+              <PropertyRef Name="CourseInstanceID" />
+            </Principal>
+            <Dependent Role="Student_Enrollment">
+              <PropertyRef Name="CourseInstanceDetailsID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2066,18 +2181,6 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Employee_Employee_Type">
-          <End Role="Employee_Type" Type="Self.Employee_Type" Multiplicity="0..1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee_Type">
-              <PropertyRef Name="TypeId" />
-            </Principal>
-            <Dependent Role="Employee">
-              <PropertyRef Name="TypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Employee_Platform">
           <End Role="Platform" Type="Self.Platform" Multiplicity="0..1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
@@ -2090,15 +2193,15 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_employeeCourse_employee">
+        <Association Name="FK_EmployeeNotifications_Employee">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-          <End Role="InstructorCourse" Type="Self.InstructorCourse" Multiplicity="*" />
+          <End Role="EmployeeNotifications" Type="Self.EmployeeNotification" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmployeeID" />
             </Principal>
-            <Dependent Role="InstructorCourse">
-              <PropertyRef Name="instructorID" />
+            <Dependent Role="EmployeeNotifications">
+              <PropertyRef Name="Emp_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2122,6 +2225,18 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
               <PropertyRef Name="EmployeeID" />
             </Principal>
             <Dependent Role="ExternalInstructorAuthorization">
+              <PropertyRef Name="Ins_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InstructorNotifications_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="InstructorNotifications" Type="Self.InstructorNotification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="InstructorNotifications">
               <PropertyRef Name="Ins_Id" />
             </Dependent>
           </ReferentialConstraint>
@@ -2162,6 +2277,18 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SupervisiorNotifications_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="SupervisiorNotifications" Type="Self.SupervisiorNotification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="SupervisiorNotifications">
+              <PropertyRef Name="Supervisior_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SupervisiorsConnectionIds_Employee">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="SupervisiorsConnectionIds" Type="Self.SupervisiorsConnectionId" Multiplicity="*" />
@@ -2171,6 +2298,18 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             </Principal>
             <Dependent Role="SupervisiorsConnectionIds">
               <PropertyRef Name="Supv_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrackManager_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="TrackManager" Type="Self.TrackManager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="TrackManager">
+              <PropertyRef Name="EmployeeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2268,6 +2407,18 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TrackManager_PlatfromIntake">
+          <End Role="PlatfromIntake" Type="Self.PlatfromIntake" Multiplicity="0..1" />
+          <End Role="TrackManager" Type="Self.TrackManager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlatfromIntake">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Principal>
+            <Dependent Role="TrackManager">
+              <PropertyRef Name="PlatformIntakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TrackManual_PlatfromIntake1">
           <End Role="PlatfromIntake" Type="Self.PlatfromIntake" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -2308,6 +2459,20 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Student_Enrollment_StudentBasicData2">
+          <End Role="StudentBasicData" Type="Self.StudentBasicData" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Student_Enrollment" Type="Self.Student_Enrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentBasicData">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="Student_Enrollment">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_NewDateExamForPermittedStudent_StudentBasicData">
           <End Role="StudentBasicData" Type="Self.StudentBasicData" Multiplicity="1" />
           <End Role="NewDateExamForPermittedStudent" Type="Self.NewDateExamForPermittedStudent" Multiplicity="*" />
@@ -2329,6 +2494,18 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             </Principal>
             <Dependent Role="StudentAnswerQuestionInExam">
               <PropertyRef Name="Std_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentNotifications_StudentBasicData">
+          <End Role="StudentBasicData" Type="Self.StudentBasicData" Multiplicity="1" />
+          <End Role="StudentNotifications" Type="Self.StudentNotification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentBasicData">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="StudentNotifications">
+              <PropertyRef Name="Student_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2365,6 +2542,18 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             </Principal>
             <Dependent Role="DepartmentsExam">
               <PropertyRef Name="Exam_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeNotifications_Notifications">
+          <End Role="Notifications" Type="Self.Notification" Multiplicity="1" />
+          <End Role="EmployeeNotifications" Type="Self.EmployeeNotification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Notifications">
+              <PropertyRef Name="Notification_Id" />
+            </Principal>
+            <Dependent Role="EmployeeNotifications">
+              <PropertyRef Name="Notification_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2413,6 +2602,42 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             </Principal>
             <Dependent Role="StudentPermissionInExam">
               <PropertyRef Name="Exam_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InstructorNotifications_Notifications1">
+          <End Role="Notifications" Type="Self.Notification" Multiplicity="1" />
+          <End Role="InstructorNotifications" Type="Self.InstructorNotification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Notifications">
+              <PropertyRef Name="Notification_Id" />
+            </Principal>
+            <Dependent Role="InstructorNotifications">
+              <PropertyRef Name="Notification_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentNotifications_Notifications1">
+          <End Role="Notifications" Type="Self.Notification" Multiplicity="1" />
+          <End Role="StudentNotifications" Type="Self.StudentNotification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Notifications">
+              <PropertyRef Name="Notification_Id" />
+            </Principal>
+            <Dependent Role="StudentNotifications">
+              <PropertyRef Name="Notification_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupervisiorNotifications_Notifications1">
+          <End Role="Notifications" Type="Self.Notification" Multiplicity="1" />
+          <End Role="SupervisiorNotifications" Type="Self.SupervisiorNotification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Notifications">
+              <PropertyRef Name="Notification_Id" />
+            </Principal>
+            <Dependent Role="SupervisiorNotifications">
+              <PropertyRef Name="Notification_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2476,21 +2701,9 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="InstructorNotifications">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-          <End Role="Notifications" Type="Self.Notification" Multiplicity="*" />
-        </Association>
         <Association Name="PointsInQuestion">
           <End Role="Questions" Type="Self.Question" Multiplicity="*" />
           <End Role="Questions1" Type="Self.Question" Multiplicity="*" />
-        </Association>
-        <Association Name="StudentNotifications">
-          <End Role="Notifications" Type="Self.Notification" Multiplicity="*" />
-          <End Role="StudentBasicData" Type="Self.StudentBasicData" Multiplicity="*" />
-        </Association>
-        <Association Name="SupervisiorNotifications">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-          <End Role="Notifications" Type="Self.Notification" Multiplicity="*" />
         </Association>
         <EntityContainer Name="DataBaseCTX" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Branches" EntityType="Self.Branch" />
@@ -2500,22 +2713,24 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <EntitySet Name="CourseManuals" EntityType="Self.CourseManual" />
           <EntitySet Name="Departments" EntityType="Self.Department" />
           <EntitySet Name="Employees" EntityType="Self.Employee" />
-          <EntitySet Name="Employee_Type" EntityType="Self.Employee_Type" />
           <EntitySet Name="EvaluationCriterias" EntityType="Self.EvaluationCriteria" />
-          <EntitySet Name="InstructorCourses" EntityType="Self.InstructorCourse" />
-          <EntitySet Name="InstructorTypes" EntityType="Self.InstructorType" />
           <EntitySet Name="Intakes" EntityType="Self.Intake" />
           <EntitySet Name="Platforms" EntityType="Self.Platform" />
+          <EntitySet Name="PlatformDepartments" EntityType="Self.PlatformDepartment" />
           <EntitySet Name="PlatfromIntakes" EntityType="Self.PlatfromIntake" />
           <EntitySet Name="ProgramIntakes" EntityType="Self.ProgramIntake" />
           <EntitySet Name="programs" EntityType="Self.program" />
+          <EntitySet Name="Student_Enrollments" EntityType="Self.Student_Enrollment" />
           <EntitySet Name="StudentBasicDatas" EntityType="Self.StudentBasicData" />
           <EntitySet Name="subTracks" EntityType="Self.subTrack" />
+          <EntitySet Name="TrackManagers" EntityType="Self.TrackManager" />
           <EntitySet Name="TrackManuals" EntityType="Self.TrackManual" />
           <EntitySet Name="TrackSupervisors" EntityType="Self.TrackSupervisor" />
           <EntitySet Name="DepartmentsExams" EntityType="Self.DepartmentsExam" />
+          <EntitySet Name="EmployeeNotifications" EntityType="Self.EmployeeNotification" />
           <EntitySet Name="Exams" EntityType="Self.Exam" />
           <EntitySet Name="ExternalInstructorAuthorizations" EntityType="Self.ExternalInstructorAuthorization" />
+          <EntitySet Name="InstructorNotifications" EntityType="Self.InstructorNotification" />
           <EntitySet Name="InstructorsConnectionIds" EntityType="Self.InstructorsConnectionId" />
           <EntitySet Name="NewDateExamForPermittedStudents" EntityType="Self.NewDateExamForPermittedStudent" />
           <EntitySet Name="Notifications" EntityType="Self.Notification" />
@@ -2524,11 +2739,14 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <EntitySet Name="QuestionsInExams" EntityType="Self.QuestionsInExam" />
           <EntitySet Name="StudentAnswerQuestionInExams" EntityType="Self.StudentAnswerQuestionInExam" />
           <EntitySet Name="StudentMultiAnswersQuestions" EntityType="Self.StudentMultiAnswersQuestion" />
+          <EntitySet Name="StudentNotifications" EntityType="Self.StudentNotification" />
           <EntitySet Name="StudentPermissionInExams" EntityType="Self.StudentPermissionInExam" />
           <EntitySet Name="StudentsConnectionIds" EntityType="Self.StudentsConnectionId" />
+          <EntitySet Name="SupervisiorNotifications" EntityType="Self.SupervisiorNotification" />
           <EntitySet Name="SupervisiorsConnectionIds" EntityType="Self.SupervisiorsConnectionId" />
           <EntitySet Name="TopicsInCourses" EntityType="Self.TopicsInCourse" />
           <EntitySet Name="evaluationiteminstructors" EntityType="Self.evaluationiteminstructor" />
+          <EntitySet Name="CoursesDataViews" EntityType="Self.CoursesDataView" />
           <EntitySet Name="Employee_metadata" EntityType="Self.Employee_metadata" />
           <AssociationSet Name="FK_PlatfromIntake2_Branch" Association="Self.FK_PlatfromIntake2_Branch">
             <End Role="Branch" EntitySet="Branches" />
@@ -2538,17 +2756,13 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             <End Role="Course" EntitySet="Courses" />
             <End Role="CourseManual" EntitySet="CourseManuals" />
           </AssociationSet>
-          <AssociationSet Name="FK_InstructorCourse_Course" Association="Self.FK_InstructorCourse_Course">
-            <End Role="Course" EntitySet="Courses" />
-            <End Role="InstructorCourse" EntitySet="InstructorCourses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TopicsInCourse_Course" Association="Self.FK_TopicsInCourse_Course">
-            <End Role="Course" EntitySet="Courses" />
-            <End Role="TopicsInCourse" EntitySet="TopicsInCourses" />
-          </AssociationSet>
           <AssociationSet Name="FK_ExamCriteria2_CourseEvaluationItems" Association="Self.FK_ExamCriteria2_CourseEvaluationItems">
             <End Role="CourseEvaluationItems" EntitySet="CourseEvaluationItems" />
             <End Role="EvaluationCriteria" EntitySet="EvaluationCriterias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Enrollment_CourseInstanceDetails1" Association="Self.FK_Student_Enrollment_CourseInstanceDetails1">
+            <End Role="CourseInstanceDetails" EntitySet="CourseInstanceDetails" />
+            <End Role="Student_Enrollment" EntitySet="Student_Enrollments" />
           </AssociationSet>
           <AssociationSet Name="FK_ExamCriteria2_courseManual" Association="Self.FK_ExamCriteria2_courseManual">
             <End Role="CourseManual" EntitySet="CourseManuals" />
@@ -2562,17 +2776,13 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             <End Role="Department" EntitySet="Departments" />
             <End Role="Platform" EntitySet="Platforms" />
           </AssociationSet>
-          <AssociationSet Name="FK_Employee_Employee_Type" Association="Self.FK_Employee_Employee_Type">
-            <End Role="Employee_Type" EntitySet="Employee_Type" />
-            <End Role="Employee" EntitySet="Employees" />
-          </AssociationSet>
           <AssociationSet Name="FK_Employee_Platform" Association="Self.FK_Employee_Platform">
             <End Role="Platform" EntitySet="Platforms" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
-          <AssociationSet Name="FK_employeeCourse_employee" Association="Self.FK_employeeCourse_employee">
+          <AssociationSet Name="FK_EmployeeNotifications_Employee" Association="Self.FK_EmployeeNotifications_Employee">
             <End Role="Employee" EntitySet="Employees" />
-            <End Role="InstructorCourse" EntitySet="InstructorCourses" />
+            <End Role="EmployeeNotifications" EntitySet="EmployeeNotifications" />
           </AssociationSet>
           <AssociationSet Name="FK_Exams_Employee" Association="Self.FK_Exams_Employee">
             <End Role="Employee" EntitySet="Employees" />
@@ -2581,6 +2791,10 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <AssociationSet Name="FK_ExternalInstructorAuthorization_Employee" Association="Self.FK_ExternalInstructorAuthorization_Employee">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="ExternalInstructorAuthorization" EntitySet="ExternalInstructorAuthorizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InstructorNotifications_Employee" Association="Self.FK_InstructorNotifications_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="InstructorNotifications" EntitySet="InstructorNotifications" />
           </AssociationSet>
           <AssociationSet Name="FK_InstructorsConnectionIds_Employee" Association="Self.FK_InstructorsConnectionIds_Employee">
             <End Role="Employee" EntitySet="Employees" />
@@ -2594,9 +2808,17 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             <End Role="Employee" EntitySet="Employees" />
             <End Role="Questions" EntitySet="Questions" />
           </AssociationSet>
+          <AssociationSet Name="FK_SupervisiorNotifications_Employee" Association="Self.FK_SupervisiorNotifications_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="SupervisiorNotifications" EntitySet="SupervisiorNotifications" />
+          </AssociationSet>
           <AssociationSet Name="FK_SupervisiorsConnectionIds_Employee" Association="Self.FK_SupervisiorsConnectionIds_Employee">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="SupervisiorsConnectionIds" EntitySet="SupervisiorsConnectionIds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrackManager_Employee" Association="Self.FK_TrackManager_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="TrackManager" EntitySet="TrackManagers" />
           </AssociationSet>
           <AssociationSet Name="FK_TrackSupervisor_Employee" Association="Self.FK_TrackSupervisor_Employee">
             <End Role="Employee" EntitySet="Employees" />
@@ -2626,6 +2848,10 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             <End Role="PlatfromIntake" EntitySet="PlatfromIntakes" />
             <End Role="StudentBasicData" EntitySet="StudentBasicDatas" />
           </AssociationSet>
+          <AssociationSet Name="FK_TrackManager_PlatfromIntake" Association="Self.FK_TrackManager_PlatfromIntake">
+            <End Role="PlatfromIntake" EntitySet="PlatfromIntakes" />
+            <End Role="TrackManager" EntitySet="TrackManagers" />
+          </AssociationSet>
           <AssociationSet Name="FK_TrackManual_PlatfromIntake1" Association="Self.FK_TrackManual_PlatfromIntake1">
             <End Role="PlatfromIntake" EntitySet="PlatfromIntakes" />
             <End Role="TrackManual" EntitySet="TrackManuals" />
@@ -2638,6 +2864,10 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             <End Role="programs" EntitySet="programs" />
             <End Role="ProgramIntake" EntitySet="ProgramIntakes" />
           </AssociationSet>
+          <AssociationSet Name="FK_Student_Enrollment_StudentBasicData2" Association="Self.FK_Student_Enrollment_StudentBasicData2">
+            <End Role="StudentBasicData" EntitySet="StudentBasicDatas" />
+            <End Role="Student_Enrollment" EntitySet="Student_Enrollments" />
+          </AssociationSet>
           <AssociationSet Name="FK_NewDateExamForPermittedStudent_StudentBasicData" Association="Self.FK_NewDateExamForPermittedStudent_StudentBasicData">
             <End Role="StudentBasicData" EntitySet="StudentBasicDatas" />
             <End Role="NewDateExamForPermittedStudent" EntitySet="NewDateExamForPermittedStudents" />
@@ -2645,6 +2875,10 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <AssociationSet Name="FK_StudentAnswerQuestionInExam_StudentBasicData" Association="Self.FK_StudentAnswerQuestionInExam_StudentBasicData">
             <End Role="StudentBasicData" EntitySet="StudentBasicDatas" />
             <End Role="StudentAnswerQuestionInExam" EntitySet="StudentAnswerQuestionInExams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentNotifications_StudentBasicData" Association="Self.FK_StudentNotifications_StudentBasicData">
+            <End Role="StudentBasicData" EntitySet="StudentBasicDatas" />
+            <End Role="StudentNotifications" EntitySet="StudentNotifications" />
           </AssociationSet>
           <AssociationSet Name="FK_StudentPermissionInExam_StudentBasicData" Association="Self.FK_StudentPermissionInExam_StudentBasicData">
             <End Role="StudentBasicData" EntitySet="StudentBasicDatas" />
@@ -2657,6 +2891,10 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <AssociationSet Name="FK_DepartmentsExam_Exams" Association="Self.FK_DepartmentsExam_Exams">
             <End Role="Exams" EntitySet="Exams" />
             <End Role="DepartmentsExam" EntitySet="DepartmentsExams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeNotifications_Notifications" Association="Self.FK_EmployeeNotifications_Notifications">
+            <End Role="Notifications" EntitySet="Notifications" />
+            <End Role="EmployeeNotifications" EntitySet="EmployeeNotifications" />
           </AssociationSet>
           <AssociationSet Name="FK_NewDateExamForPermittedStudent_Exams" Association="Self.FK_NewDateExamForPermittedStudent_Exams">
             <End Role="Exams" EntitySet="Exams" />
@@ -2673,6 +2911,18 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <AssociationSet Name="FK_StudentPermissionInExam_Exams" Association="Self.FK_StudentPermissionInExam_Exams">
             <End Role="Exams" EntitySet="Exams" />
             <End Role="StudentPermissionInExam" EntitySet="StudentPermissionInExams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InstructorNotifications_Notifications1" Association="Self.FK_InstructorNotifications_Notifications1">
+            <End Role="Notifications" EntitySet="Notifications" />
+            <End Role="InstructorNotifications" EntitySet="InstructorNotifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentNotifications_Notifications1" Association="Self.FK_StudentNotifications_Notifications1">
+            <End Role="Notifications" EntitySet="Notifications" />
+            <End Role="StudentNotifications" EntitySet="StudentNotifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupervisiorNotifications_Notifications1" Association="Self.FK_SupervisiorNotifications_Notifications1">
+            <End Role="Notifications" EntitySet="Notifications" />
+            <End Role="SupervisiorNotifications" EntitySet="SupervisiorNotifications" />
           </AssociationSet>
           <AssociationSet Name="FK_QuestionAnswers_Questions" Association="Self.FK_QuestionAnswers_Questions">
             <End Role="Questions" EntitySet="Questions" />
@@ -2694,87 +2944,20 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
             <End Role="StudentAnswerQuestionInExam" EntitySet="StudentAnswerQuestionInExams" />
             <End Role="StudentMultiAnswersQuestion" EntitySet="StudentMultiAnswersQuestions" />
           </AssociationSet>
-          <AssociationSet Name="InstructorNotifications" Association="Self.InstructorNotifications">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="Notifications" EntitySet="Notifications" />
-          </AssociationSet>
           <AssociationSet Name="PointsInQuestion" Association="Self.PointsInQuestion">
             <End Role="Questions" EntitySet="Questions" />
             <End Role="Questions1" EntitySet="Questions" />
           </AssociationSet>
-          <AssociationSet Name="StudentNotifications" Association="Self.StudentNotifications">
-            <End Role="Notifications" EntitySet="Notifications" />
-            <End Role="StudentBasicData" EntitySet="StudentBasicDatas" />
-          </AssociationSet>
-          <AssociationSet Name="SupervisiorNotifications" Association="Self.SupervisiorNotifications">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="Notifications" EntitySet="Notifications" />
-          </AssociationSet>
-          <FunctionImport Name="GetAllEmp" ReturnType="Collection(ExaminationNS.GetAllEmp_Result)">
-            <Parameter Name="flag" Mode="In" Type="Int32" />
-            <Parameter Name="deptid" Mode="In" Type="Int32" />
-            <Parameter Name="employeeid" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="GetAllEmployee" ReturnType="Collection(ExaminationNS.GetAllEmployee_Result)" />
+          <FunctionImport Name="GetAllInstructor" ReturnType="Collection(ExaminationNS.GetAllInstructor_Result)" />
+          <FunctionImport Name="GetAllIntake" ReturnType="Collection(ExaminationNS.GetAllIntake_Result)">
+            <Parameter Name="SubTrackID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllsubTrack" ReturnType="Collection(ExaminationNS.GetAllsubTrack_Result)" />
           <FunctionImport Name="GetEmployeeByBranch" ReturnType="Collection(ExaminationNS.GetEmployeeByBranch_Result)">
-          <Parameter Name="BranchID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="GetEmployeeByName" ReturnType="Collection(ExaminationNS.GetEmployeeByName_Result)">
-          <Parameter Name="Instructorname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="GetEmployeeName" ReturnType="Collection(ExaminationNS.GetEmployeeName_Result)">
-            <Parameter Name="EmployeeName" Mode="In" Type="String" />
             <Parameter Name="BranchID" Mode="In" Type="Int32" />
-            <Parameter Name="PlatformID" Mode="In" Type="Int32" />
-            <Parameter Name="RoleID" Mode="In" Type="Int32" />
-            <Parameter Name="TypeID" Mode="In" Type="Int32" />
-            <Parameter Name="ArabicName" Mode="In" Type="String" />
-            <Parameter Name="CertificateID" Mode="In" Type="Int32" />
-            <Parameter Name="FirstNameEn" Mode="In" Type="String" />
-            <Parameter Name="SecondNameEn" Mode="In" Type="String" />
-            <Parameter Name="OrgBranch" Mode="In" Type="Int32" />
-            <Parameter Name="ThirdNameEn" Mode="In" Type="String" />
-            <Parameter Name="FourthNameEn" Mode="In" Type="String" />
-            <Parameter Name="FirstNameAr" Mode="In" Type="String" />
-            <Parameter Name="SecondNameAr" Mode="In" Type="String" />
-            <Parameter Name="ThirdNameAr" Mode="In" Type="String" />
-            <Parameter Name="FourthNameAr" Mode="In" Type="String" />
-            <Parameter Name="IntakeID" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="GetAllEmp_Result">
-          <Property Type="Int32" Name="EmployeeID" Nullable="false" />
-          <Property Type="Int32" Name="RoleID" Nullable="false" />
-          <Property Type="String" Name="RoleArabic" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="CategoryID" Nullable="true" />
-          <Property Type="String" Name="ArabicName" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="Expr2" Nullable="true" />
-          <Property Type="String" Name="BranchName" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Expr1" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="AttendanceFlag" Nullable="true" />
-          <Property Type="Int32" Name="DepartmentID" Nullable="false" />
-          <Property Type="String" Name="PhoneNo" Nullable="true" MaxLength="12" />
-          <Property Type="String" Name="MobileNo" Nullable="true" MaxLength="15" />
-          <Property Type="String" Name="ExtenistonNo" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="Code" Nullable="false" />
-          <Property Type="Int32" Name="BranchID" Nullable="false" />
-          <Property Type="DateTime" Name="HiringDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Gender" Nullable="true" MaxLength="1" />
-          <Property Type="Int32" Name="MaritalStatus" Nullable="true" />
-          <Property Type="Int32" Name="UniversityID" Nullable="true" />
-          <Property Type="Int32" Name="FacultyID" Nullable="true" />
-          <Property Type="Int32" Name="IntakeID" Nullable="true" />
-          <Property Type="Int32" Name="GraduationYear" Nullable="true" />
-          <Property Type="String" Name="Grade" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="MilitaryStatus" Nullable="true" />
-          <Property Type="Int32" Name="TypeID" Nullable="true" />
-          <Property Type="Int32" Name="PlatformID" Nullable="true" />
-          <Property Type="Int32" Name="Religionid" Nullable="true" />
-          <Property Type="DateTime" Name="DOB" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="CertificateID" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="GetAllEmployee_Result">
           <Property Type="Int32" Name="EmployeeID" Nullable="false" />
           <Property Type="String" Name="InstructorName" Nullable="false" MaxLength="50" />
@@ -2832,6 +3015,74 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <Property Type="Int32" Name="empno" Nullable="true" />
           <Property Type="Int32" Name="cat" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="GetAllInstructor_Result">
+          <Property Type="Int32" Name="EmployeeID" Nullable="false" />
+          <Property Type="String" Name="InstructorName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="BranchID" Nullable="false" />
+          <Property Type="String" Name="IPassword" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="UserName2" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="PlatformID" Nullable="true" />
+          <Property Type="Int32" Name="RoleID" Nullable="true" />
+          <Property Type="Int32" Name="TypeID" Nullable="true" />
+          <Property Type="String" Name="ArabicName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="CertificateID" Nullable="true" />
+          <Property Type="String" Name="FirstNameEn" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SecondNameEn" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="barcode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="imagepath" Nullable="true" MaxLength="80" />
+          <Property Type="Int32" Name="org_branchid" Nullable="true" />
+          <Property Type="Int32" Name="StatusID" Nullable="true" />
+          <Property Type="Int32" Name="PositionID" Nullable="true" />
+          <Property Type="Int32" Name="CategoryID" Nullable="true" />
+          <Property Type="DateTime" Name="HiringDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ThirdNameEn" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FourthNameEn" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FirstNameAr" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SecondNameAr" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ThirdNameAr" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FourthNameAr" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="DOB" Nullable="true" Precision="23" />
+          <Property Type="String" Name="PhoneNo" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="MobileNo" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="ExtenistonNo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="MaritalStatus" Nullable="true" />
+          <Property Type="Int32" Name="MilitaryStatus" Nullable="true" />
+          <Property Type="Int32" Name="UniversityID" Nullable="true" />
+          <Property Type="Int32" Name="FacultyID" Nullable="true" />
+          <Property Type="Int32" Name="IntakeID" Nullable="true" />
+          <Property Type="Int32" Name="Flag" Nullable="true" />
+          <Property Type="Int32" Name="GraduationYear" Nullable="true" />
+          <Property Type="String" Name="Grade" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="AttendanceFlag" Nullable="true" />
+          <Property Type="String" Name="PositionName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="EmpStatus" Nullable="true" />
+          <Property Type="Guid" Name="msrepl_tran_version" Nullable="false" />
+          <Property Type="String" Name="IDCard" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AttachmentID" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="AttachmentCV" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="ATMStatus" Nullable="true" />
+          <Property Type="String" Name="ATMNo" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="SpecialRate" Nullable="true" />
+          <Property Type="String" Name="RateNotes" Nullable="true" />
+          <Property Type="DateTime" Name="ATMExpiryDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Religionid" Nullable="true" />
+          <Property Type="Int32" Name="empno" Nullable="true" />
+          <Property Type="Int32" Name="cat" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetAllIntake_Result">
+          <Property Type="Int32" Name="IntakeID" Nullable="false" />
+          <Property Type="Int32" Name="IntakeNo" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetAllsubTrack_Result">
+          <Property Type="String" Name="subtrackName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="PlatformName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="subtrackID" Nullable="false" />
+          <Property Type="String" Name="BranchName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="PlatformIntakeID" Nullable="false" />
+        </ComplexType>
         <ComplexType Name="GetEmployeeByBranch_Result">
           <Property Type="Int32" Name="EmployeeID" Nullable="false" />
           <Property Type="String" Name="InstructorName" Nullable="false" MaxLength="50" />
@@ -2887,123 +3138,6 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
           <Property Type="DateTime" Name="ATMExpiryDate" Nullable="true" Precision="23" />
           <Property Type="Int32" Name="Religionid" Nullable="true" />
           <Property Type="Int32" Name="empno" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="GetEmployeeByName_Result">
-          <Property Type="Int32" Name="EmployeeID" Nullable="false" />
-          <Property Type="String" Name="InstructorName" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="BranchID" Nullable="false" />
-          <Property Type="String" Name="IPassword" Nullable="true" MaxLength="12" />
-          <Property Type="String" Name="UserName2" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="PlatformID" Nullable="true" />
-          <Property Type="Int32" Name="RoleID" Nullable="true" />
-          <Property Type="Int32" Name="TypeID" Nullable="true" />
-          <Property Type="String" Name="ArabicName" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="CertificateID" Nullable="true" />
-          <Property Type="String" Name="FirstNameEn" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="SecondNameEn" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="barcode" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="imagepath" Nullable="true" MaxLength="80" />
-          <Property Type="Int32" Name="org_branchid" Nullable="true" />
-          <Property Type="Int32" Name="StatusID" Nullable="true" />
-          <Property Type="Int32" Name="PositionID" Nullable="true" />
-          <Property Type="Int32" Name="CategoryID" Nullable="true" />
-          <Property Type="DateTime" Name="HiringDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="ThirdNameEn" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="FourthNameEn" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="FirstNameAr" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="SecondNameAr" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="ThirdNameAr" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="FourthNameAr" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="DOB" Nullable="true" Precision="23" />
-          <Property Type="String" Name="PhoneNo" Nullable="true" MaxLength="12" />
-          <Property Type="String" Name="MobileNo" Nullable="true" MaxLength="15" />
-          <Property Type="String" Name="ExtenistonNo" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="Gender" Nullable="true" MaxLength="1" />
-          <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="MaritalStatus" Nullable="true" />
-          <Property Type="Int32" Name="MilitaryStatus" Nullable="true" />
-          <Property Type="Int32" Name="UniversityID" Nullable="true" />
-          <Property Type="Int32" Name="FacultyID" Nullable="true" />
-          <Property Type="Int32" Name="IntakeID" Nullable="true" />
-          <Property Type="Int32" Name="Flag" Nullable="true" />
-          <Property Type="Int32" Name="GraduationYear" Nullable="true" />
-          <Property Type="String" Name="Grade" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="AttendanceFlag" Nullable="true" />
-          <Property Type="String" Name="PositionName" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="EmpStatus" Nullable="true" />
-          <Property Type="Guid" Name="msrepl_tran_version" Nullable="false" />
-          <Property Type="String" Name="IDCard" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="AttachmentID" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="AttachmentCV" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="ATMStatus" Nullable="true" />
-          <Property Type="String" Name="ATMNo" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="SpecialRate" Nullable="true" />
-          <Property Type="String" Name="RateNotes" Nullable="true" />
-          <Property Type="DateTime" Name="ATMExpiryDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="Religionid" Nullable="true" />
-          <Property Type="Int32" Name="empno" Nullable="true" />
-          <Property Type="Int32" Name="cat" Nullable="true" />
-          <Property Type="Int32" Name="usergroupID" Nullable="false" />
-          <Property Type="String" Name="Group_Name" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="Group_ID" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="GetEmployeeName_Result">
-          <Property Type="Int32" Name="EmployeeID" Nullable="false" />
-          <Property Type="String" Name="InstructorName" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="BranchID" Nullable="false" />
-          <Property Type="String" Name="IPassword" Nullable="true" MaxLength="12" />
-          <Property Type="String" Name="UserName2" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="PlatformID" Nullable="true" />
-          <Property Type="Int32" Name="RoleID" Nullable="true" />
-          <Property Type="Int32" Name="TypeID" Nullable="true" />
-          <Property Type="String" Name="ArabicName" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="CertificateID" Nullable="true" />
-          <Property Type="String" Name="FirstNameEn" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="SecondNameEn" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="barcode" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="imagepath" Nullable="true" MaxLength="80" />
-          <Property Type="Int32" Name="org_branchid" Nullable="true" />
-          <Property Type="Int32" Name="StatusID" Nullable="true" />
-          <Property Type="Int32" Name="PositionID" Nullable="true" />
-          <Property Type="Int32" Name="CategoryID" Nullable="true" />
-          <Property Type="DateTime" Name="HiringDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="ThirdNameEn" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="FourthNameEn" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="FirstNameAr" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="SecondNameAr" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="ThirdNameAr" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="FourthNameAr" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="DOB" Nullable="true" Precision="23" />
-          <Property Type="String" Name="PhoneNo" Nullable="true" MaxLength="12" />
-          <Property Type="String" Name="MobileNo" Nullable="true" MaxLength="15" />
-          <Property Type="String" Name="ExtenistonNo" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="Gender" Nullable="true" MaxLength="1" />
-          <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="MaritalStatus" Nullable="true" />
-          <Property Type="Int32" Name="MilitaryStatus" Nullable="true" />
-          <Property Type="Int32" Name="UniversityID" Nullable="true" />
-          <Property Type="Int32" Name="FacultyID" Nullable="true" />
-          <Property Type="Int32" Name="IntakeID" Nullable="true" />
-          <Property Type="Int32" Name="Flag" Nullable="true" />
-          <Property Type="Int32" Name="GraduationYear" Nullable="true" />
-          <Property Type="String" Name="Grade" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="AttendanceFlag" Nullable="true" />
-          <Property Type="String" Name="PositionName" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="EmpStatus" Nullable="true" />
-          <Property Type="Guid" Name="msrepl_tran_version" Nullable="false" />
-          <Property Type="String" Name="IDCard" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="AttachmentID" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="AttachmentCV" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="ATMStatus" Nullable="true" />
-          <Property Type="String" Name="ATMNo" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="SpecialRate" Nullable="true" />
-          <Property Type="String" Name="RateNotes" Nullable="true" />
-          <Property Type="DateTime" Name="ATMExpiryDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="Religionid" Nullable="true" />
-          <Property Type="Int32" Name="empno" Nullable="true" />
-          <Property Type="Int32" Name="cat" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3145,16 +3279,6 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Employee_Type">
-            <EntityTypeMapping TypeName="ExaminationNS.Employee_Type">
-              <MappingFragment StoreEntitySet="Employee_Type">
-                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
-                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-                <ScalarProperty Name="levelid" ColumnName="levelid" />
-                <ScalarProperty Name="msrepl_tran_version" ColumnName="msrepl_tran_version" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="EvaluationCriterias">
             <EntityTypeMapping TypeName="ExaminationNS.EvaluationCriteria">
               <MappingFragment StoreEntitySet="EvaluationCriteria">
@@ -3162,25 +3286,6 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
                 <ScalarProperty Name="EvalID" ColumnName="EvalID" />
                 <ScalarProperty Name="Grade" ColumnName="Grade" />
                 <ScalarProperty Name="CourseManualID" ColumnName="CourseManualID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="InstructorCourses">
-            <EntityTypeMapping TypeName="ExaminationNS.InstructorCourse">
-              <MappingFragment StoreEntitySet="InstructorCourse">
-                <ScalarProperty Name="InstructorCourseID" ColumnName="InstructorCourseID" />
-                <ScalarProperty Name="instructorID" ColumnName="instructorID" />
-                <ScalarProperty Name="courseID" ColumnName="courseID" />
-                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="InstructorTypes">
-            <EntityTypeMapping TypeName="ExaminationNS.InstructorType">
-              <MappingFragment StoreEntitySet="InstructorType">
-                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
-                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-                <ScalarProperty Name="msrepl_tran_version" ColumnName="msrepl_tran_version" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3207,6 +3312,16 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
                 <ScalarProperty Name="msrepl_tran_version" ColumnName="msrepl_tran_version" />
                 <ScalarProperty Name="ISMonthPlat" ColumnName="ISMonthPlat" />
                 <ScalarProperty Name="OwnerEmployeeID" ColumnName="OwnerEmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlatformDepartments">
+            <EntityTypeMapping TypeName="ExaminationNS.PlatformDepartment">
+              <MappingFragment StoreEntitySet="PlatformDepartment">
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+                <ScalarProperty Name="PlatformID" ColumnName="PlatformID" />
+                <ScalarProperty Name="msrepl_tran_version" ColumnName="msrepl_tran_version" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3237,6 +3352,15 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
                 <ScalarProperty Name="programId" ColumnName="programId" />
                 <ScalarProperty Name="programName" ColumnName="programName" />
                 <ScalarProperty Name="programnotes" ColumnName="programnotes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student_Enrollments">
+            <EntityTypeMapping TypeName="ExaminationNS.Student_Enrollment">
+              <MappingFragment StoreEntitySet="Student Enrollment">
+                <ScalarProperty Name="StudentEnrollmentID" ColumnName="StudentEnrollmentID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="CourseInstanceDetailsID" ColumnName="CourseInstanceDetailsID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3293,6 +3417,15 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TrackManagers">
+            <EntityTypeMapping TypeName="ExaminationNS.TrackManager">
+              <MappingFragment StoreEntitySet="TrackManager">
+                <ScalarProperty Name="TrackManagerID" ColumnName="TrackManagerID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="PlatformIntakeID" ColumnName="PlatformIntakeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TrackManuals">
             <EntityTypeMapping TypeName="ExaminationNS.TrackManual">
               <MappingFragment StoreEntitySet="TrackManual">
@@ -3322,6 +3455,15 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeNotifications">
+            <EntityTypeMapping TypeName="ExaminationNS.EmployeeNotification">
+              <MappingFragment StoreEntitySet="EmployeeNotifications">
+                <ScalarProperty Name="Emp_Id" ColumnName="Emp_Id" />
+                <ScalarProperty Name="Notification_Id" ColumnName="Notification_Id" />
+                <ScalarProperty Name="Notify_Id" ColumnName="Notify_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Exams">
             <EntityTypeMapping TypeName="ExaminationNS.Exam">
               <MappingFragment StoreEntitySet="Exams">
@@ -3332,6 +3474,7 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
                 <ScalarProperty Name="Ins_Id" ColumnName="Ins_Id" />
                 <ScalarProperty Name="Exam_Corrected" ColumnName="Exam_Corrected" />
                 <ScalarProperty Name="Exam_Duration" ColumnName="Exam_Duration" />
+                <ScalarProperty Name="Exam_FullDegree" ColumnName="Exam_FullDegree" />
                 <ScalarProperty Name="PlatformIntake_Id" ColumnName="PlatformIntake_Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -3342,6 +3485,15 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
                 <ScalarProperty Name="Ins_Id" ColumnName="Ins_Id" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InstructorNotifications">
+            <EntityTypeMapping TypeName="ExaminationNS.InstructorNotification">
+              <MappingFragment StoreEntitySet="InstructorNotifications">
+                <ScalarProperty Name="Ins_Id" ColumnName="Ins_Id" />
+                <ScalarProperty Name="Notification_Id" ColumnName="Notification_Id" />
+                <ScalarProperty Name="Notify_Id" ColumnName="Notify_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3425,6 +3577,15 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="StudentNotifications">
+            <EntityTypeMapping TypeName="ExaminationNS.StudentNotification">
+              <MappingFragment StoreEntitySet="StudentNotifications">
+                <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+                <ScalarProperty Name="Notification_Id" ColumnName="Notification_Id" />
+                <ScalarProperty Name="Notify_Id" ColumnName="Notify_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="StudentPermissionInExams">
             <EntityTypeMapping TypeName="ExaminationNS.StudentPermissionInExam">
               <MappingFragment StoreEntitySet="StudentPermissionInExam">
@@ -3439,6 +3600,15 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
               <MappingFragment StoreEntitySet="StudentsConnectionIds">
                 <ScalarProperty Name="Std_Id" ColumnName="Std_Id" />
                 <ScalarProperty Name="Connection_Ids" ColumnName="Connection_Ids" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupervisiorNotifications">
+            <EntityTypeMapping TypeName="ExaminationNS.SupervisiorNotification">
+              <MappingFragment StoreEntitySet="SupervisiorNotifications">
+                <ScalarProperty Name="Supervisior_Id" ColumnName="Supervisior_Id" />
+                <ScalarProperty Name="Notification_Id" ColumnName="Notification_Id" />
+                <ScalarProperty Name="Notify_Id" ColumnName="Notify_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3474,6 +3644,22 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CoursesDataViews">
+            <EntityTypeMapping TypeName="ExaminationNS.CoursesDataView">
+              <MappingFragment StoreEntitySet="CoursesDataView">
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="programName" ColumnName="programName" />
+                <ScalarProperty Name="IntakeNo" ColumnName="IntakeNo" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="CourseInstanceID" ColumnName="CourseInstanceID" />
+                <ScalarProperty Name="courseManualID" ColumnName="courseManualID" />
+                <ScalarProperty Name="TrackManualID" ColumnName="TrackManualID" />
+                <ScalarProperty Name="programId" ColumnName="programId" />
+                <ScalarProperty Name="ProgramIntakeID" ColumnName="ProgramIntakeID" />
+                <ScalarProperty Name="IntakeID" ColumnName="IntakeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Employee_metadata">
             <EntityTypeMapping TypeName="ExaminationNS.Employee_metadata">
               <MappingFragment StoreEntitySet="Employee_metadata">
@@ -3490,14 +3676,6 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="InstructorNotifications" TypeName="ExaminationNS.InstructorNotifications" StoreEntitySet="InstructorNotifications">
-            <EndProperty Name="Employee">
-              <ScalarProperty Name="EmployeeID" ColumnName="Ins_Id" />
-            </EndProperty>
-            <EndProperty Name="Notifications">
-              <ScalarProperty Name="Notification_Id" ColumnName="Notification_Id" />
-            </EndProperty>
-          </AssociationSetMapping>
           <AssociationSetMapping Name="PointsInQuestion" TypeName="ExaminationNS.PointsInQuestion" StoreEntitySet="PointsInQuestion">
             <EndProperty Name="Questions">
               <ScalarProperty Name="Ques_Id" ColumnName="Point_Id" />
@@ -3506,59 +3684,6 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
               <ScalarProperty Name="Ques_Id" ColumnName="Ques_Id" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="StudentNotifications" TypeName="ExaminationNS.StudentNotifications" StoreEntitySet="StudentNotifications">
-            <EndProperty Name="Notifications">
-              <ScalarProperty Name="Notification_Id" ColumnName="Notification_Id" />
-            </EndProperty>
-            <EndProperty Name="StudentBasicData">
-              <ScalarProperty Name="StudentID" ColumnName="Student_Id" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="SupervisiorNotifications" TypeName="ExaminationNS.SupervisiorNotifications" StoreEntitySet="SupervisiorNotifications">
-            <EndProperty Name="Employee">
-              <ScalarProperty Name="EmployeeID" ColumnName="Supervisior_Id" />
-            </EndProperty>
-            <EndProperty Name="Notifications">
-              <ScalarProperty Name="Notification_Id" ColumnName="Notification_Id" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="GetAllEmp" FunctionName="ExaminationNS.Store.GetAllEmp">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ExaminationNS.GetAllEmp_Result">
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="RoleArabic" ColumnName="RoleArabic" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
-                <ScalarProperty Name="Expr2" ColumnName="Expr2" />
-                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
-                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
-                <ScalarProperty Name="AttendanceFlag" ColumnName="AttendanceFlag" />
-                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
-                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
-                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
-                <ScalarProperty Name="ExtenistonNo" ColumnName="ExtenistonNo" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Mail" ColumnName="Mail" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="BranchID" ColumnName="BranchID" />
-                <ScalarProperty Name="HiringDate" ColumnName="HiringDate" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
-                <ScalarProperty Name="UniversityID" ColumnName="UniversityID" />
-                <ScalarProperty Name="FacultyID" ColumnName="FacultyID" />
-                <ScalarProperty Name="IntakeID" ColumnName="IntakeID" />
-                <ScalarProperty Name="GraduationYear" ColumnName="GraduationYear" />
-                <ScalarProperty Name="Grade" ColumnName="Grade" />
-                <ScalarProperty Name="MilitaryStatus" ColumnName="MilitaryStatus" />
-                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
-                <ScalarProperty Name="PlatformID" ColumnName="PlatformID" />
-                <ScalarProperty Name="Religionid" ColumnName="Religionid" />
-                <ScalarProperty Name="DOB" ColumnName="DOB" />
-                <ScalarProperty Name="CertificateID" ColumnName="CertificateID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetAllEmployee" FunctionName="ExaminationNS.Store.GetAllEmployee">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ExaminationNS.GetAllEmployee_Result">
@@ -3620,6 +3745,86 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllInstructor" FunctionName="ExaminationNS.Store.GetAllInstructor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExaminationNS.GetAllInstructor_Result">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="InstructorName" ColumnName="InstructorName" />
+                <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+                <ScalarProperty Name="IPassword" ColumnName="IPassword" />
+                <ScalarProperty Name="UserName2" ColumnName="UserName2" />
+                <ScalarProperty Name="PlatformID" ColumnName="PlatformID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+                <ScalarProperty Name="CertificateID" ColumnName="CertificateID" />
+                <ScalarProperty Name="FirstNameEn" ColumnName="FirstNameEn" />
+                <ScalarProperty Name="SecondNameEn" ColumnName="SecondNameEn" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="imagepath" ColumnName="imagepath" />
+                <ScalarProperty Name="org_branchid" ColumnName="org_branchid" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="HiringDate" ColumnName="HiringDate" />
+                <ScalarProperty Name="ThirdNameEn" ColumnName="ThirdNameEn" />
+                <ScalarProperty Name="FourthNameEn" ColumnName="FourthNameEn" />
+                <ScalarProperty Name="FirstNameAr" ColumnName="FirstNameAr" />
+                <ScalarProperty Name="SecondNameAr" ColumnName="SecondNameAr" />
+                <ScalarProperty Name="ThirdNameAr" ColumnName="ThirdNameAr" />
+                <ScalarProperty Name="FourthNameAr" ColumnName="FourthNameAr" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="ExtenistonNo" ColumnName="ExtenistonNo" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="MilitaryStatus" ColumnName="MilitaryStatus" />
+                <ScalarProperty Name="UniversityID" ColumnName="UniversityID" />
+                <ScalarProperty Name="FacultyID" ColumnName="FacultyID" />
+                <ScalarProperty Name="IntakeID" ColumnName="IntakeID" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="GraduationYear" ColumnName="GraduationYear" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="AttendanceFlag" ColumnName="AttendanceFlag" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="EmpStatus" ColumnName="EmpStatus" />
+                <ScalarProperty Name="msrepl_tran_version" ColumnName="msrepl_tran_version" />
+                <ScalarProperty Name="IDCard" ColumnName="IDCard" />
+                <ScalarProperty Name="AttachmentID" ColumnName="AttachmentID" />
+                <ScalarProperty Name="AttachmentCV" ColumnName="AttachmentCV" />
+                <ScalarProperty Name="ATMStatus" ColumnName="ATMStatus" />
+                <ScalarProperty Name="ATMNo" ColumnName="ATMNo" />
+                <ScalarProperty Name="SpecialRate" ColumnName="SpecialRate" />
+                <ScalarProperty Name="RateNotes" ColumnName="RateNotes" />
+                <ScalarProperty Name="ATMExpiryDate" ColumnName="ATMExpiryDate" />
+                <ScalarProperty Name="Religionid" ColumnName="Religionid" />
+                <ScalarProperty Name="empno" ColumnName="empno" />
+                <ScalarProperty Name="cat" ColumnName="cat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllIntake" FunctionName="ExaminationNS.Store.GetAllIntake">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExaminationNS.GetAllIntake_Result">
+                <ScalarProperty Name="IntakeID" ColumnName="IntakeID" />
+                <ScalarProperty Name="IntakeNo" ColumnName="IntakeNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllsubTrack" FunctionName="ExaminationNS.Store.GetAllsubTrack">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExaminationNS.GetAllsubTrack_Result">
+                <ScalarProperty Name="subtrackName" ColumnName="subtrackName" />
+                <ScalarProperty Name="PlatformName" ColumnName="PlatformName" />
+                <ScalarProperty Name="subtrackID" ColumnName="subtrackID" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="PlatformIntakeID" ColumnName="PlatformIntakeID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetEmployeeByBranch" FunctionName="ExaminationNS.Store.GetEmployeeByBranch">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ExaminationNS.GetEmployeeByBranch_Result">
@@ -3677,131 +3882,6 @@ warning 6002: The table/view 'NewData.dbo.Employee_metadata' does not have a pri
                 <ScalarProperty Name="ATMExpiryDate" ColumnName="ATMExpiryDate" />
                 <ScalarProperty Name="Religionid" ColumnName="Religionid" />
                 <ScalarProperty Name="empno" ColumnName="empno" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetEmployeeByName" FunctionName="ExaminationNS.Store.GetEmployeeByName">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ExaminationNS.GetEmployeeByName_Result">
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="InstructorName" ColumnName="InstructorName" />
-                <ScalarProperty Name="BranchID" ColumnName="BranchID" />
-                <ScalarProperty Name="IPassword" ColumnName="IPassword" />
-                <ScalarProperty Name="UserName2" ColumnName="UserName2" />
-                <ScalarProperty Name="PlatformID" ColumnName="PlatformID" />
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
-                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
-                <ScalarProperty Name="CertificateID" ColumnName="CertificateID" />
-                <ScalarProperty Name="FirstNameEn" ColumnName="FirstNameEn" />
-                <ScalarProperty Name="SecondNameEn" ColumnName="SecondNameEn" />
-                <ScalarProperty Name="barcode" ColumnName="barcode" />
-                <ScalarProperty Name="imagepath" ColumnName="imagepath" />
-                <ScalarProperty Name="org_branchid" ColumnName="org_branchid" />
-                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
-                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="HiringDate" ColumnName="HiringDate" />
-                <ScalarProperty Name="ThirdNameEn" ColumnName="ThirdNameEn" />
-                <ScalarProperty Name="FourthNameEn" ColumnName="FourthNameEn" />
-                <ScalarProperty Name="FirstNameAr" ColumnName="FirstNameAr" />
-                <ScalarProperty Name="SecondNameAr" ColumnName="SecondNameAr" />
-                <ScalarProperty Name="ThirdNameAr" ColumnName="ThirdNameAr" />
-                <ScalarProperty Name="FourthNameAr" ColumnName="FourthNameAr" />
-                <ScalarProperty Name="DOB" ColumnName="DOB" />
-                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
-                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
-                <ScalarProperty Name="ExtenistonNo" ColumnName="ExtenistonNo" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Mail" ColumnName="Mail" />
-                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
-                <ScalarProperty Name="MilitaryStatus" ColumnName="MilitaryStatus" />
-                <ScalarProperty Name="UniversityID" ColumnName="UniversityID" />
-                <ScalarProperty Name="FacultyID" ColumnName="FacultyID" />
-                <ScalarProperty Name="IntakeID" ColumnName="IntakeID" />
-                <ScalarProperty Name="Flag" ColumnName="Flag" />
-                <ScalarProperty Name="GraduationYear" ColumnName="GraduationYear" />
-                <ScalarProperty Name="Grade" ColumnName="Grade" />
-                <ScalarProperty Name="AttendanceFlag" ColumnName="AttendanceFlag" />
-                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
-                <ScalarProperty Name="EmpStatus" ColumnName="EmpStatus" />
-                <ScalarProperty Name="msrepl_tran_version" ColumnName="msrepl_tran_version" />
-                <ScalarProperty Name="IDCard" ColumnName="IDCard" />
-                <ScalarProperty Name="AttachmentID" ColumnName="AttachmentID" />
-                <ScalarProperty Name="AttachmentCV" ColumnName="AttachmentCV" />
-                <ScalarProperty Name="ATMStatus" ColumnName="ATMStatus" />
-                <ScalarProperty Name="ATMNo" ColumnName="ATMNo" />
-                <ScalarProperty Name="SpecialRate" ColumnName="SpecialRate" />
-                <ScalarProperty Name="RateNotes" ColumnName="RateNotes" />
-                <ScalarProperty Name="ATMExpiryDate" ColumnName="ATMExpiryDate" />
-                <ScalarProperty Name="Religionid" ColumnName="Religionid" />
-                <ScalarProperty Name="empno" ColumnName="empno" />
-                <ScalarProperty Name="cat" ColumnName="cat" />
-                <ScalarProperty Name="usergroupID" ColumnName="usergroupID" />
-                <ScalarProperty Name="Group_Name" ColumnName="Group_Name" />
-                <ScalarProperty Name="Group_ID" ColumnName="Group_ID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetEmployeeName" FunctionName="ExaminationNS.Store.GetEmployeeName">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ExaminationNS.GetEmployeeName_Result">
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="InstructorName" ColumnName="InstructorName" />
-                <ScalarProperty Name="BranchID" ColumnName="BranchID" />
-                <ScalarProperty Name="IPassword" ColumnName="IPassword" />
-                <ScalarProperty Name="UserName2" ColumnName="UserName2" />
-                <ScalarProperty Name="PlatformID" ColumnName="PlatformID" />
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
-                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
-                <ScalarProperty Name="CertificateID" ColumnName="CertificateID" />
-                <ScalarProperty Name="FirstNameEn" ColumnName="FirstNameEn" />
-                <ScalarProperty Name="SecondNameEn" ColumnName="SecondNameEn" />
-                <ScalarProperty Name="barcode" ColumnName="barcode" />
-                <ScalarProperty Name="imagepath" ColumnName="imagepath" />
-                <ScalarProperty Name="org_branchid" ColumnName="org_branchid" />
-                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
-                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="HiringDate" ColumnName="HiringDate" />
-                <ScalarProperty Name="ThirdNameEn" ColumnName="ThirdNameEn" />
-                <ScalarProperty Name="FourthNameEn" ColumnName="FourthNameEn" />
-                <ScalarProperty Name="FirstNameAr" ColumnName="FirstNameAr" />
-                <ScalarProperty Name="SecondNameAr" ColumnName="SecondNameAr" />
-                <ScalarProperty Name="ThirdNameAr" ColumnName="ThirdNameAr" />
-                <ScalarProperty Name="FourthNameAr" ColumnName="FourthNameAr" />
-                <ScalarProperty Name="DOB" ColumnName="DOB" />
-                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
-                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
-                <ScalarProperty Name="ExtenistonNo" ColumnName="ExtenistonNo" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Mail" ColumnName="Mail" />
-                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
-                <ScalarProperty Name="MilitaryStatus" ColumnName="MilitaryStatus" />
-                <ScalarProperty Name="UniversityID" ColumnName="UniversityID" />
-                <ScalarProperty Name="FacultyID" ColumnName="FacultyID" />
-                <ScalarProperty Name="IntakeID" ColumnName="IntakeID" />
-                <ScalarProperty Name="Flag" ColumnName="Flag" />
-                <ScalarProperty Name="GraduationYear" ColumnName="GraduationYear" />
-                <ScalarProperty Name="Grade" ColumnName="Grade" />
-                <ScalarProperty Name="AttendanceFlag" ColumnName="AttendanceFlag" />
-                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
-                <ScalarProperty Name="EmpStatus" ColumnName="EmpStatus" />
-                <ScalarProperty Name="msrepl_tran_version" ColumnName="msrepl_tran_version" />
-                <ScalarProperty Name="IDCard" ColumnName="IDCard" />
-                <ScalarProperty Name="AttachmentID" ColumnName="AttachmentID" />
-                <ScalarProperty Name="AttachmentCV" ColumnName="AttachmentCV" />
-                <ScalarProperty Name="ATMStatus" ColumnName="ATMStatus" />
-                <ScalarProperty Name="ATMNo" ColumnName="ATMNo" />
-                <ScalarProperty Name="SpecialRate" ColumnName="SpecialRate" />
-                <ScalarProperty Name="RateNotes" ColumnName="RateNotes" />
-                <ScalarProperty Name="ATMExpiryDate" ColumnName="ATMExpiryDate" />
-                <ScalarProperty Name="Religionid" ColumnName="Religionid" />
-                <ScalarProperty Name="empno" ColumnName="empno" />
-                <ScalarProperty Name="cat" ColumnName="cat" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

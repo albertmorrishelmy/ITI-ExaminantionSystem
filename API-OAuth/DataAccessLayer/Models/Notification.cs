@@ -17,9 +17,10 @@ namespace DataAccessLayer.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Notification()
         {
-            this.Employees = new HashSet<Employee>();
-            this.StudentBasicDatas = new HashSet<StudentBasicData>();
-            this.Employees1 = new HashSet<Employee>();
+            this.EmployeeNotifications = new HashSet<EmployeeNotification>();
+            this.InstructorNotifications = new HashSet<InstructorNotification>();
+            this.StudentNotifications = new HashSet<StudentNotification>();
+            this.SupervisiorNotifications = new HashSet<SupervisiorNotification>();
         }
     
         public int Notification_Id { get; set; }
@@ -28,10 +29,12 @@ namespace DataAccessLayer.Models
         public Nullable<System.DateTime> Creation_Time { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employees { get; set; }
+        public virtual ICollection<EmployeeNotification> EmployeeNotifications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StudentBasicData> StudentBasicDatas { get; set; }
+        public virtual ICollection<InstructorNotification> InstructorNotifications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employees1 { get; set; }
+        public virtual ICollection<StudentNotification> StudentNotifications { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SupervisiorNotification> SupervisiorNotifications { get; set; }
     }
 }

@@ -12,19 +12,17 @@ namespace DataAccessLayer.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Course
+    public partial class CoursesDataView
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Course()
-        {
-            this.CourseManuals = new HashSet<CourseManual>();
-        }
-    
-        public int CourseID { get; set; }
         public string CourseName { get; set; }
-        public Nullable<int> CategoryID { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CourseManual> CourseManuals { get; set; }
+        public string programName { get; set; }
+        public Nullable<int> IntakeNo { get; set; }
+        public int CourseID { get; set; }
+        public int CourseInstanceID { get; set; }
+        public int courseManualID { get; set; }
+        public int TrackManualID { get; set; }
+        public int programId { get; set; }
+        public int ProgramIntakeID { get; set; }
+        public int IntakeID { get; set; }
     }
 }

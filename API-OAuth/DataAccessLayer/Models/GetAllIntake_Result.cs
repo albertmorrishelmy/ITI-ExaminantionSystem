@@ -10,12 +10,10 @@
 namespace DataAccessLayer.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class InstructorType
+    public partial class GetAllIntake_Result
     {
-        public int TypeID { get; set; }
-        public string TypeName { get; set; }
-        public System.Guid msrepl_tran_version { get; set; }
+        public int IntakeID { get; set; }
+        public Nullable<int> IntakeNo { get; set; }
     }
 }
