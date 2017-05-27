@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace API_OAuth.App_Start
+namespace API_OAuth
 {
     public partial class Startup
     {
