@@ -14,7 +14,6 @@ namespace DataAccessLayer.Models
     
     public partial class Branch
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Branch()
         {
             this.PlatfromIntakes = new HashSet<PlatfromIntake>();
@@ -26,7 +25,6 @@ namespace DataAccessLayer.Models
         public System.Guid msrepl_tran_version { get; set; }
         public Nullable<int> trainbranchid { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PlatfromIntake> PlatfromIntakes { get; set; }
     }
 }

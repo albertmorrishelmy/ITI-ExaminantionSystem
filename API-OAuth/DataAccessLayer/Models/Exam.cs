@@ -14,7 +14,6 @@ namespace DataAccessLayer.Models
     
     public partial class Exam
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Exam()
         {
             this.DepartmentsExams = new HashSet<DepartmentsExam>();
@@ -36,15 +35,10 @@ namespace DataAccessLayer.Models
     
         public virtual Employee Employee { get; set; }
         public virtual PlatfromIntake PlatfromIntake { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DepartmentsExam> DepartmentsExams { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NewDateExamForPermittedStudent> NewDateExamForPermittedStudents { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<QuestionsInExam> QuestionsInExams { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentAnswerQuestionInExam> StudentAnswerQuestionInExams { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentPermissionInExam> StudentPermissionInExams { get; set; }
     }
 }

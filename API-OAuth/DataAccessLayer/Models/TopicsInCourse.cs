@@ -14,7 +14,6 @@ namespace DataAccessLayer.Models
     
     public partial class TopicsInCourse
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TopicsInCourse()
         {
             this.Questions = new HashSet<Question>();
@@ -24,7 +23,6 @@ namespace DataAccessLayer.Models
         public string Topic_Name { get; set; }
         public int Crs_Id { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Question> Questions { get; set; }
     }
 }

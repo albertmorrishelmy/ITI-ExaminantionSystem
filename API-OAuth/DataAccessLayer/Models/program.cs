@@ -14,7 +14,6 @@ namespace DataAccessLayer.Models
     
     public partial class program
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public program()
         {
             this.ProgramIntakes = new HashSet<ProgramIntake>();
@@ -24,7 +23,6 @@ namespace DataAccessLayer.Models
         public string programName { get; set; }
         public string programnotes { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProgramIntake> ProgramIntakes { get; set; }
     }
 }

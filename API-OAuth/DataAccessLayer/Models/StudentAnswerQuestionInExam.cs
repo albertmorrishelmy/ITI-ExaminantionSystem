@@ -14,7 +14,6 @@ namespace DataAccessLayer.Models
     
     public partial class StudentAnswerQuestionInExam
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public StudentAnswerQuestionInExam()
         {
             this.StudentMultiAnswersQuestions = new HashSet<StudentMultiAnswersQuestion>();
@@ -26,7 +25,6 @@ namespace DataAccessLayer.Models
     
         public virtual StudentBasicData StudentBasicData { get; set; }
         public virtual Exam Exam { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentMultiAnswersQuestion> StudentMultiAnswersQuestions { get; set; }
     }
 }
