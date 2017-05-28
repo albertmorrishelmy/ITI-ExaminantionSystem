@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccessLayer.Models;
+using AutoMapper;
 
 namespace BusineesLayer.Managers
 {
@@ -15,6 +16,21 @@ namespace BusineesLayer.Managers
             return xx;
         }
 
+        public Student GetOnly()
+        {
+            var mm = new StudentMananger().GetById(5747);
+            var zz = Mapper.Map<Student>(mm);
+            return zz;
+        }
+
+
+
         
+    }
+
+    public class Student
+    {
+        public int StudentID { get; set; }
+        public string englishname { get; set; }
     }
 }

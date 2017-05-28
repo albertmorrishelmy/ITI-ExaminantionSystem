@@ -95,7 +95,7 @@
     <Compile Include="Map\ExternalInstructorAuthorizationMap.cs" />
     <Compile Include="Map\InstructorsConnectionIdMap.cs" />
     <Compile Include="Map\IntakMap.cs" />
-    <Compile Include="Map\MapConfig.cs" />
+    <Compile Include="Map\AutoMapperConfiguration.cs" />
     <Compile Include="Map\NewDateExamForPermittedStudentMap.cs" />
     <Compile Include="Map\NotificationMap.cs" />
     <Compile Include="Map\PlatfromIntakeMap.cs" />

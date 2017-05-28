@@ -275,11 +275,4 @@ namespace ITIAuthorizationServer
         }
     }
 
-    internal class UserDevice
-    {
-        public string DevicesID { get; internal set; }
-        public object DevicesOS { get; internal set; }
-        public object DevicesOsVersion { get; internal set; }
-        public object EmployeeID { get; internal set; }
-    }
 }
