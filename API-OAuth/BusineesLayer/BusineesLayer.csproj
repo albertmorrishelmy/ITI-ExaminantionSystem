@@ -87,6 +87,7 @@
     <Compile Include="IOperations.cs" />
     <Compile Include="Managers\EmployeeManager.cs" />
     <Compile Include="Managers\ExaminerManager.cs" />
+    <Compile Include="Managers\TopicManager.cs" />
     <Compile Include="Map\BranchMap.cs" />
     <Compile Include="Map\CourseManualMap.cs" />
     <Compile Include="Map\CourseMap.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Map\StudentMap.cs" />
     <Compile Include="Map\StudentPermissionInExamMap.cs" />
     <Compile Include="Map\subTrackMap.cs" />
+    <Compile Include="Map\TopicsInCourseMap.cs" />
     <Compile Include="Map\TrackManualMap.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

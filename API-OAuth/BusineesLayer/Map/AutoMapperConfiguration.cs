@@ -77,7 +77,7 @@ namespace BusineesLayer.Map
                 cfg.CreateMap<StudentBasicData, Managers.Student>();
                 cfg.CreateMap<Managers.Student, StudentBasicData>();
 
-
+                cfg.CreateMap<TopicsInCourse, TopicsInCourseMap>().ReverseMap();
 
             });
 
